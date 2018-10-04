@@ -32,20 +32,14 @@ class Slinder extends React.Component<ProfileListProps, ProfileListState> {
 
   async componentDidMount() {
     this.setState({isLoading: true});
-    const response = await fetch('https://blog-microservice-post.herokuapp.com/profiles', {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    });
+    const response = await fetch('https://blog-microservice-post.herokuapp.com/profiles');
     const data = await response.json();
+    console.log(data);
     this.setState({posts: data, isLoading: false});
   }
 
   render() {
     return (
-
       <div className="home_slider_container">
         <div className="owl-carousel owl-theme home_slider">
           <SlinderItems data={this.state.posts}/>
