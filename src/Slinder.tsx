@@ -32,7 +32,7 @@ class Slinder extends React.Component<ProfileListProps, ProfileListState> {
 
   async componentDidMount() {
     this.setState({isLoading: true});
-    const response = await fetch('http://localhost:3000/profiles');
+    const response = await fetch('https://blog-microservice-post.herokuapp.com/profiles');
     const data = await response.json();
     this.setState({posts: data, isLoading: false});
   }
