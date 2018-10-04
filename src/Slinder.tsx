@@ -32,7 +32,13 @@ class Slinder extends React.Component<ProfileListProps, ProfileListState> {
 
   async componentDidMount() {
     this.setState({isLoading: true});
-    const response = await fetch('https://blog-microservice-post.herokuapp.com/profiles');
+    const response = await fetch('https://blog-microservice-post.herokuapp.com/profiles', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
     const data = await response.json();
     this.setState({posts: data, isLoading: false});
   }
