@@ -3,9 +3,6 @@ import * as React from 'react';
 import './main_styles.css';
 import './bootstrap4/bootstrap.min.css'
 import './responsive.css';
-import './plugins/OwlCarousel2-2.2.1/owl.carousel.css';
-import './plugins/OwlCarousel2-2.2.1/owl.theme.default.css';
-import './plugins/OwlCarousel2-2.2.1/animate.css';
 
 class Menu extends React.Component {
   render() {

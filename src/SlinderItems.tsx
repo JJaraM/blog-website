@@ -9,13 +9,73 @@ import './responsive.css';
 
 import Post from './Post';
 
-class SlinderItems extends React.Component<{data: Array<Post>}, any> {
+interface ProfileListProps {
+    data: Array<Post>;
+}
+
+interface ProfileListState {
+  hide: 'false';
+}
+
+interface PostSlinder {
+  current: Post;
+  next: Post;
+  id: string;
+}
+
+class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
+
+  constructor(props:ProfileListProps) {
+    super(props);
+  }
+
+  handleChange(event: any) : void {
+    const div = document.getElementById(event.target.id);
+    if (div !== null) {
+      const toHide = div.getAttribute('to-hide');
+      if (toHide !== null) {
+        const divHide = document.getElementById(toHide);
+        if (divHide !== null) {
+            divHide.style.display = 'none';
+        }
+      }
+
+
+
+      const toShow = div.getAttribute('to-show');
+      if (toShow !== null) {
+        const divShow = document.getElementById(toShow);
+        if (divShow !== null) {
+            divShow.style.display = 'inline';
+        }
+      }
+
+    }
+  }
 
   render() {
+
+
+    const array : Array<PostSlinder> = [];
+    const size = this.props.data.length - 1;
+
+    this.props.data.forEach((item, index) => {
+        let nextItem = 0;
+        if (size !== index) {
+          nextItem = nextItem + 1;
+        }
+        const postSlinder : PostSlinder = {
+          current : this.props.data[index],
+          next : this.props.data[nextItem],
+          id: String(index)
+        };
+        array.push(postSlinder);
+    });
+
     return (
-      this.props.data.map((post: Post) =>
-        <div className="owl-item" key = {post.id}>
-          <div className="home_slider_background" style={{backgroundImage: `url(${post.image})`}}/>
+      array.map((post: PostSlinder) =>
+        <div className="owl-item" key = {post.current.id} id ={post.current.id}>
+          <div className="home_slider_background" style={{backgroundImage: `url(${post.current.image})`}}/>
           <div className="home_slider_content_container">
             <div className="container">
               <div className="row">
@@ -23,7 +83,7 @@ class SlinderItems extends React.Component<{data: Array<Post>}, any> {
                   <div className="home_slider_content">
                     <div className="home_slider_item_category trans_200"><a href="category.html" className="trans_200">sport</a></div>
                     <div className="home_slider_item_title">
-                      <a href="post.html">{post.title}</a>
+                      <a href="post.html">{post.current.title}</a>
                     </div>
                     <div className="home_slider_item_link">
                       <a href="post.html" className="trans_200">Continue Reading
@@ -58,18 +118,17 @@ class SlinderItems extends React.Component<{data: Array<Post>}, any> {
                 </div>
               </div>
             </div>
-
             <div className="home_slider_next_container">
-              <div className="home_slider_next" style={{backgroundImage: `url(${post.image})`}}>
+              <div className="home_slider_next" style={{backgroundImage: `url(${post.next.image})`}}>
                 <div className="home_slider_next_background trans_400"/>
                 <div className="home_slider_next_content trans_400">
-                  <div className="home_slider_next_title">next</div>
+                  <div className="home_slider_next_title"
+                    id={post.id}
+                    to-hide={post.current.id} to-show={post.next.id} onClick={this.handleChange}>next</div>
                   <div className="home_slider_next_link">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</div>
                 </div>
               </div>
             </div>
-
-
           </div>
         </div>
       )

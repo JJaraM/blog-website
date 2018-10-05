@@ -8,7 +8,6 @@ import './main_styles.css';
 import './responsive.css';
 
 import SlinderItems from './SlinderItems';
-import SlinderNextItem from './SlinderNextItem';
 import Post from './Post';
 
 
@@ -20,6 +19,8 @@ interface ProfileListState {
   isLoading: boolean;
 }
 
+
+
 class Slinder extends React.Component<ProfileListProps, ProfileListState> {
 
   constructor(props: ProfileListProps) {
@@ -29,6 +30,7 @@ class Slinder extends React.Component<ProfileListProps, ProfileListState> {
       isLoading: false
     };
   }
+
 
   async componentDidMount() {
     this.setState({isLoading: true});
@@ -41,25 +43,21 @@ class Slinder extends React.Component<ProfileListProps, ProfileListState> {
   render() {
     return (
       <div className="home_slider_container">
-        <div className="owl-carousel owl-theme home_slider">
-          <SlinderItems data={this.state.posts}/>
+        <div className="owl-carousel owl-theme owl-loaded">
+          <div className="owl-stage-outer">
+            <div className="owl-stage">
+              <SlinderItems data={this.state.posts}/>
+            </div>
+          </div>
         </div>
-        <div className="custom_nav_container home_slider_nav_container">
-          <div className="custom_prev custom_prev_home_slider">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-               width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" >
-              <polyline fill="#FFFFFF" points="0,5.61 5.609,0 7,0 7,1.438 2.438,6 7,10.563 7,12 5.609,12 -0.002,6.39 "/>
-            </svg>
-          </div>
-          <ul id="custom_dots" className="custom_dots custom_dots_home_slider">
-            <SlinderNextItem data={this.state.posts}/>
-          </ul>
-          <div className="custom_next custom_next_home_slider">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-               width="7px" height="12px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" >
-              <polyline fill="#FFFFFF" points="6.998,6.39 1.389,12 -0.002,12 -0.002,10.562 4.561,6 -0.002,1.438 -0.002,0 1.389,0 7,5.61 "/>
-            </svg>
-          </div>
+        <div className="owl-nav">
+          <div className="owl-prev">prev</div>
+          <div className="owl-next">next</div>
+        </div>
+        <div className="owl-dots">
+          <div className="owl-dot active">aaaaaaa<span/></div>
+          <div className="owl-dot"><span/></div>
+          <div className="owl-dot"><span/></div>
         </div>
       </div>
     );
