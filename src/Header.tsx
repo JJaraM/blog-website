@@ -1,12 +1,5 @@
 import * as React from 'react';
 
-import './bootstrap4/bootstrap.min.css'
-import './plugins/OwlCarousel2-2.2.1/owl.carousel.css';
-import './plugins/OwlCarousel2-2.2.1/owl.theme.default.css';
-import './plugins/OwlCarousel2-2.2.1/animate.css';
-import './main_styles.css';
-import './responsive.css';
-
 class Header extends React.Component {
   render() {
     return (
@@ -16,7 +9,8 @@ class Header extends React.Component {
     				<div className="col">
     					<div className="header_content d-flex flex-row align-items-center justify-content-start">
     						<div className="logo"><a href="#">&#123; JJara &#125;</a></div>
-    						<nav className="main_nav">
+                {/*
+                <nav className="main_nav">
     							<ul>
     								<li className="active"><a href="index.html">Home</a></li>
     								<li><a href="#">Fashion</a></li>
@@ -26,10 +20,17 @@ class Header extends React.Component {
     								<li><a href="contact.html">Contact</a></li>
     							</ul>
     						</nav>
+                */}
     						<div className="search_container ml-auto">
     							<div className="weather">
-    								<div className="temperature">+10°</div>
-    								<img className="weather_icon" src="images/cloud.png" alt=""/>
+    								<div className="temperature">JJM</div>
+                      <a target="_blank" href="https://github.com/JJaraM">
+        								<img className="weather_icon" src="../../images/GitHub-Mark-Light-32px.png" alt=""/>
+                      </a>
+                    <span/>
+                    <a target="_blank" href="https://www.linkedin.com/in/jonathan-jara-morales-360577112/">
+                      <img className="weather_icon" src="../../images/In-White-34px-R.png" alt=""/>
+                    </a>
     							</div>
     							<form action="#">
     								<input type="search" className="header_search_input" placeholder="Type to Search..."/>

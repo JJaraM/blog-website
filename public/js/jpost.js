@@ -19,7 +19,7 @@ $(document).ready(function()
 {
 	"use strict";
 
-	/* 
+	/*
 
 	1. Vars and Inits
 
@@ -48,7 +48,7 @@ $(document).ready(function()
 	initEventsSlider();
 	initGrid();
 
-	/* 
+	/*
 
 	2. Set Header
 
@@ -66,7 +66,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	3. Init Menu
 
@@ -118,7 +118,7 @@ $(document).ready(function()
 		menuActive = false;
 	}
 
-	/* 
+	/*
 
 	4. Init Top Slider
 
@@ -129,7 +129,7 @@ $(document).ready(function()
 		if($('.sidebar_slider_top').length)
 		{
 			var topSlider = $('.sidebar_slider_top');
-			
+
 			topSlider.owlCarousel(
 			{
 				items:1,
@@ -161,7 +161,7 @@ $(document).ready(function()
 			if($('.custom_dot_top').length)
 			{
 				$('.custom_dot_top').on('click', function(ev)
-				{	
+				{
 					var dot = $(ev.target);
 					$('.custom_dot_top').removeClass('active');
 					dot.addClass('active');
@@ -174,11 +174,11 @@ $(document).ready(function()
 			{
 				$('.custom_dot_top').removeClass('active');
 				$('.custom_dots_top li').eq(event.page.index).addClass('active');
-			});	
+			});
 		}
 	}
 
-	/* 
+	/*
 
 	5. Init Vid Slider
 
@@ -189,7 +189,7 @@ $(document).ready(function()
 		if($('.sidebar_slider_vid').length)
 		{
 			var vidSlider = $('.sidebar_slider_vid');
-			
+
 			vidSlider.owlCarousel(
 			{
 				items:1,
@@ -221,7 +221,7 @@ $(document).ready(function()
 			if($('.custom_dot_vid').length)
 			{
 				$('.custom_dot_vid').on('click', function(ev)
-				{	
+				{
 					var dot = $(ev.target);
 					$('.custom_dot_vid').removeClass('active');
 					dot.addClass('active');
@@ -234,11 +234,11 @@ $(document).ready(function()
 			{
 				$('.custom_dot_vid').removeClass('active');
 				$('.custom_dots_vid li').eq(event.page.index).addClass('active');
-			});	
+			});
 		}
 	}
 
-	/* 
+	/*
 
 	6. Init Events Slider
 
@@ -249,7 +249,7 @@ $(document).ready(function()
 		if($('.sidebar_slider_events').length)
 		{
 			var vidSlider = $('.sidebar_slider_events');
-			
+
 			vidSlider.owlCarousel(
 			{
 				items:1,
@@ -281,7 +281,7 @@ $(document).ready(function()
 			if($('.custom_dot_events').length)
 			{
 				$('.custom_dot_events').on('click', function(ev)
-				{	
+				{
 					var dot = $(ev.target);
 					$('.custom_dot_events').removeClass('active');
 					dot.addClass('active');
@@ -294,11 +294,11 @@ $(document).ready(function()
 			{
 				$('.custom_dot_events').removeClass('active');
 				$('.custom_dots_events li').eq(event.page.index).addClass('active');
-			});	
+			});
 		}
 	}
 
-	/* 
+	/*
 
 	7. Init Grid
 
@@ -315,7 +315,7 @@ $(document).ready(function()
 				gutter:30
 			});
 		}, 500);
-			
+
 	}
 
 });

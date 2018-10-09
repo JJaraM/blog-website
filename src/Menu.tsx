@@ -1,9 +1,5 @@
 import * as React from 'react';
 
-import './main_styles.css';
-import './bootstrap4/bootstrap.min.css'
-import './responsive.css';
-
 class Menu extends React.Component {
   render() {
     return (

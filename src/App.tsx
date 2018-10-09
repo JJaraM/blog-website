@@ -11,18 +11,14 @@ import './plugins/OwlCarousel2-2.2.1/animate.css';
 import './main_styles.css';
 import './responsive.css';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="super_container">
-        <Header/>
-        <Menu/>
-      	<div className="home">
-            <Slinder/>
-        </div>
+export const App: React.StatelessComponent<{}> = (props) => {
+  return (
+    <div className="super_container">
+      <Header/>
+      <Menu/>
+      <div className="home_slinder">
+          <Slinder/>
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-export default App;
