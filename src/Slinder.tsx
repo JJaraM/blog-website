@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import SlinderItems from './SlinderItems';
-import Post from './Post';
+import Post from './dto/Post';
 import api from './api/post';
 
 interface ProfileListProps {

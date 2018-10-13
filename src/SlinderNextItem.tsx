@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 
-import Post from './Post';
+import Post from './dto/Post';
 
 class SlinderNextItem extends React.Component<{data: Array<Post>}, any> {
 

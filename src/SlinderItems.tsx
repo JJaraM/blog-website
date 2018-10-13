@@ -1,7 +1,9 @@
 import * as React from 'react';
 
-import Post from './Post';
 import { Link } from "react-router-dom";
+
+import Post from './dto/Post';
+
 
 interface ProfileListProps {
   data: Array<Post>;
@@ -89,16 +91,22 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
             <div className="row">
               <div className="col">
                 <div className="home_slider_content">
-                  <div className="home_slider_item_category trans_200"><a href="category.html" className="trans_200">sport</a></div>
+                  {/*
+                  <div className="home_slider_item_category trans_200">
+                    <a href="category.html" className="trans_200">sport</a>
+                  </div>
+                  */}
                   <div className="home_slider_item_title">
-                    <a href="post.html">{post.current.title}</a>
+                    <Link target="_blank" to={`post/${post.current.id}`}>
+                      {post.current.title}
+                    </Link>
                   </div>
                   <div className="home_slider_item_link">
                     <Link target="_blank" to={`post/${post.current.id}`}>Continue Reading
-                    <svg version="1.1" id="link_arrow_1" x="0px" y="0px" width="19px" height="13px" viewBox="0 0 19 13">
-                      <polygon fill="#FFFFFF" points="12.475,0 11.061,0 17.081,6.021 0,6.021 0,7.021 17.038,7.021 11.06,13 12.474,13 18.974,6.5 "/>
-                    </svg>
-                  </Link>
+                      <svg version="1.1" id="link_arrow_1" x="0px" y="0px" width="19px" height="13px" viewBox="0 0 19 13">
+                        <polygon fill="#FFFFFF" points="12.475,0 11.061,0 17.081,6.021 0,6.021 0,7.021 17.038,7.021 11.06,13 12.474,13 18.974,6.5 "/>
+                      </svg>
+                    </Link>
                 </div>
               </div>
             </div>

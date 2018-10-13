@@ -1,5 +1,14 @@
+/*
+ * Copyright (c) Jonathan Jara Morales
+ * @since 1.0
+ */
 import * as React from 'react';
 
+import application from '../../application';
+/*
+* Component used to render the header section of the page when is being rendered by a browser
+* @since 1.0
+*/
 class Header extends React.Component {
   render() {
     return (
@@ -8,7 +17,7 @@ class Header extends React.Component {
     			<div className="row">
     				<div className="col">
     					<div className="header_content d-flex flex-row align-items-center justify-content-start">
-    						<div className="logo"><a href="#">&#123; JJara &#125;</a></div>
+    						<div className="logo"><a href="/">{application.home_logo}</a></div>
                 {/*
                 <nav className="main_nav">
     							<ul>
@@ -24,11 +33,11 @@ class Header extends React.Component {
     						<div className="search_container ml-auto">
     							<div className="weather">
     								<div className="temperature">JJM</div>
-                      <a target="_blank" href="https://github.com/JJaraM">
+                      <a target="_blank" href={application.home_github}>
         								<img className="weather_icon" src="../../images/GitHub-Mark-Light-32px.png" alt=""/>
                       </a>
                     <span/>
-                    <a target="_blank" href="https://www.linkedin.com/in/jonathan-jara-morales-360577112/">
+                    <a target="_blank" href={application.home_linkedIn}>
                       <img className="weather_icon" src="../../images/In-White-34px-R.png" alt=""/>
                     </a>
     							</div>

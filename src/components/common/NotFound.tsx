@@ -1,10 +1,18 @@
+/*
+ * Copyright (c) Jonathan Jara Morales
+ * @since 1.0
+ */
 import * as React from 'react';
 
+/*
+* Component used to render the not found page
+* @since 1.0
+*/
 class NotFound extends React.Component {
   render() {
     return (
       <div className="super_container">
-        <div className="home">
+        <div className="home_slinder">
           <div className="home_slider_container">
             <div className="owl-carousel owl-theme owl-loaded">
               <div className="owl-stage-outer">
