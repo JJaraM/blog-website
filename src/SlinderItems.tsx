@@ -1,9 +1,8 @@
 import * as React from 'react';
 
 import { Link } from "react-router-dom";
-
 import Post from './dto/Post';
-
+import { Loading } from './components/common/Loading';
 
 interface ProfileListProps {
   data: Array<Post>;
@@ -76,9 +75,7 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
 
     if (array.length === 0) {
       return (
-        <div className="owl-item" >
-          <div className="home_slider_background" style={{backgroundImage: `url(${'https://i.pinimg.com/originals/75/ad/bf/75adbf5b5fedb44993c3b9ce3fd9afd0.png'})`}}/>
-        </div>
+        <Loading/>
       );
     }
 
@@ -97,12 +94,12 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
                   </div>
                   */}
                   <div className="home_slider_item_title">
-                    <Link target="_blank" to={`post/${post.current.id}`}>
+                    <Link to={`post/${post.current.id}`}>
                       {post.current.title}
                     </Link>
                   </div>
                   <div className="home_slider_item_link">
-                    <Link target="_blank" to={`post/${post.current.id}`}>Continue Reading
+                    <Link to={`post/${post.current.id}`}>Continue Reading
                       <svg version="1.1" id="link_arrow_1" x="0px" y="0px" width="19px" height="13px" viewBox="0 0 19 13">
                         <polygon fill="#FFFFFF" points="12.475,0 11.061,0 17.081,6.021 0,6.021 0,7.021 17.038,7.021 11.06,13 12.474,13 18.974,6.5 "/>
                       </svg>

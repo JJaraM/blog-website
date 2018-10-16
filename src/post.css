@@ -847,7 +847,30 @@ section
 	padding-bottom: 45px;
 	background: #FFFFFF;
 	border-radius: 6px;
+	color: rgba(0,0,0,0.8);
+	font-size: 16px;
+	line-height: 1.875;
 }
+.post_body ul {
+	list-style-type: circle;
+	padding: 0px 0px 0px 3em;
+}
+
+.post_body p {
+	text-indent: 40px;
+	color: rgba(0,0,0,0.8);
+	font-size: 16px;
+	line-height: 1.875;
+	color: rgba(0,0,0,0.8);
+	text-align: justify;
+}
+
+.post_body blockquote {
+		padding: 0 1em;
+    color: #6a737d;
+    border-left: 0.25em solid #dfe2e5;
+}
+
 .post_p
 {
 	font-size: 16px;

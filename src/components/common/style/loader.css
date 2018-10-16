@@ -1,0 +1,177 @@
+.spinner {
+		margin:  auto;
+		margin-top:-100px;
+		width: 50px;
+		height: 40px;
+		text-align: center;
+		font-size: 10px;
+	}
+
+	.home_loading {
+		width: 100%;
+		height: 100vh;
+		background: #1F1F1F;
+	}
+
+
+	audio{
+		visibility:hidden;
+	}
+
+	.spinner > div {
+		background-color: #333;
+		height: 100%;
+		width: 6px;
+		display: inline-block;
+
+		-webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+		animation: sk-stretchdelay 1.2s infinite ease-in-out;
+	}
+
+	.spinner .rect1 {
+		background:#754fa0;
+		-webkit-animation-delay: -0.7s;
+		animation-delay: -0.7s;
+	}
+	.spinner .rect2 {
+		background:#09b7bf;
+		-webkit-animation-delay: -0.6s;
+		animation-delay: -0.6s;
+	}
+
+	.spinner .rect3 {
+		background:#90d36b;
+		-webkit-animation-delay: -0.5s;
+		animation-delay: -0.5s;
+	}
+
+	.spinner .rect4 {
+		background:#f2d40d;
+		-webkit-animation-delay: -0.4s;
+		animation-delay: -0.4s;
+	}
+
+	.spinner .rect5 {
+		background-color: #fcb12b;
+		-webkit-animation-delay: -0.3s;
+		animation-delay: -0.3s;
+	}
+
+	.spinner .rect6 {
+		background-color: #ed1b72;
+		-webkit-animation-delay: -0.2s;
+		animation-delay: -0.2s;
+	}
+
+	@-webkit-keyframes sk-stretchdelay {
+		0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+		20% { -webkit-transform: scaleY(1.0) }
+	}
+
+	@keyframes sk-stretchdelay {
+		0%, 40%, 100% {
+			transform: scaleY(0.4);
+			-webkit-transform: scaleY(0.4);
+			}  20% {
+				transform: scaleY(1.0);
+				-webkit-transform: scaleY(1.0);
+			}
+		}
+		body{
+			color:#fff;
+
+
+			background: #000000;
+
+		}
+		.sk-circle {
+			margin: 100px auto;
+			width: 10px;
+			height: 10px;
+			position: relative;
+			background:#1f1f1f;
+			border-radius:100%;
+			left:-18px;
+			-webkit-animation: sk 1.2s infinite ease-in-out;
+		}
+
+
+
+		@keyframes sk {
+			1% {
+				top: -15px;
+
+			}
+			2% {
+				top: 10px;
+
+			}
+			5% {
+				top: -20px;
+
+			}
+			10% {
+				left: -10px;
+
+			}
+			20% {
+				top:-25px;
+
+			}
+			30% {
+				left:15px;
+				background:#FEDD31;
+
+			}
+			35% {
+				top:5px;
+
+			}
+			45% {
+				top:-5px;
+
+			}
+			50% {
+				top:-5px;
+
+			}
+
+			60% {
+				top:-6px;
+
+			}
+			70% {
+				top:6px;
+
+			}
+			80% {
+				top:6px;
+
+			}
+			60% {
+				top:-6px;
+
+			}
+		}
+
+		p {
+			color:#fff;
+
+			left: -3px;
+			top:45px;
+			font-family:Arial;
+			text-align:center;
+			font-size:10px;
+		}
+
+    i {
+      color: #FFF;
+    }
+
+    .black-container {
+          background: #1f1f1f;
+    }
+
+    .slinder-container {
+      padding-top: 15%;
+    }

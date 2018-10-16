@@ -13,6 +13,7 @@ import 'prismjs/components/prism-markdown';
 
 import api from '../../api/post';
 import Post from '../../dto/Post';
+import { Loading } from '../common/Loading';
 
 interface Props {
   id: string;
@@ -36,7 +37,7 @@ class PostSection extends React.Component<Props, State> {
     Prism.highlightAll()
     this.setState({isLoading: true, redirect: false});
 
-    fetch(api.findById + this.props.id)
+    fetch(api.findById  + this.props.id)
       .then(response => response.json())
       .catch(error => this.setState({redirect: true}))
       .then(data => this.setState({post: data, isLoading: false}));
@@ -47,17 +48,19 @@ class PostSection extends React.Component<Props, State> {
   }
 
   render() {
-    // const { redirect } = this.state;
-
      if (this.state != null && this.state.redirect) {
        return <Redirect to='/notFound'/>;
      }
 
     if (this.state === null || this.state.isLoading) {
-      return <div>Loading</div>;
+      return (
+        <div className="home_loading">
+          <Loading />
+        </div>
+      )
     }
-    return (
 
+    return (
       <div>
         <div className="home">
           <div className="home_background parallax-window" data-parallax="scroll" style={{backgroundImage: `url(${this.state.post.image})`}} data-speed="0.8"/>

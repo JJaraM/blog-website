@@ -15,10 +15,7 @@ class Menu extends React.Component {
     return (
       <div className="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
     		<div className="menu_close_container">
-          <div className="menu_close">
-            <div>&nbsp</div>
-            <div>&nbsp</div>
-          </div>
+          <div className="menu_close"/>
         </div>
     		<div className="logo menu_mm"><a href="/">{application.home_logo}</a></div>
     		<div className="search">

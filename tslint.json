@@ -16,7 +16,8 @@
     "object-literal-sort-keys": false,
     "no-console": false,
     "jsx-boolean-value": false,
-    "only-arrow-functions": false
+    "only-arrow-functions": false,
+    "jsx-self-close" : false
   },
   "jsRules":{
     "object-literal-sort-keys": false,

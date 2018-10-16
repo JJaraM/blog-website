@@ -119,16 +119,24 @@ class PostEditor extends React.Component<Props, State> {
                   </div>
                   <div className="post_body">
 
-                    <div className="row">
-                      <div className="col-lg-6">
-                        <div className="section_title preview-editor">Editor</div>
-                        <textarea className="comment-area" value={this.state.post.content} onChange={this.updateContent}/>
-                      </div>
-                      <div className="col-lg-6">
-                        <div className="section_title preview-editor">Preview</div>
-                        <Markdown source={this.state.post.content}/>
-                      </div>
+                  <div className="row">
+                    <div className="col-lg-6">
+                      <div className="section_title preview-editor">Editor</div>
                     </div>
+                    <div className="col-lg-6">
+                      <div className="section_title preview-editor">Preview</div>
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <div className="col-lg-6">
+                      <textarea className="comment-area" value={this.state.post.content}
+                        onChange={this.updateContent}></textarea>
+                    </div>
+                    <div className="col-lg-6">
+                      <Markdown source={this.state.post.content}/>
+                    </div>
+                  </div>
 
                     {/*
                     <div className="post_tags">

@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import Header from './components/common/Header';
-import Menu from './components/common/Menu';
 import PostEditor from './components/post/PostEditor';
 
 import './bootstrap4/bootstrap.min.css'
@@ -22,11 +20,8 @@ export class PostEditorMain extends React.Component<any, any> {
   render() {
     return (
       <div className="super_container">
-        <Header/>
-        <Menu/>
         <PostEditor id ={this.props.match.params.id}/>
       </div>
-
     );
   }
 }
