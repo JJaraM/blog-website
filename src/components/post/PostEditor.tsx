@@ -7,12 +7,17 @@ import * as Markdown from 'react-markdown';
 import { Redirect } from 'react-router'
 import { Link } from "react-router-dom";
 import Prism from 'prismjs';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 import 'prismjs/components/prism-java';
 import 'prismjs/components/prism-markdown';
 
 import api from '../../api/post';
 import Post from '../../dto/Post';
+
+import { Loading } from '../common/Loading';
+import 'react-notifications/lib/notifications.css';
+import '../../custom-notifications.css';
 
 interface Props {
   id: string;
@@ -36,6 +41,7 @@ class PostEditor extends React.Component<Props, State> {
       post: {} as Post,
       redirect: false
     }
+
   }
 
   async componentDidMount() {
@@ -43,27 +49,62 @@ class PostEditor extends React.Component<Props, State> {
     this.setState({isLoading: true, redirect: false});
 
     fetch(api.findById + this.props.id)
-    .then(response => response.json())
-    .catch(error => this.setState({redirect: true}))
-    .then(data => this.setState({post: data, isLoading: false}));
+      .then(response => response.json())
+      .catch(error => this.setState({redirect: true}))
+      .then(data => this.setState({post: data, isLoading: false}));
   }
 
   componentDidUpdate () {
-    Prism.highlightAll()
+    Prism.highlightAll();
+    setTimeout(() => {
+      this.put('Auto save');
+    }, 60000);
+  }
+
+  draft = () => {
+    this.put('Draft');
+  }
+
+  publish = () => {
+    this.state.post.title = this.state.post.draftTitle;
+    this.state.post.image = this.state.post.draftImage;
+    this.state.post.content = this.state.post.draftContent;
+    this.put('Publish');
+  }
+
+  put = (message:string) => {
+    fetch(api.put  + this.state.post.id, {
+        method: 'PUT',
+        body: JSON.stringify(this.state.post),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+          if (response.status === 200) {
+            NotificationManager.success(message, 'Saved');
+          } else {
+            NotificationManager.error(message, "Error");
+          }
+      })
+      .catch(error => {
+        NotificationManager.error(message, "Error");
+      })
+      .then(data => console.log(data));
   }
 
   updateContent = (event) => {
-    this.state.post.content = event.target.value;
+    this.state.post.draftContent = event.target.value;
     this.setState(this.state);
   }
 
   updateTitle = (event) => {
-    this.state.post.title = event.target.value;
+    this.state.post.draftTitle = event.target.value;
     this.setState(this.state);
   }
 
   updateImage = (event) => {
-    this.state.post.image = event.target.value;
+    this.state.post.draftImage = event.target.value;
     this.setState(this.state);
   }
 
@@ -74,7 +115,11 @@ class PostEditor extends React.Component<Props, State> {
     }
 
     if (this.state === null || this.state.isLoading) {
-      return <div>Loading</div>;
+      return (
+        <div className="home_loading">
+          <Loading />
+        </div>
+      );
     }
     return (
 
@@ -83,10 +128,10 @@ class PostEditor extends React.Component<Props, State> {
           <div className="home_background parallax-window" data-parallax="scroll" style={{backgroundImage: `url(${this.state.post.image})`}} data-speed="0.8"/>
           <div className="home_content">
             <div className="post_title">
-              <input className="title-draft" value={this.state.post.image} onChange={this.updateImage} />
+              <input className="title-draft" value={this.state.post.draftImage} onChange={this.updateImage} />
             </div>
             <div className="post_title">
-              <input className="title-draft" value={this.state.post.title} onChange={this.updateTitle} />
+              <input className="title-draft" value={this.state.post.draftTitle} onChange={this.updateTitle} />
             </div>
           </div>
         </div>
@@ -106,12 +151,8 @@ class PostEditor extends React.Component<Props, State> {
                       <Link to={`/post/${this.state.post.id}`}>
                         <span>See Original</span>
                       </Link>
-                      <Link to={`/post/${this.state.post.id}`}>
-                        <span>Save Draft</span>
-                      </Link>
-                      <Link to={`/post/${this.state.post.id}`}>
-                        <span>Publish</span>
-                      </Link>
+                      <span className="link-button" onClick={this.draft}>Save Draft</span>
+                      <span className="link-button" onClick={this.publish}>Publish</span>
                       <Link to={`/post/${this.state.post.id}`}>
                         <span>Delete</span>
                       </Link>
@@ -130,11 +171,11 @@ class PostEditor extends React.Component<Props, State> {
 
                   <div className="row">
                     <div className="col-lg-6">
-                      <textarea className="comment-area" value={this.state.post.content}
+                      <textarea className="comment-area" value={this.state.post.draftContent}
                         onChange={this.updateContent}></textarea>
                     </div>
                     <div className="col-lg-6">
-                      <Markdown source={this.state.post.content}/>
+                      <Markdown source={this.state.post.draftContent}/>
                     </div>
                   </div>
 
@@ -154,6 +195,14 @@ class PostEditor extends React.Component<Props, State> {
             </div>
           </div>
         </div>
+        {/*<div className="loader-popup-master">
+          <div className="loader-popup">
+            <div className="loader"></div>
+            <span className="loader-span-save">Saved</span>
+          </div>
+        </div>
+*/}
+         <NotificationContainer/>
       </div>
     );
   }

@@ -63,6 +63,12 @@ class PostSection extends React.Component<Props, State> {
     return (
       <div>
         <div className="home">
+          <svg className="slinder-arrow-svg slinder-left-arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 7 12" enable-background="new 0 0 7 12">
+						<polyline className ="slinder-arrow" fill="#bebebe" points="0,5.61 5.609,0 7,0 7,1.438 2.438,6 7,10.563 7,12 5.609,12 -0.002,6.39 "/>
+					</svg>
+          <svg className="slinder-arrow-svg slinder-right-arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 7 12" enable-background="new 0 0 7 12" >
+						<polyline className ="slinder-arrow" fill="#bebebe" points="6.998,6.39 1.389,12 -0.002,12 -0.002,10.562 4.561,6 -0.002,1.438 -0.002,0 1.389,0 7,5.61 "></polyline>
+					</svg>
           <div className="home_background parallax-window" data-parallax="scroll" style={{backgroundImage: `url(${this.state.post.image})`}} data-speed="0.8"/>
           <div className="home_content">
             <div className="post_category trans_200"><a href="category.html" className="trans_200">sport</a></div>

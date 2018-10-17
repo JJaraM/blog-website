@@ -38,7 +38,7 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
 
 
       const toShow = div.getAttribute('to-show');
-        console.log(toShow);
+    
       if (toShow !== null) {
         const divShow = document.getElementById(toShow);
         if (divShow !== null) {
