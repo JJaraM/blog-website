@@ -1,0 +1,15 @@
+.token.bullet {
+  color: #2b2b2b;
+  display: inline-block;
+  background-color: #4cbf9c;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+  text-align: center;
+  font-size: .75em;
+  width: 1.67em;
+  height: 1.67em;
+  line-height: 1.67em;
+  font-family: "Open Sans","DejaVu Sans",sans-serif;
+  font-style: normal;
+  font-weight: bold;
+}

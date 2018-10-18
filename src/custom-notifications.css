@@ -1,5 +1,16 @@
 .notification {
-  margin-top: 39em;
+  // margin-top: 39em;
+}
+
+
+.notification-success {
+  background: #1B1E24;
+    background: -webkit-linear-gradient(left,#111213,#111213 15%,#1b1e24 15%,#1b1e24);
+    background: linear-gradient(to right,#111213,#111213 15%,#1b1e24 15%,#1b1e24);
+}
+
+.notification-success:before {
+  color: #51a351;
 }
 
 .loader-popup-master {

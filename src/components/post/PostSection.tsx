@@ -15,6 +15,8 @@ import api from '../../api/post';
 import Post from '../../dto/Post';
 import { Loading } from '../common/Loading';
 
+// import '../../darcula.css';
+
 interface Props {
   id: string;
 }
@@ -31,9 +33,11 @@ class PostSection extends React.Component<Props, State> {
 
   constructor(props:Props) {
     super(props);
+
   }
 
   async componentDidMount() {
+
     Prism.highlightAll()
     this.setState({isLoading: true, redirect: false});
 
@@ -113,7 +117,7 @@ class PostSection extends React.Component<Props, State> {
                     </div>
                   </div>
                   <div className="post_body">
-                    <Markdown source={this.state.post.content}/>
+                    <Markdown source={this.state.post.content} escapeHtml={false}/>
 
                     {/*
                     <div className="post_tags">

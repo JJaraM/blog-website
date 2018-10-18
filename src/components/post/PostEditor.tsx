@@ -6,8 +6,10 @@ import * as React from 'react';
 import * as Markdown from 'react-markdown';
 import { Redirect } from 'react-router'
 import { Link } from "react-router-dom";
+
 import Prism from 'prismjs';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+
 
 import 'prismjs/components/prism-java';
 import 'prismjs/components/prism-markdown';
@@ -18,6 +20,11 @@ import Post from '../../dto/Post';
 import { Loading } from '../common/Loading';
 import 'react-notifications/lib/notifications.css';
 import '../../custom-notifications.css';
+
+// import '../../darcula.css';
+
+import '../../customPrism.js';
+import '../../customPrism.css';
 
 interface Props {
   id: string;
@@ -42,6 +49,16 @@ class PostEditor extends React.Component<Props, State> {
       redirect: false
     }
 
+    Prism.languages.extend('clike', {
+    	'phpvars': /$.*/,
+      'bullet': /\::[0-9_]+\b/,
+      'regex': /regex0/
+    });
+
+
+    /*setTimeout(() => {
+      this.put('Auto save');
+    }, 60000);*/
   }
 
   async componentDidMount() {
@@ -56,12 +73,10 @@ class PostEditor extends React.Component<Props, State> {
 
   componentDidUpdate () {
     Prism.highlightAll();
-    setTimeout(() => {
-      this.put('Auto save');
-    }, 60000);
   }
 
   draft = () => {
+    NotificationManager.success('Draft', 'Saving');
     this.put('Draft');
   }
 
@@ -175,7 +190,7 @@ class PostEditor extends React.Component<Props, State> {
                         onChange={this.updateContent}></textarea>
                     </div>
                     <div className="col-lg-6">
-                      <Markdown source={this.state.post.draftContent}/>
+                      <Markdown source={this.state.post.draftContent} escapeHtml={false}/>
                     </div>
                   </div>
 
