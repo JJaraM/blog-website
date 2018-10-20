@@ -1,8 +1,7 @@
 .token.bullet {
-  color: #2b2b2b;
+  color: black;
   display: inline-block;
-  background-color: #4cbf9c;
-  -webkit-border-radius: 100px;
+  background-color: #ffd152;
   border-radius: 100px;
   text-align: center;
   font-size: .75em;
@@ -11,5 +10,10 @@
   line-height: 1.67em;
   font-family: "Open Sans","DejaVu Sans",sans-serif;
   font-style: normal;
-  font-weight: bold;
+  /* font-weight: bold; */
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #343233;
 }

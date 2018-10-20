@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Link } from "react-router-dom";
 import Post from './dto/Post';
 import { Loading } from './components/common/Loading';
+import { CircleAnimation } from './components/common/CircleAnimation';
 
 interface ProfileListProps {
   data: Array<Post>;
@@ -25,11 +26,16 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
   }
 
   handleChange(event: any) : void {
+
+
+
     const div = document.getElementById(event.target.id);
+
     if (div !== null) {
+
       const toHide = div.getAttribute('to-hide');
       if (toHide !== null) {
-        const divHide = document.getElementById(toHide);
+        const divHide = document.getElementById('owl-'+toHide);
         if (divHide !== null) {
           divHide.style.display = 'none';
         }
@@ -38,9 +44,9 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
 
 
       const toShow = div.getAttribute('to-show');
-    
+
       if (toShow !== null) {
-        const divShow = document.getElementById(toShow);
+        const divShow = document.getElementById('owl-'+toShow);
         if (divShow !== null) {
           divShow.style.display = 'inline';
         }
@@ -71,6 +77,22 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
   }
 
   render() {
+
+    let height = 366;
+    let width = 366;
+    let logoHeight = 206;
+
+    if ( window.screen.width <= 414) {
+      height = 246;
+      width = 246;
+      logoHeight = 86;
+    }
+
+    console.log(height);
+
+
+
+
     const array = this.getPostSlinder();
 
     if (array.length === 0) {
@@ -81,18 +103,34 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
 
     return (
       array.map((post, postIt) =>
-      <div className="owl-item" key = {post.current.id} id ={post.current.id} style={{display: postIt === 0 ? 'inline': 'none' }}>
-        <div className="home_slider_background" style={{backgroundImage: `url(${post.current.image})`}}/>
-        <div className="home_slider_content_container">
+
+      <div className="owl-item" id={'owl-' + post.current.id} key = {post.current.id}  style={{display: postIt === 0 ? 'inline': 'none' }}>
+
+
+        {
+          (() => {
+            if (post.current.image === null || post.current.image === '') {
+              return (
+                // 160
+                <CircleAnimation width={width} height={height} logoHeight={logoHeight}/>
+              )
+            }
+            return (
+              <div id={'image-' + post.current.id} className="home_slider_background home_background_mask" style={{backgroundImage: `url(${post.current.image})`}}/>
+            );
+          })()
+        }
+
+        <div id={'home_slider_content_container'} className="home_slider_content_container">
           <div className="container">
             <div className="row">
               <div className="col">
                 <div className="home_slider_content">
-                  {/*
+
                   <div className="home_slider_item_category trans_200">
-                    <a href="category.html" className="trans_200">sport</a>
+                    <a href="#" className="trans_200">sport</a>
                   </div>
-                  */}
+
                   <div className="home_slider_item_title">
                     <Link to={`post/${post.current.id}`}>
                       {post.current.title}
@@ -110,19 +148,38 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
           </div>
         </div>
       </div>
+
+
+
       <div className="similar_posts_container">
         <div className="container">
-          <div className="row d-flex flex-row align-items-end">
+          <div className="d-flex flex-row align-items-end preview-items responsive-container">
             {array.map((answer, i) => {
               return (
-                <div className="col-lg-3 col-md-6 similar_post_col" key ={i}>
-                  <div  className="similar_post trans_200">
-                    <a id={answer.id + post.current.id}
-                      to-show={answer.current.id}
-                      to-hide={post.current.id}
-                      onClick={this.handleChange} href="#">
-                      {answer.current.title}
-                    </a>
+                <div className="col-lg-3 col-md-6 similar_post_col post-quick-view" key ={i}>
+                  <div className="box1 post-quick-shared">
+                    <div className="similar_post trans_200">
+                      <a href="#">
+                        {answer.current.title + ' ' + postIt}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="box2 post-quick-shared">
+                    <div className="col-lg-6 post-quick-similar-post trans_200 post-quick-view-a">
+                      <a id={'post-quick-'+ answer.current.id}
+                        to-show={answer.current.id}
+                        to-hide={post.current.id}
+                        onClick={this.handleChange} href="#">
+                        Quick View
+                      </a>
+                    </div>
+
+                    <div className="col-lg-6 post-quick-similar-post trans_200 post-quick-view-b">
+                      <Link to={`post/${answer.current.id}`}>
+                        Read
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )

@@ -49,11 +49,6 @@ class PostEditor extends React.Component<Props, State> {
       redirect: false
     }
 
-    Prism.languages.extend('clike', {
-    	'phpvars': /$.*/,
-      'bullet': /\::[0-9_]+\b/,
-      'regex': /regex0/
-    });
 
 
     /*setTimeout(() => {
@@ -140,7 +135,7 @@ class PostEditor extends React.Component<Props, State> {
 
       <div>
         <div className="home">
-          <div className="home_background parallax-window" data-parallax="scroll" style={{backgroundImage: `url(${this.state.post.image})`}} data-speed="0.8"/>
+          <div className="home_background home_background_mask parallax-window" data-parallax="scroll" style={{backgroundImage: `url(${this.state.post.draftImage})`}} data-speed="0.8"/>
           <div className="home_content">
             <div className="post_title">
               <input className="title-draft" value={this.state.post.draftImage} onChange={this.updateImage} />

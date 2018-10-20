@@ -586,6 +586,7 @@ section
 {
 	width: 100%;
 	height: 100vh;
+	background: #343233;
 }
 
 /*********************************
@@ -1863,4 +1864,54 @@ section
 .sub_input:focus
 {
 	border-bottom: solid 1px rgba(255,255,255,1);
+}
+
+.hero-logo-circles {
+    width: 366px;
+    height: 366px;
+    margin: auto;
+    position: absolute;
+}
+
+.hero-container {
+	width: 50%;
+	left: 50%;
+	top: 30%;
+
+}
+
+
+.hero-logo-circle {
+    position: absolute;
+    left: 0;
+    top: 0;
+		-webkit-animation:spin 120s linear infinite;
+    -moz-animation:spin 120s linear infinite;
+    animation:spin 120s linear infinite;
+		position: absolute;
+}
+
+.hero-logo-container {
+	position: absolute;
+	top: 20%;
+	-webkit-animation: float 4s ease-in-out infinite;
+	animation: float 4s ease-in-out infinite;
+}
+
+
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-10px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
 }
