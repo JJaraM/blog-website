@@ -102,104 +102,127 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
     }
 
     return (
-      array.map((post, postIt) =>
+      <div>
+        <div className="home_slinder">
+          {
+            array.map((post, postIt) =>
 
-      <div className="owl-item" id={'owl-' + post.current.id} key = {post.current.id}  style={{display: postIt === 0 ? 'inline': 'none' }}>
-
-
-        {
-          (() => {
-            if (post.current.image === null || post.current.image === '') {
-              return (
-                // 160
-                <CircleAnimation width={width} height={height} logoHeight={logoHeight}/>
-              )
-            }
-            return (
-              <div id={'image-' + post.current.id} className="home_slider_background home_background_mask" style={{backgroundImage: `url(${post.current.image})`}}/>
-            );
-          })()
-        }
-
-        <div id={'home_slider_content_container'} className="home_slider_content_container">
-          <div className="container">
-            <div className="row">
-              <div className="col">
-                <div className="home_slider_content">
-
-                  <div className="home_slider_item_category trans_200">
-                    <a href="#" className="trans_200">sport</a>
-                  </div>
-
-                  <div className="home_slider_item_title">
-                    <Link to={`post/${post.current.id}`}>
-                      {post.current.title}
-                    </Link>
-                  </div>
-                  <div className="home_slider_item_link">
-                    <Link to={`post/${post.current.id}`}>Continue Reading
-                      <svg version="1.1" id="link_arrow_1" x="0px" y="0px" width="19px" height="13px" viewBox="0 0 19 13">
-                        <polygon fill="#FFFFFF" points="12.475,0 11.061,0 17.081,6.021 0,6.021 0,7.021 17.038,7.021 11.06,13 12.474,13 18.974,6.5 "/>
-                      </svg>
-                    </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            <div key = {post.current.id}  className="owl-item" id={'owl-' + post.current.id}  style={{display: postIt === 0 ? 'inline': 'none' }}>
 
 
+              {
+                (() => {
+                  if (post.current.image === null || post.current.image === '') {
+                    return (
+                      // 160
+                      <CircleAnimation width={width} height={height} logoHeight={logoHeight}/>
+                    )
+                  }
+                  return (
+                    <div id={'image-' + post.current.id} className="home_slider_background home_background_mask" style={{backgroundImage: `url(${post.current.image})`}}/>
+                  );
+                })()
+              }
 
-      <div className="similar_posts_container">
-        <div className="container">
-          <div className="d-flex flex-row align-items-end preview-items responsive-container">
-            {array.map((answer, i) => {
-              return (
-                <div className="col-lg-3 col-md-6 similar_post_col post-quick-view" key ={i}>
-                  <div className="box1 post-quick-shared">
-                    <div className="similar_post trans_200">
-                      <a href="#">
-                        {answer.current.title + ' ' + postIt}
-                      </a>
-                    </div>
-                  </div>
+              <div id={'home_slider_content_container'} className="home_slider_content_container">
+                <div className="container">
+                  <div className="row">
+                    <div className="col">
+                      <div className="home_slider_content">
 
-                  <div className="box2 post-quick-shared">
-                    <div className="col-lg-6 post-quick-similar-post trans_200 post-quick-view-a">
-                      <a id={'post-quick-'+ answer.current.id}
-                        to-show={answer.current.id}
-                        to-hide={post.current.id}
-                        onClick={this.handleChange} href="#">
-                        Quick View
-                      </a>
-                    </div>
+                        <div className="home_slider_item_category trans_200">
+                          <a href="#" className="trans_200">sport</a>
+                        </div>
 
-                    <div className="col-lg-6 post-quick-similar-post trans_200 post-quick-view-b">
-                      <Link to={`post/${answer.current.id}`}>
-                        Read
+                        <div className="home_slider_item_title">
+                          <Link to={`post/${post.current.id}`}>
+                          {post.current.title}
+                        </Link>
+                      </div>
+                      <div className="home_slider_item_link">
+                        <Link to={`post/${post.current.id}`}>Continue Reading
+                        <svg version="1.1" id="link_arrow_1" x="0px" y="0px" width="19px" height="13px" viewBox="0 0 19 13">
+                          <polygon fill="#FFFFFF" points="12.475,0 11.061,0 17.081,6.021 0,6.021 0,7.021 17.038,7.021 11.06,13 12.474,13 18.974,6.5 "/>
+                        </svg>
                       </Link>
                     </div>
                   </div>
                 </div>
-              )
-            })}
-          </div>
-          {/*
-          <div className="home_slider_next_container">
-            <div className="home_slider_next" style={{backgroundImage: `url(${post.next.image})`}}>
-              <div className="home_slider_next_background trans_400"/>
-              <div className="home_slider_next_content trans_400" id={post.id} to-hide={post.current.id} to-show={post.next.id} onClick={this.handleChange}>
-                <div className="home_slider_next_title" id={post.id} to-hide={post.current.id} to-show={post.next.id} onClick={this.handleChange}>next</div>
-                <div className="home_slider_next_link" id={post.id} to-hide={post.current.id} to-show={post.next.id} onClick={this.handleChange}>{post.next.title}</div>
               </div>
             </div>
           </div>
-          */}
+
+
+
+
         </div>
+      )
+    }
+  </div>
+
+
+
+
+
+
+  {
+    array.map((post, postIt) => {
+      return (
+        <div key={postIt}>
+          {
+            <div className="similar_posts_container">
+              <div className="container">
+
+                <div className="d-flex flex-row align-items-end preview-items responsive-container">
+                  {
+                    array.map((answer, i) => {
+                      return (
+                        <div className="col-lg-3 col-md-6 similar_post_col post-quick-view" key ={i}>
+                          <div className="box1 post-quick-shared">
+                            <div className="similar_post trans_200">
+                              <a href="#">
+                                {answer.current.title + ' ' + postIt}
+                              </a>
+                            </div>
+                          </div>
+
+                          <div className="box2 post-quick-shared">
+                            <div className="col-lg-6 post-quick-similar-post trans_200 post-quick-view-a">
+                              <a id={'post-quick-'+ answer.current.id}
+                                to-show={answer.current.id}
+                                to-hide={post.current.id}
+                                onClick={this.handleChange} href="#">
+                                Quick View
+                              </a>
+                            </div>
+
+                            <div className="col-lg-6 post-quick-similar-post trans_200 post-quick-view-b">
+                              <Link to={`post/${answer.current.id}`}>
+                              Read
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })
+                }
+              </div>
+            </div>
+          </div>
+        }
       </div>
-    </div>)
-  );
+    )
+  })
+}
+
+
+
+
+
+
+
+</div>
+);
 }
 }
 
