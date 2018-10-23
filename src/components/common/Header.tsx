@@ -4,32 +4,77 @@
  */
 import * as React from 'react';
 
+// import api from './api/post';
 import application from '../../application';
+import { Link } from "react-router-dom";
+
 /*
 * Component used to render the header section of the page when is being rendered by a browser
 * @since 1.0
 */
-class Header extends React.Component {
+export class Header extends React.Component<any, any> {
+
+  constructor(props:any) {
+    super(props);
+  }
+
+  componentDidMount() {
+      window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+      window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll(event) {
+    const pos = window.scrollY;
+    const element = document.getElementById("main-header");
+    if (element !== null) {
+      if (pos > 100) {
+        if (element.classList !== null) {
+            element.classList.add("scrolled");
+        }
+      } else {
+        if (element.classList !== null) {
+            element.classList.remove('scrolled');
+        }
+      }
+    }
+  }
+
   render() {
     return (
-      <header className="header">
+      <header className="header" id="main-header">
     		<div className="container">
     			<div className="row">
     				<div className="col">
     					<div className="header_content d-flex flex-row align-items-center justify-content-start">
-    						<div className="logo"><a href="/">{application.home_logo}</a></div>
-                {/*
+    						<div className="logo">
+                  <Link to="/">
+                    {application.home_logo}
+                  </Link>
+                </div>
+
                 <nav className="main_nav">
     							<ul>
-    								<li className="active"><a href="index.html">Home</a></li>
-    								<li><a href="#">Fashion</a></li>
-    								<li><a href="#">Gadgets</a></li>
+    								<li className="active">
+                      <Link to="/">
+                        Home
+                      </Link>
+                    </li>
+    								<li>
+                      <Link to="/about">
+                        About
+                      </Link>
+                    </li>
+    								{/*<li><a href="#">Gadgets</a></li>
     								<li><a href="#">Lifestyle</a></li>
     								<li><a href="#">Video</a></li>
     								<li><a href="contact.html">Contact</a></li>
+                      */}
     							</ul>
     						</nav>
-                */}
+
     						<div className="search_container ml-auto">
     							<div className="weather">
     								<div className="temperature">JJM</div>
@@ -57,5 +102,3 @@ class Header extends React.Component {
     );
   }
 }
-
-export default Header;

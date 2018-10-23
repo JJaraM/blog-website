@@ -88,11 +88,6 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
       logoHeight = 86;
     }
 
-    console.log(height);
-
-
-
-
     const array = this.getPostSlinder();
 
     if (array.length === 0) {
@@ -136,8 +131,8 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
 
                         <div className="home_slider_item_title">
                           <Link to={`post/${post.current.id}`}>
-                          {post.current.title}
-                        </Link>
+                            {post.current.title}
+                          </Link>
                       </div>
                       <div className="home_slider_item_link">
                         <Link to={`post/${post.current.id}`}>Continue Reading
@@ -181,7 +176,7 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
                           <div className="box1 post-quick-shared">
                             <div className="similar_post trans_200">
                               <a href="#">
-                                {answer.current.title + ' ' + postIt}
+                                {answer.current.title}
                               </a>
                             </div>
                           </div>

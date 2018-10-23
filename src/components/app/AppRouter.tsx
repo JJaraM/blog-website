@@ -6,8 +6,9 @@ import * as React from 'react';
 
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
+import { About } from './About';
 import { Home } from './Home';
-import { PostMain } from '../../PostMain';
+import { PostMain } from './PostMain';
 import { PostEditorMain } from '../../PostEditorMain';
 import  NotFound from '../common/NotFound';
 
@@ -20,6 +21,7 @@ export const AppRouter: React.StatelessComponent = () => {
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
         <Route exact path="/post/:id" component={PostMain} />
         <Route exact path="/postEdit/:id" component={PostEditorMain} />
         <Route component={NotFound} />

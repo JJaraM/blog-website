@@ -18,6 +18,8 @@ import api from '../../api/post';
 import Post from '../../dto/Post';
 
 import { Loading } from '../common/Loading';
+import { Header } from '../common/Header';
+import { Footer } from '../common/Footer';
 import 'react-notifications/lib/notifications.css';
 import '../../custom-notifications.css';
 
@@ -132,88 +134,92 @@ class PostEditor extends React.Component<Props, State> {
       );
     }
     return (
-
-      <div>
-        <div className="home">
-          <div className="home_background home_background_mask parallax-window" data-parallax="scroll" style={{backgroundImage: `url(${this.state.post.draftImage})`}} data-speed="0.8"/>
-          <div className="home_content">
-            <div className="post_title">
-              <input className="title-draft" value={this.state.post.draftImage} onChange={this.updateImage} />
-            </div>
-            <div className="post_title">
-              <input className="title-draft" value={this.state.post.draftTitle} onChange={this.updateTitle} />
+      <div className="super_container">
+        <Header/>
+        <div>
+          <div className="home">
+            <div className="home_background home_background_mask parallax-window" data-parallax="scroll" style={{backgroundImage: `url(${this.state.post.draftImage})`}} data-speed="0.8"/>
+            <div className="home_content">
+              <div className="post_title">
+                <input className="title-draft" value={this.state.post.draftImage} onChange={this.updateImage} />
+              </div>
+              <div className="post_title">
+                <input className="title-draft" value={this.state.post.draftTitle} onChange={this.updateTitle} />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="page_content">
-          <div className="container">
-            <div className="row row-lg-eq-height">
-              <div className="col-lg-12">
-                <div className="post_content">
-                  <div className="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
-                    <div className="author_image">
-                      <div>
-                        <img src="https://media.licdn.com/dms/image/C5603AQGg6FHWARek0w/profile-displayphoto-shrink_100_100/0?e=1544659200&v=beta&t=L9GH5HI2eDPaVHDmi1A-pJ_EBQVwUMRDayPCUEUaH9I" alt=""/>
+          <div className="page_content">
+            <div className="container">
+              <div className="row row-lg-eq-height">
+                <div className="col-lg-12">
+                  <div className="post_content">
+                    <div className="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
+                      <div className="author_image">
+                        <div>
+                          <img src="https://media.licdn.com/dms/image/C5603AQGg6FHWARek0w/profile-displayphoto-shrink_100_100/0?e=1544659200&v=beta&t=L9GH5HI2eDPaVHDmi1A-pJ_EBQVwUMRDayPCUEUaH9I" alt=""/>
+                        </div>
+                      </div>
+                      <div className="post_meta"><a href="#">Jonathan Jara</a><span>Sep 29, 2017 at 9:48 am</span></div>
+                      <div className="post_share ml-sm-auto">
+                        <Link to={`/post/${this.state.post.id}`}>
+                          <span>See Original</span>
+                        </Link>
+                        <span className="link-button" onClick={this.draft}>Save Draft</span>
+                        <span className="link-button" onClick={this.publish}>Publish</span>
+                        <Link to={`/post/${this.state.post.id}`}>
+                          <span>Delete</span>
+                        </Link>
                       </div>
                     </div>
-                    <div className="post_meta"><a href="#">Jonathan Jara</a><span>Sep 29, 2017 at 9:48 am</span></div>
-                    <div className="post_share ml-sm-auto">
-                      <Link to={`/post/${this.state.post.id}`}>
-                        <span>See Original</span>
-                      </Link>
-                      <span className="link-button" onClick={this.draft}>Save Draft</span>
-                      <span className="link-button" onClick={this.publish}>Publish</span>
-                      <Link to={`/post/${this.state.post.id}`}>
-                        <span>Delete</span>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="post_body">
+                    <div className="post_body">
 
-                  <div className="row">
-                    <div className="col-lg-6">
-                      <div className="section_title preview-editor">Editor</div>
+                    <div className="row">
+                      <div className="col-lg-6">
+                        <div className="section_title preview-editor">Editor</div>
+                      </div>
+                      <div className="col-lg-6">
+                        <div className="section_title preview-editor">Preview</div>
+                      </div>
                     </div>
-                    <div className="col-lg-6">
-                      <div className="section_title preview-editor">Preview</div>
-                    </div>
-                  </div>
 
-                  <div className="row">
-                    <div className="col-lg-6">
-                      <textarea className="comment-area" value={this.state.post.draftContent}
-                        onChange={this.updateContent}></textarea>
+                    <div className="row">
+                      <div className="col-lg-6">
+                        <textarea className="comment-area" value={this.state.post.draftContent}
+                          onChange={this.updateContent}></textarea>
+                      </div>
+                      <div className="col-lg-6">
+                        <Markdown source={this.state.post.draftContent} escapeHtml={false}/>
+                      </div>
                     </div>
-                    <div className="col-lg-6">
-                      <Markdown source={this.state.post.draftContent} escapeHtml={false}/>
-                    </div>
-                  </div>
 
-                    {/*
-                    <div className="post_tags">
-                      <ul>
-                        <li className="post_tag"><a href="#">Liberty</a></li>
-                        <li className="post_tag"><a href="#">Manual</a></li>
-                        <li className="post_tag"><a href="#">Interpretation</a></li>
-                        <li className="post_tag"><a href="#">Recommendation</a></li>
-                      </ul>
+                      {/*
+                      <div className="post_tags">
+                        <ul>
+                          <li className="post_tag"><a href="#">Liberty</a></li>
+                          <li className="post_tag"><a href="#">Manual</a></li>
+                          <li className="post_tag"><a href="#">Interpretation</a></li>
+                          <li className="post_tag"><a href="#">Recommendation</a></li>
+                        </ul>
+                      </div>
+                        */}
                     </div>
-                      */}
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        {/*<div className="loader-popup-master">
-          <div className="loader-popup">
-            <div className="loader"></div>
-            <span className="loader-span-save">Saved</span>
+          {/*<div className="loader-popup-master">
+            <div className="loader-popup">
+              <div className="loader"></div>
+              <span className="loader-span-save">Saved</span>
+            </div>
           </div>
+  */}
+           <NotificationContainer/>
         </div>
-*/}
-         <NotificationContainer/>
+        <Footer/>
       </div>
+
     );
   }
 }

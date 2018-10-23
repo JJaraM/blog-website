@@ -1999,6 +1999,12 @@ h1,h2,h3,h4,h5,h6 {
 	margin-bottom: 1.25rem;
 }
 
+.card-body-mask {
+	background-color: rgba(0,0,0,.6);
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+}
+
 .post-quick-shared {
 
 }
@@ -2094,6 +2100,8 @@ h1,h2,h3,h4,h5,h6 {
 .post-quick-view-b:hover {
 	background-position:left bottom;
 }
+
+
 
 @media only screen and (max-width: 415px) {
 
