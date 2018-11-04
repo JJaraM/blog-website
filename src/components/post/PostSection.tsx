@@ -21,6 +21,7 @@ import { CircleAnimation } from '../common/CircleAnimation';
 
 interface Props {
   id: string;
+  editable?: string;
 }
 
 interface State {
@@ -35,7 +36,7 @@ class PostSection extends React.Component<Props, State> {
 
   constructor(props:Props) {
     super(props);
-
+    console.log(props);
   }
 
   async componentDidMount() {
@@ -111,9 +112,20 @@ class PostSection extends React.Component<Props, State> {
                     </div>
                     <div className="post_meta"><a href="#">Jonathan Jara</a><span>Sep 29, 2017 at 9:48 am</span></div>
                     <div className="post_share ml-sm-auto">
-                      <Link to={`/postEdit/${this.state.post.id}`}>
-                        <span>edit</span>
-                      </Link>
+                      {
+                        (() => {
+                          if (this.props.editable === "true") {
+                            return (
+                              <Link to={`/postEdit/${this.state.post.id}`}>
+                                <span>edit</span>
+                              </Link>
+                            )
+                          }
+                          return (
+                            <div/>
+                          );
+                        })()
+                      }
 
                       <span>share</span>
                       <ul className="post_share_list">

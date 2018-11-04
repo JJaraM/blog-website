@@ -17,3 +17,22 @@
 pre[class*="language-"] {
 	background: #343233;
 }
+
+:not(pre) > code[class*="language-comment"],
+pre[class*="language-comment"] {
+
+  background-color: #eaf5e9;
+  line-height: 1.875;
+}
+
+code[class*="language-comment"], pre[class*="language-comment"] {
+  color: #343233;
+  white-space: pre-line;
+  margin-top: 1.25rem;
+  text-shadow: none;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.token.strong {
+  font-weight: bolder;
+}

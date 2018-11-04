@@ -13,8 +13,10 @@ import './style/loader.css';
 */
 export const Loading: React.StatelessComponent = () => {
   return (
-    <div className="owl-item black-container" >
-      <div className="box slinder-container"><div className="sk-circle"/></div>
+    <div className="slinder-container-center">
+      <div className="box slinder-container">
+        <div className="sk-circle"/>
+      </div>
         <div className="spinner">
           <div className="rect1"></div>
           <div className="rect2"></div>

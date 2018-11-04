@@ -25,7 +25,7 @@ export class PostMain extends React.Component<any, any> {
     return (
       <div className="super_container">
         <Header/>
-          <PostSection id ={this.props.match.params.id}/>
+          <PostSection id={this.props.match.params.id} editable={this.props.match.params.editable}/>
         <Footer/>
       </div>
     );

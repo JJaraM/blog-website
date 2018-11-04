@@ -1,0 +1,34 @@
+Prism.languages.comment = Prism.languages.extend('clike', {
+  'keyword': null,
+  'strong': /([\*]{2}(.*?)[\*]{2})/,
+  'bullet': /([<]{2}(.*?)[\>]{2})/,
+  'punctuation': /[(){};:]/
+});
+
+Prism.hooks.add('wrap', function(env) {
+  if (env.type === 'strong') {
+    env.content = env.content.replace(/\*/g, '');
+  }
+  if (env.type === 'bullet') {
+    env.content = env.content.replace(/&lt;&lt;/g, '');
+    env.content = env.content.replace(/[>]/g, '');
+  }
+});
+
+Prism.languages.insertBefore('comment', 'number', {
+  'bullet': {
+    pattern: /([<]{2}(.*?)[\>]{2})/,
+    lookbehind: true,
+    inside: Prism.languages.comment,
+    greedy: true
+  }
+});
+
+Prism.languages.insertBefore('comment', 'operator', {
+  'strong': {
+    pattern: /([\*]{2}(.*?)[\*]{2})/,
+    lookbehind: true,
+    inside: Prism.languages.comment,
+    greedy: true
+  }
+});

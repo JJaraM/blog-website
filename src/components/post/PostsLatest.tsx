@@ -1,61 +1,83 @@
+/*
+* Copyright (c) Jonathan Jara Morales
+* @since 1.0
+*/
 import * as React from 'react';
 
 import api from '../../api/post';
 import Post from '../../dto/Post';
 import PostsLatestSection from '../../components/post/PostsLatestSection';
 
-interface ProfileListProps {
-}
+import { Loading } from '../../components/common/Loading';
 
-interface ProfileListState {
+interface State {
   posts: Array<Post>;
   isLoading: boolean;
+  pageRender: boolean;
 }
 
-let pageNumber = 0;
-const array : Array<Post> = [];
+let pageNumber: number = 0;
+let array : Array<Post> = [];
+const items: string = '/3';
 
-class PostsLatest extends React.Component<ProfileListProps, ProfileListState> {
+/*
+* Component used to render the index page
+* @since 1.0
+*/
+export default class PostsLatest extends React.Component<any, State> {
 
-  constructor(props: ProfileListProps) {
+  constructor(props: any) {
     super(props);
+    this.initState();
+    this.initRenderInfo();
+  }
+
+  initState = () => {
     this.state = {
       posts: [],
-      isLoading: false
+      isLoading: false,
+      pageRender: false
     };
   }
 
-  load = () => {
+  initRenderInfo = () => {
+    array = [];
+    pageNumber = 0;
+  }
+
+  eventLoad = () => {
     const div = document.getElementById("load_more");
     if (div !== null) {
       div.innerHTML = 'Loading...';
     }
     pageNumber++;
-
-    console.log(pageNumber);
     this.componentDidMount();
   }
 
-  async componentDidMount() {
-
-    this.setState({isLoading: true});
-    const response = await fetch(api.find + pageNumber + '/3');
-    const data = await response.json();
-
-    data.forEach((item) => {
-      array.push(item);
-    });
+  populate = (data) => {
+    if (data !== null && data !== undefined) {
+      data.forEach((item) => array.push(item));
+    }
 
     const div = document.getElementById("load_more");
     if (div !== null) {
       div.innerHTML = 'Load More';
     }
+    this.setState({posts: array, isLoading: false, pageRender:true});
+  }
 
-    this.setState({posts: array, isLoading: false});
+  async componentDidMount() {
+    this.setState({isLoading: true});
+    fetch(api.find + pageNumber + items)
+      .then(response => response.json())
+      .catch(error => console.log(error))
+      .then(data => this.populate(data));
   }
 
   render() {
-
+    if (!this.state.pageRender) {
+      return <Loading />
+    }
 
     return (
       <div>
@@ -69,7 +91,7 @@ class PostsLatest extends React.Component<ProfileListProps, ProfileListState> {
         </div>
 
         <div className="load_more">
-          <div id="load_more" className="load_more_button text-center trans_200" onClick={this.load}>
+          <div id="load_more" className="load_more_button text-center trans_200" onClick={this.eventLoad}>
             Load More
           </div>
         </div>
@@ -77,5 +99,3 @@ class PostsLatest extends React.Component<ProfileListProps, ProfileListState> {
     );
   }
 }
-
-export default PostsLatest;

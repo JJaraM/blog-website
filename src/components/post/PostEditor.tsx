@@ -24,9 +24,11 @@ import 'react-notifications/lib/notifications.css';
 import '../../custom-notifications.css';
 
 // import '../../darcula.css';
-
+import '../prismjs/prism-comment.js';
 import '../../customPrism.js';
 import '../../customPrism.css';
+
+
 
 interface Props {
   id: string;

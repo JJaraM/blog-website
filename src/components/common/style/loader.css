@@ -1,10 +1,10 @@
 .spinner {
 		margin:  auto;
-		margin-top:-100px;
 		width: 50px;
 		height: 40px;
 		text-align: center;
 		font-size: 10px;
+		 margin-top: -160px;
 	}
 
 	.home_loading {
@@ -63,6 +63,16 @@
 		animation-delay: -0.2s;
 	}
 
+	.owl-slinder-center .slinder-container-center i {
+		color: #FFFFFF;
+		font-weight: 600;
+	}
+
+	.slinder-container-center i {
+		color: black;
+		font-weight: 600;
+	}
+
 	@-webkit-keyframes sk-stretchdelay {
 		0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
 		20% { -webkit-transform: scaleY(1.0) }
@@ -84,6 +94,8 @@
 			background: #000000;
 
 		}
+
+
 		.sk-circle {
 			margin: 100px auto;
 			width: 10px;
@@ -93,8 +105,12 @@
 			border-radius:100%;
 			left:-18px;
 			-webkit-animation: sk 1.2s infinite ease-in-out;
+			    visibility: hidden;
 		}
 
+		.slinder-container-center {
+			width: 100%;
+		}
 
 
 		@keyframes sk {
@@ -173,5 +189,11 @@
     }
 
     .slinder-container {
-      padding-top: 15%;
+
     }
+
+		.owl-slinder-center {
+			width: 100%;
+    	height: 100%;
+    	top: 50%;
+		}

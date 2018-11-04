@@ -92,7 +92,12 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
 
     if (array.length === 0) {
       return (
-        <Loading/>
+          <div className="owl-item black-container">
+              <div className="owl-slinder-center">
+                  <Loading/>
+              </div>
+
+          </div>
       );
     }
 

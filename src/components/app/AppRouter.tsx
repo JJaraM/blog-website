@@ -22,7 +22,7 @@ export const AppRouter: React.StatelessComponent = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
-        <Route exact path="/post/:id" component={PostMain} />
+        <Route exact path="/post/:id/:editable?" component={PostMain} />
         <Route exact path="/postEdit/:id" component={PostEditorMain} />
         <Route component={NotFound} />
       </Switch>
