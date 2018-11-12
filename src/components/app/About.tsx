@@ -4,8 +4,6 @@
 */
 import * as React from 'react';
 
-
-
 import '../../bootstrap4/bootstrap.min.css'
 import '../../plugins/OwlCarousel2-2.2.1/owl.carousel.css';
 import '../../plugins/OwlCarousel2-2.2.1/owl.theme.default.css';

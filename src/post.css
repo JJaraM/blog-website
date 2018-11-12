@@ -867,7 +867,7 @@ section
 }
 .post_body ul {
 	list-style-type: circle;
-	padding: 0px 0px 0px 3em;
+	/*padding: 0px 0px 0px 3em;*/
 	color: rgba(0,0,0,0.8);
 	text-align: justify;
 	margin-bottom: 1.25rem;
@@ -2153,4 +2153,8 @@ h1,h2,h3,h4,h5,h6 {
 	.svg-logo {
 		width: 100%;
 	}
+}
+
+.home_slider_item_category {
+	margin-right: 5px;
 }

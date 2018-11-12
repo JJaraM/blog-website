@@ -6,6 +6,7 @@ import * as React from 'react';
 import * as Markdown from 'react-markdown';
 import { Redirect } from 'react-router'
 import { Link } from "react-router-dom";
+import ReactTags from 'react-tag-autocomplete';
 
 import Prism from 'prismjs';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
@@ -15,19 +16,21 @@ import 'prismjs/components/prism-java';
 import 'prismjs/components/prism-markdown';
 
 import api from '../../api/post';
+import apiTag from '../../api/tag';
+
 import Post from '../../dto/Post';
+import Tag from '../../dto/Tag';
 
 import { Loading } from '../common/Loading';
 import { Header } from '../common/Header';
 import { Footer } from '../common/Footer';
+
 import 'react-notifications/lib/notifications.css';
 import '../../custom-notifications.css';
-
-// import '../../darcula.css';
 import '../prismjs/prism-comment.js';
 import '../../customPrism.js';
 import '../../customPrism.css';
-
+import '../../react-tags.css';
 
 
 interface Props {
@@ -38,8 +41,14 @@ interface State {
   id: string;
   isLoading: boolean;
   post: Post;
+  tags: any
   redirect: boolean;
+  suggestions: any;
+  postMount: boolean;
+  tagMount: boolean;
 }
+
+
 
 
 class PostEditor extends React.Component<Props, State> {
@@ -50,43 +59,97 @@ class PostEditor extends React.Component<Props, State> {
       id : '',
       isLoading: false,
       post: {} as Post,
-      redirect: false
+      redirect: false,
+      tags: [],
+      suggestions: [],
+      postMount: false,
+      tagMount: false
     }
-
-
-
-    /*setTimeout(() => {
-      this.put('Auto save');
-    }, 60000);*/
   }
 
   async componentDidMount() {
     Prism.highlightAll()
-    this.setState({isLoading: true, redirect: false});
+    this.setState({isLoading: true, redirect: false, postMount: false, tagMount: false});
 
+    this.fetchPost();
+    this.fetchTags();
+  }
+
+  fetchPost = () => {
     fetch(api.findById + this.props.id)
       .then(response => response.json())
       .catch(error => this.setState({redirect: true}))
-      .then(data => this.setState({post: data, isLoading: false}));
+      .then(data => this.setState({post: data, isLoading: false, postMount: true}));
+  }
+
+  fetchTags = () => {
+    fetch(apiTag.findAll)
+        .then(response => response.json())
+        .catch(error => this.setState({redirect: true}))
+        .then(data => this.setState({isLoading: false,  suggestions: data, tagMount: true}));
+  }
+
+  loadCurrentTags = () => {
+    if (this.state.tagMount && this.state.postMount) {
+      const result = this.state.suggestions.reduce(function(map, obj) {
+          map[obj.id] = obj;
+          return map;
+      }, {});
+      const tagsResult = new Array();
+      if (this.state.post.tags !== null) {
+        this.state.post.tags.map((post) => {
+          tagsResult.push(result[post]);
+        });
+      }
+
+      this.setState({tags: tagsResult});
+      this.setState({tagMount: false, postMount: false});
+    }
   }
 
   componentDidUpdate () {
     Prism.highlightAll();
+    this.loadCurrentTags();
   }
+
 
   draft = () => {
     NotificationManager.success('Draft', 'Saving');
-    this.put('Draft');
+    this.httpPut('Draft');
+  }
+
+  handleDelete = (i:any) => {
+    const tags = this.state.tags.slice(0);
+    tags.splice(i, 1);
+    this.setState({ tags });
+    this.updatePostTags(tags);
+  }
+
+  updatePostTags = (tags:any) => {
+    const array = new Array();
+    tags.map((tag) => {
+      const instance: Tag | null = tag;
+      if (instance !== null) {
+        array.push(instance!.id);
+      }
+    });
+    this.state.post.tags = array;
+  }
+
+  handleAddition = (tagValue:any) => {
+      const tags = [].concat(this.state.tags, tagValue)
+      this.setState({ tags });
+      this.updatePostTags(tags);
   }
 
   publish = () => {
     this.state.post.title = this.state.post.draftTitle;
     this.state.post.image = this.state.post.draftImage;
     this.state.post.content = this.state.post.draftContent;
-    this.put('Publish');
+    this.httpPut('Publish');
   }
 
-  put = (message:string) => {
+  httpPut = (message:string) => {
     fetch(api.put  + this.state.post.id, {
         method: 'PUT',
         body: JSON.stringify(this.state.post),
@@ -174,7 +237,13 @@ class PostEditor extends React.Component<Props, State> {
                       </div>
                     </div>
                     <div className="post_body">
-
+                      <div className="row">
+                        <ReactTags
+                         tags={this.state.tags}
+                         suggestions={this.state.suggestions}
+                         handleDelete={this.handleDelete}
+                         handleAddition={this.handleAddition} />
+                      </div>
                     <div className="row">
                       <div className="col-lg-6">
                         <div className="section_title preview-editor">Editor</div>
@@ -209,6 +278,9 @@ class PostEditor extends React.Component<Props, State> {
                 </div>
               </div>
             </div>
+
+
+
           </div>
           {/*<div className="loader-popup-master">
             <div className="loader-popup">

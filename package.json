@@ -26,6 +26,7 @@
     "react-scripts-ts": "3.1.0",
     "react-syntax-highlighter": "^9.0.0",
     "react-tabs": "^2.3.0",
+    "react-tag-autocomplete": "^5.7.1",
     "react-vertical-timeline-component": "^2.3.1",
     "typescript": "^3.1.1"
   },

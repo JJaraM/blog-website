@@ -8,6 +8,7 @@ interface Post {
   draftImage: string;
   createDate: string;
   updateDate: string;
+  tags: Array<number>;
 }
 
 export default Post;

@@ -12,6 +12,8 @@ import 'prismjs/components/prism-java';
 import 'prismjs/components/prism-markdown';
 
 import api from '../../api/post';
+import apiTag from '../../api/tag';
+
 import Post from '../../dto/Post';
 
 import { Loading } from '../common/Loading';
@@ -28,6 +30,7 @@ interface State {
   id: string;
   isLoading: boolean;
   post: Post;
+  tags: any;
   redirect: boolean;
 }
 
@@ -43,11 +46,22 @@ class PostSection extends React.Component<Props, State> {
 
     Prism.highlightAll()
     this.setState({isLoading: true, redirect: false});
+    this.fetchPost();
 
+  }
+
+  fetchPost = () => {
     fetch(api.findById  + this.props.id)
       .then(response => response.json())
       .catch(error => this.setState({redirect: true}))
       .then(data => this.setState({post: data, isLoading: false}));
+  }
+
+  fetchTags = () => {
+    fetch(apiTag.findAll)
+        .then(response => response.json())
+        .catch(error => this.setState({redirect: true}))
+        .then(data => this.setState({tags: data}));
   }
 
   componentDidUpdate () {
@@ -150,7 +164,7 @@ class PostSection extends React.Component<Props, State> {
                   <div className="post_body">
                     <Markdown source={this.state.post.content} escapeHtml={false}/>
 
-                    {/*
+
                     <div className="post_tags">
                       <ul>
                         <li className="post_tag"><a href="#">Liberty</a></li>
@@ -159,7 +173,7 @@ class PostSection extends React.Component<Props, State> {
                         <li className="post_tag"><a href="#">Recommendation</a></li>
                       </ul>
                     </div>
-                    */}
+
 
 
                   </div>
