@@ -1,7 +1,7 @@
 interface Tag {
   id: number;
   name: string;
-  post: Array<any>;
+  post: Array<number>;
 }
 
 export default Tag;
