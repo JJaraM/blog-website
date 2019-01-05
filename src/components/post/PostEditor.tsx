@@ -12,8 +12,6 @@ import Prism from 'prismjs';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 
-import 'prismjs/components/prism-java';
-import 'prismjs/components/prism-markdown';
 
 import api from '../../api/post';
 import apiTag from '../../api/tag';
@@ -25,13 +23,9 @@ import { Loading } from '../common/Loading';
 import { Header } from '../common/Header';
 import { Footer } from '../common/Footer';
 
+import '../../react-tags.css';
 import 'react-notifications/lib/notifications.css';
 import '../../custom-notifications.css';
-import '../prismjs/prism-comment.js';
-import '../../customPrism.js';
-import '../../customPrism.css';
-import '../../react-tags.css';
-
 
 interface Props {
   id: string;
@@ -45,7 +39,7 @@ interface State {
   redirect: boolean;
   suggestions: any;
   postMount: boolean;
-  tagMount: boolean;
+  tagMount: boolean
 }
 
 
@@ -67,12 +61,25 @@ class PostEditor extends React.Component<Props, State> {
     }
   }
 
-  async componentDidMount() {
-    Prism.highlightAll()
-    this.setState({isLoading: true, redirect: false, postMount: false, tagMount: false});
+  componentDidUpdate () {
 
+    Prism.highlightAll();
+    this.cleanBullets();
+  }
+
+  componentDidMount() {
+    this.setState({isLoading: true, redirect: false, postMount: false, tagMount: false});
     this.fetchPost();
     this.fetchTags();
+  }
+
+  cleanBullets = () => {
+    const a = document.getElementsByClassName('bullet');
+    [].forEach.call(a, function(el) {
+      console.log(el);
+      el.innerHTML = el.innerHTML.replace(/&lt;&lt;/g, '');
+      el.innerHTML = el.innerHTML.replace(/&gt;&gt;/g, '');
+    });
   }
 
   fetchPost = () => {
@@ -107,10 +114,7 @@ class PostEditor extends React.Component<Props, State> {
     }
   }
 
-  componentDidUpdate () {
-    Prism.highlightAll();
-    this.loadCurrentTags();
-  }
+
 
 
   draft = () => {

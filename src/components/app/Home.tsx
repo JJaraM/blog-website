@@ -3,15 +3,10 @@
 * @since 1.0
 */
 import * as React from 'react';
-
-
 import Slinder from '../../Slinder';
 import PostsLatest from '../post/PostsLatest';
 import { Header } from '../common/Header';
 import { Footer } from '../common/Footer';
-
-
-
 import '../../bootstrap4/bootstrap.min.css'
 import '../../plugins/OwlCarousel2-2.2.1/owl.carousel.css';
 import '../../plugins/OwlCarousel2-2.2.1/owl.theme.default.css';
@@ -19,6 +14,7 @@ import '../../plugins/OwlCarousel2-2.2.1/animate.css';
 import '../../main_styles.css';
 import '../../responsive.css';
 import '../../customTimeLine.css';
+
 /*
 * Component used to render the index page
 * @since 1.0
@@ -52,32 +48,16 @@ export class Home extends React.Component<any, any> {
                   </div>*/}
                 </div>
               </div>
-
               <div className="col-lg-3">
                 <div className="sidebar">
                   <div className="sidebar_background"/>
                 </div>
               </div>
-
-
-
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
         <Footer/>
       </div>
     );
   }
-
 }

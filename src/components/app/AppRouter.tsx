@@ -10,6 +10,8 @@ import { About } from './About';
 import { Home } from './Home';
 import { PostMain } from './PostMain';
 import { PostEditorMain } from '../../PostEditorMain';
+import { Category } from './Category';
+import { ProjectsMainPage } from '../projects/ProjectsMainPage';
 import  NotFound from '../common/NotFound';
 
 /*
@@ -22,8 +24,10 @@ export const AppRouter: React.StatelessComponent = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
+        <Route exact path="/projects" component={ProjectsMainPage} />
         <Route exact path="/post/:id/:editable?" component={PostMain} />
         <Route exact path="/postEdit/:id" component={PostEditorMain} />
+        <Route exact path="/category/:id" component={Category} />
         <Route component={NotFound} />
       </Switch>
     </Router>

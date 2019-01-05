@@ -13,8 +13,6 @@ import '../../post.css';
 import '../../post_responsive.css';
 import '../../plugins/font-awesome-4.7.0/css/font-awesome.min.css';
 
-
-
 export class PostMain extends React.Component<any, any> {
 
   constructor(props:any) {

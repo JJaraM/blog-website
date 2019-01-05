@@ -7,9 +7,6 @@ import * as React from 'react';
 import * as Markdown from 'react-markdown';
 import { Redirect } from 'react-router'
 import { Link } from "react-router-dom";
-import Prism from 'prismjs';
-import 'prismjs/components/prism-java';
-import 'prismjs/components/prism-markdown';
 
 // Application Configurations
 import apiPost from '../../api/post';
@@ -23,6 +20,14 @@ import Tag from '../../dto/Tag';
 // Custom Components
 import { Loading } from '../common/Loading';
 import { CircleAnimation } from '../common/CircleAnimation';
+
+import Prism from 'prismjs';
+import 'prismjs/components/prism-java';
+import 'prismjs/components/prism-markdown';
+
+import '../../customPrism.js';
+import '../../customPrism.css';
+import '../prismjs/prism-comment.js';
 
 /*
  * Props interface, which consists of:
@@ -49,6 +54,7 @@ interface State {
   post: Post;
   tags: Array<Tag>;
   redirect: boolean;
+  render: boolean;
 }
 
 /*
@@ -65,11 +71,30 @@ class PostSection extends React.Component<Props, State> {
    * that will be mounted are the post information, and the tag information
    * and then will use the Prism library to highlight the code sections.
    */
-  async componentDidMount() {
-    Prism.highlightAll()
-    this.setState({isLoading: true, redirect: false});
+  componentDidMount() {
+    this.setState({isLoading: true, redirect: false, render: false});
     this.fetchPost();
     this.fetchTags();
+  }
+
+  /*
+   * Updates the highlight when the page is updated
+   */
+  componentDidUpdate() {
+    if (this.state.post !== undefined && !this.state.render) {
+      this.setState({render: true});
+      Prism.highlightAll();
+      this.cleanBullets();
+    }
+  }
+
+  cleanBullets = () => {
+    const a = document.getElementsByClassName('bullet');
+    [].forEach.call(a, function(el) {
+      el.innerHTML = el.innerHTML.replace(/&lt;&lt;/g, '');
+      el.innerHTML = el.innerHTML.replace(/&gt;&gt;/g, '');
+      el.innerHTML = el.innerHTML.replace(/[/]/g, ''  );
+    });
   }
 
   /*
@@ -102,13 +127,6 @@ class PostSection extends React.Component<Props, State> {
       }, {});
     }
     return [];
-  }
-
-  /*
-   * Updates the highlight when the page is updated
-   */
-  componentDidUpdate () {
-    Prism.highlightAll()
   }
 
   /*
@@ -158,9 +176,10 @@ class PostSection extends React.Component<Props, State> {
         {this.renderNextPost()}
         {this.renderPostBackground(post)}
         <div className="home_content">
-          <div className="post_category trans_200">
+          {/*<div className="post_category trans_200">
             <a href="category.html" className="trans_200">sport</a>
           </div>
+          */}
           <div className="post_title">{post.title}</div>
         </div>
       </div>
@@ -172,6 +191,11 @@ class PostSection extends React.Component<Props, State> {
    */
   renderTags = (post:Post) => {
     const mapTags = this.tagsAsMap();
+
+    if (post.tags === null) {
+      return (<div></div>)
+    }
+
     return (
       <div className="post_tags">
         <ul>
@@ -268,7 +292,7 @@ class PostSection extends React.Component<Props, State> {
                         <img src={application.author_image} alt=""/>
                       </div>
                     </div>
-                    <div className="post_meta"><a href="#">Jonathan Jara</a>
+                    <div className="post_meta"><a href="#">Jonathan Jara Morales</a>
                       <span> {date.toLocaleDateString()} </span>
                     </div>
                     <div className="post_share ml-sm-auto">

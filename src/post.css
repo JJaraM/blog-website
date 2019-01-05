@@ -215,6 +215,7 @@ section
 {
 	width: 100%;
 	overflow: hidden;
+	background: rgba(0,0,0,0.75);
 }
 .prlx_parent
 {
@@ -865,7 +866,8 @@ section
 	font-size: 16px;
 	line-height: 1.875;
 }
-.post_body ul {
+
+.post_body ul, .post_body ol {
 	list-style-type: circle;
 	/*padding: 0px 0px 0px 3em;*/
 	color: rgba(0,0,0,0.8);
@@ -875,13 +877,19 @@ section
 	font-size: 14px;
 }
 
-.post_body p {
+
+.post_body p, .post_body ol {
 	text-indent: 40px;
 	color: rgba(0,0,0,0.8);
 	text-align: justify;
 	margin-bottom: 1.25rem;
 	font-family: Helvetica,Arial,sans-serif;
 	font-size: 14px;
+}
+
+.post_body ol {
+	text-indent: 0px;
+	margin-left: 5rem;
 }
 
 .post_body blockquote {
@@ -2157,4 +2165,29 @@ h1,h2,h3,h4,h5,h6 {
 
 .home_slider_item_category {
 	margin-right: 5px;
+}
+
+.post_body > ul {
+	background: #F5F5F5;
+  border: 1px solid #EEEEEE;
+	list-style: none;
+  counter-reset: my-awesome-counter;
+  text-decoration: none;
+	border-radius: 5px;
+}
+
+.post_body ul > li a {
+  color: black;
+}
+
+
+.post_body > ul li {
+  counter-increment: my-awesome-counter;
+	padding-left: 1rem;
+}
+
+.post_body > ul li::before {
+  content: counter(my-awesome-counter) ". ";
+  color: black;
+  font-weight: bold;
 }

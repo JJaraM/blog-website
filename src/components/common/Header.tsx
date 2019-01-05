@@ -67,6 +67,11 @@ export class Header extends React.Component<any, any> {
                         About
                       </Link>
                     </li>
+                    <li>
+                      <Link to="/projects">
+                        Projects
+                      </Link>
+                    </li>
     								{/*<li><a href="#">Gadgets</a></li>
     								<li><a href="#">Lifestyle</a></li>
     								<li><a href="#">Video</a></li>

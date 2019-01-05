@@ -45,6 +45,9 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
           divShow.style.display = 'inline';
         }
       }
+
+      console.log('to hide' + hide);
+      console.log('to show' + show);
     }
   }
 
@@ -76,11 +79,15 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
       };
 
       const tags = new Array<Tag>();
-      postSlinder.current.tags.forEach((tagId) => {
-        tags.push(result[tagId]);
-      });
-      postSlinder.tags = tags;
-      array.push(postSlinder);
+
+      if (postSlinder.current.tags !== null) {
+        postSlinder.current.tags.forEach((tagId) => {
+          tags.push(result[tagId]);
+        });
+        postSlinder.tags = tags;
+        array.push(postSlinder);
+      }
+
     });
     return array;
   }
@@ -96,7 +103,9 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
   renderTags = (tag:any, tagId:any) => {
     return (
       <div className="home_slider_item_category trans_200" key={tagId}>
-        <a href="#" className="trans_200">{tag.name}</a>
+        <Link className="trans_200" to={`category/${tag.id}`}>
+          {tag.name}
+        </Link>
       </div>
     );
   }
