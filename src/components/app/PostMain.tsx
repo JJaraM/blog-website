@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import PostSection from '../post/PostSection';
 
-import { Header } from '../common/Header';
+import { Header } from '../header/Header';
 import { Footer } from '../common/Footer';
 
 import '../../bootstrap4/bootstrap.min.css'

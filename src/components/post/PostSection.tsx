@@ -305,6 +305,22 @@ class PostSection extends React.Component<Props, State> {
                     <Markdown source={this.state.post.content} escapeHtml={false}/>
                     {this.renderTags(this.state.post)}
                   </div>
+
+                  <div className="similar_posts">
+                    <div className="post_comment">
+      								<div className="post_comment_title">Post Comment</div>
+      								<div className="row">
+      									<div className="col-xl-8">
+      										<div className="post_comment_form_container">
+    												<input type="text" className="comment_input comment_input_name" placeholder="Your Name"/>
+    												<input type="email" className="comment_input comment_input_email" placeholder="Your Email" />
+    												<textarea className="comment_text" placeholder="Your Comment"></textarea>
+    												<button type="submit" className="comment_button">Post Comment</button>
+      										</div>
+      									</div>
+      								</div>
+      							</div>
+                  </div>
                 </div>
               </div>
             </div>

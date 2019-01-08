@@ -10,7 +10,7 @@ import '../../plugins/OwlCarousel2-2.2.1/owl.theme.default.css';
 import '../../plugins/OwlCarousel2-2.2.1/animate.css';
 import '../../main_styles.css';
 import '../../responsive.css';
-import '../../about.css';
+import './about.css';
 
 
 /*
@@ -32,7 +32,6 @@ export const About: React.StatelessComponent<{}> = (props) => {
             </a>
         </div>
       </header>
-
       <div className="content">
         <div >
           <div className="sub-content main-image" style={{backgroundImage: `url(${image})`}}>
@@ -47,7 +46,6 @@ export const About: React.StatelessComponent<{}> = (props) => {
     					</div>
     				</div>
         </div>
-
       </div>
     </div>
   );

@@ -11,8 +11,6 @@ import ReactTags from 'react-tag-autocomplete';
 import Prism from 'prismjs';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 
-
-
 import api from '../../api/post';
 import apiTag from '../../api/tag';
 
@@ -20,12 +18,12 @@ import Post from '../../dto/Post';
 import Tag from '../../dto/Tag';
 
 import { Loading } from '../common/Loading';
-import { Header } from '../common/Header';
+import { Header } from '../header/Header';
 import { Footer } from '../common/Footer';
 
 import '../../react-tags.css';
 import 'react-notifications/lib/notifications.css';
-import '../../custom-notifications.css';
+import '../common/custom-notifications.css';
 
 interface Props {
   id: string;
@@ -41,9 +39,6 @@ interface State {
   postMount: boolean;
   tagMount: boolean
 }
-
-
-
 
 class PostEditor extends React.Component<Props, State> {
 
@@ -61,8 +56,7 @@ class PostEditor extends React.Component<Props, State> {
     }
   }
 
-  componentDidUpdate () {
-
+  componentDidUpdate() {
     Prism.highlightAll();
     this.cleanBullets();
   }
@@ -73,6 +67,9 @@ class PostEditor extends React.Component<Props, State> {
     this.fetchTags();
   }
 
+  /*
+   *
+   */
   cleanBullets = () => {
     const a = document.getElementsByClassName('bullet');
     [].forEach.call(a, function(el) {
@@ -113,9 +110,6 @@ class PostEditor extends React.Component<Props, State> {
       this.setState({tagMount: false, postMount: false});
     }
   }
-
-
-
 
   draft = () => {
     NotificationManager.success('Draft', 'Saving');
@@ -267,16 +261,7 @@ class PostEditor extends React.Component<Props, State> {
                       </div>
                     </div>
 
-                      {/*
-                      <div className="post_tags">
-                        <ul>
-                          <li className="post_tag"><a href="#">Liberty</a></li>
-                          <li className="post_tag"><a href="#">Manual</a></li>
-                          <li className="post_tag"><a href="#">Interpretation</a></li>
-                          <li className="post_tag"><a href="#">Recommendation</a></li>
-                        </ul>
-                      </div>
-                        */}
+
                     </div>
                   </div>
                 </div>

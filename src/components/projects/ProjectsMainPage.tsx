@@ -3,7 +3,7 @@
 * @since 1.0
 */
 import * as React from 'react';
-import { Header } from '../common/Header';
+import { Header } from '../header/Header';
 import { Footer } from '../common/Footer';
 import '../../bootstrap4/bootstrap.min.css'
 import '../../plugins/OwlCarousel2-2.2.1/owl.carousel.css';
@@ -65,6 +65,7 @@ export class ProjectsMainPage extends React.Component<any, any> {
                               <li>Learn how to deploy an ionic application.</li>
                               <li>Learn how works angular 2.</li>
                               <li>Learn how to create a side menu.</li>
+                              <li>Create a set of applications that runs in Heroku</li>
                             </ul>
                           </p>
                           <ul className="card-body-project-tags">

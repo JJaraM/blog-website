@@ -10,17 +10,13 @@
   line-height: 1.67em;
   font-family: "Open Sans","DejaVu Sans",sans-serif;
   font-style: normal;
-  /* font-weight: bold; */
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
+:not(pre) > code[class*="language-"], pre[class*="language-"] {
 	background: #343233;
 }
 
-:not(pre) > code[class*="language-comment"],
-pre[class*="language-comment"] {
-
+:not(pre) > code[class*="language-comment"], pre[class*="language-comment"] {
   background-color: #eaf5e9;
   line-height: 1.875;
 }

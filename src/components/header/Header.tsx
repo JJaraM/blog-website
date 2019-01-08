@@ -3,8 +3,6 @@
  * @since 1.0
  */
 import * as React from 'react';
-
-// import api from './api/post';
 import application from '../../application';
 import { Link } from "react-router-dom";
 
@@ -18,10 +16,16 @@ export class Header extends React.Component<any, any> {
     super(props);
   }
 
+  /*
+   * When a component will be mount we add a handleScroll event
+   */
   componentDidMount() {
       window.addEventListener('scroll', this.handleScroll);
   }
 
+  /*
+   * When the component will be unmount we add a handleScroll event
+   */
   componentWillUnmount() {
       window.removeEventListener('scroll', this.handleScroll);
   }
@@ -54,7 +58,6 @@ export class Header extends React.Component<any, any> {
                     {application.home_logo}
                   </Link>
                 </div>
-
                 <nav className="main_nav">
     							<ul>
     								<li className="active">
@@ -72,17 +75,12 @@ export class Header extends React.Component<any, any> {
                         Projects
                       </Link>
                     </li>
-    								{/*<li><a href="#">Gadgets</a></li>
-    								<li><a href="#">Lifestyle</a></li>
-    								<li><a href="#">Video</a></li>
-    								<li><a href="contact.html">Contact</a></li>
-                      */}
     							</ul>
     						</nav>
 
     						<div className="search_container ml-auto">
     							<div className="weather">
-    								<div className="temperature">JJM</div>
+    								<div className="temperature">{application.home_initials}</div>
                       <a target="_blank" href={application.home_github}>
         								<img className="weather_icon" src="../../images/GitHub-Mark-Light-32px.png" alt=""/>
                       </a>

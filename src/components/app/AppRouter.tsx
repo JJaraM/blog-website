@@ -3,13 +3,11 @@
  * @since 1.0
  */
 import * as React from 'react';
-
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-
-import { About } from './About';
+import { About } from '../about/About';
 import { Home } from './Home';
 import { PostMain } from './PostMain';
-import { PostEditorMain } from '../../PostEditorMain';
+import { PostEditorMain } from '../post/PostEditorMain';
 import { Category } from './Category';
 import { ProjectsMainPage } from '../projects/ProjectsMainPage';
 import  NotFound from '../common/NotFound';

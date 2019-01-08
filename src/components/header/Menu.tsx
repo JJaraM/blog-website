@@ -24,18 +24,6 @@ class Menu extends React.Component {
     				<img className="header_search_icon menu_mm" src="images/search_2.png" alt=""/>
     			</form>
     		</div>
-        {/*
-    		<nav className="menu_nav">
-    			<ul className="menu_mm">
-    				<li className="menu_mm"><a href="index.html">home</a></li>
-    				<li className="menu_mm"><a href="#">Fashion</a></li>
-    				<li className="menu_mm"><a href="#">Gadgets</a></li>
-    				<li className="menu_mm"><a href="#">Lifestyle</a></li>
-    				<li className="menu_mm"><a href="#">Video</a></li>
-    				<li className="menu_mm"><a href="contact.html">Contact</a></li>
-    			</ul>
-    		</nav>
-        */}
     	</div>
     );
   }

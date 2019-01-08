@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Header } from '../common/Header';
+import { Header } from '../header/Header';
 import { Footer } from '../common/Footer';
 
 import apiTag from '../../api/tag';
