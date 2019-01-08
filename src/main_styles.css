@@ -631,6 +631,7 @@ section
 	transform: translateY(-50%);
 	left: 0;
 	width: 100%;
+	z-index: 2;
 }
 .home_slider_content
 {
@@ -638,7 +639,7 @@ section
 }
 .home_slider_item_category
 {
-	width: 83px;
+	/*width: 83px;*/
 	height: 28px;
 	background: #899091;
 	border-radius: 14px;
@@ -2000,4 +2001,25 @@ padding-left: 25px;
 	width: 90%;
     height: 100%;
     border: 0px;
+}
+
+.overlay-slinder-panel {
+	width: 45%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.overlay-slinder-panel::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 100vh 0 0 40vh;
+    border-color: transparent transparent transparent rgba(0, 0, 0, 0.7);
+    position: absolute;
+    left: 100%;
 }

@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Link } from "react-router-dom";
 import { Loading } from './components/common/Loading';
 import { CircleAnimation } from './components/common/CircleAnimation';
+import Particles from 'react-particles-js';
 
 import Post from './dto/Post';
 import Tag from './dto/Tag';
@@ -45,9 +46,6 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
           divShow.style.display = 'inline';
         }
       }
-
-      console.log('to hide' + hide);
-      console.log('to show' + show);
     }
   }
 
@@ -155,6 +153,30 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
                     return this.renderCircle(post, postIt);
                   })()
                 }
+
+                <Particles
+                  params={{
+              	    "particles": {
+              	        "number": {
+              	            "value": 50
+              	        },
+              	        "size": {
+              	            "value": 3
+              	        }
+              	    },
+              	    "interactivity": {
+              	        "events": {
+              	            "onhover": {
+              	                "enable": true,
+              	                "mode": "repulse"
+              	            }
+              	        }
+              	    }
+              	}} />
+                
+                <div className="overlay-slinder-panel"/>
+
+
                 <div id={'home_slider_content_container'} className="home_slider_content_container">
                   <div className="container">
                     <div className="row">
