@@ -33,11 +33,11 @@ interface State {
   id: string;
   isLoading: boolean;
   post: Post;
-  tags: any
+  tags: any;
   redirect: boolean;
   suggestions: any;
   postMount: boolean;
-  tagMount: boolean
+  tagMount: boolean;
 }
 
 class PostEditor extends React.Component<Props, State> {

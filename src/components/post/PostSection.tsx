@@ -24,6 +24,7 @@ import { CircleAnimation } from '../common/CircleAnimation';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-java';
 import 'prismjs/components/prism-markdown';
+import 'prismjs/components/prism-bash';
 
 import '../../customPrism.js';
 import '../../customPrism.css';

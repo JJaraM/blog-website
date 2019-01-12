@@ -16,6 +16,11 @@ export const Footer: React.StatelessComponent = () => {
       <div className="container">
         <div className="row row-lg-eq-height">
           <div className="col-lg-9 order-lg-1 order-2">
+
+
+
+
+
             <div className="footer_content">
               <div className="footer_logo">
                 <a href="#">{application.home_logo}</a>

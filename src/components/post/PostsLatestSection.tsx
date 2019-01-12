@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-
 import Post from '../../dto/Post';
 import { Link } from "react-router-dom";
 import Masonry from 'react-masonry-component';
@@ -20,8 +19,6 @@ const masonryOptions = {
     transitionDuration: '0.8s'
 };
 
-// https://www.npmjs.com/package/react-masonry-component#images-loaded-options
-// https://masonry.desandro.com/options.html#horizontalorder
 class PostsLatestSection extends React.Component<ProfileListProps, ProfileListState> {
 
   constructor(props: ProfileListProps) {
@@ -39,6 +36,7 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
   }
 
   renderNoImage = (post:Post, key:number) => {
+    const date = new Date(post.createDate);
     return (
       <div className="card card_default card_small_no_image grid-item" key={key}>
         <div className="card-body">
@@ -51,7 +49,7 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
             <Link to={`post/${post.id}`}>
               Jonathan Jara Morales
             </Link>
-            <span>Sep 29, 2017 at 9:48 am</span>
+            <span>{date.toLocaleDateString()}</span>
           </small>
         </div>
       </div>
@@ -59,6 +57,7 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
   }
 
   renderSpecial = (post:Post, key:number) => {
+    const date = new Date(post.createDate);
     return (
       <div className="card card_default card_small_with_background grid-item" key={key}>
         <div className="card_background" style={{backgroundImage: `url(${post.image})`}}></div>
@@ -72,7 +71,7 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
             <Link to={`post/${post.id}`}>
               Jonathan Jara Morales
             </Link>
-            <span>Sep 29, 2017 at 9:48 am</span>
+            <span>{date.toLocaleDateString()}</span>
           </small>
         </div>
       </div>
@@ -80,6 +79,7 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
   }
 
   renderNoSpecial = (post:Post, key:number) => {
+    const date = new Date(post.createDate);
     return (
       <div className="card card_small_with_image grid-item" key={key}>
         <img className="card-img-top" src={post.image} alt=""/>
@@ -93,7 +93,7 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
             <Link to={`post/${post.id}`}>
               Jonathan Jara Morales
             </Link>
-            <span>Sep 29, 2017 at 9:48 am</span>
+            <span>{date.toLocaleDateString()}</span>
           </small>
         </div>
       </div>
@@ -108,11 +108,8 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
         <div>Loading</div>
       );
     }
-
-
+    
     let special = false;
-
-
 
     if (this.state.isLoading) {
       return (

@@ -6,6 +6,7 @@ import * as React from 'react';
 
 import api from '../../api/post';
 import Post from '../../dto/Post';
+
 import PostsLatestSection from '../../components/post/PostsLatestSection';
 
 import { Loading } from '../../components/common/Loading';
@@ -14,17 +15,20 @@ interface State {
   posts: Array<Post>;
   isLoading: boolean;
   pageRender: boolean;
+  tag: number;
 }
+
+interface Props { tags: any }
 
 let pageNumber: number = 0;
 let array : Array<Post> = [];
-const items: string = '/3';
+const items: string = '/5';
 
 /*
 * Component used to render the index page
 * @since 1.0
 */
-export default class PostsLatest extends React.Component<any, State> {
+export default class PostsLatest extends React.Component<Props, State> {
 
   constructor(props: any) {
     super(props);
@@ -36,7 +40,8 @@ export default class PostsLatest extends React.Component<any, State> {
     this.state = {
       posts: [],
       isLoading: false,
-      pageRender: false
+      pageRender: false,
+      tag: 0
     };
   }
 
@@ -51,51 +56,104 @@ export default class PostsLatest extends React.Component<any, State> {
       div.innerHTML = 'Loading...';
     }
     pageNumber++;
-    this.componentDidMount();
+    this.setState({isLoading: true});
+    this.fetchPost(this.state.tag);
   }
 
   populate = (data) => {
-    if (data !== null && data !== undefined) {
+    if (data !== null && data !== undefined && data.length > 0 ) {
       data.forEach((item) => array.push(item));
     }
 
     const div = document.getElementById("load_more");
     if (div !== null) {
-      div.innerHTML = 'Load More';
+      div.innerHTML = 'Read More';
     }
-    this.setState({posts: array, isLoading: false, pageRender:true});
+
+    if (array.length > 0) {
+      this.setState({posts: array, isLoading: false, pageRender:true});
+    } else {
+      this.setState({isLoading: false, pageRender:true});
+      pageNumber--;
+    }
   }
 
   async componentDidMount() {
     this.setState({isLoading: true});
-    fetch(api.find + pageNumber + items)
+    this.fetchPost(this.state.tag);
+  }
+
+  fetchPost = (tagId:number) => {
+    const endPoint = api.find + pageNumber + items + "/" + tagId;
+    fetch(endPoint)
       .then(response => response.json())
       .catch(error => console.log(error))
       .then(data => this.populate(data));
+  }
+
+  changeTag = (tagId:number) => (event: any) => {
+      pageNumber = 0;
+      array = [];
+      this.setState({tag: tagId});
+      this.fetchPost(tagId);
+  }
+
+  renderTags = () => {
+    const firstSetOfTags = this.props.tags.slice(0, 5);
+    const secondSetOfTags = this.props.tags.slice(5);
+
+    return (
+      <>
+        <div className="section_tags ml-auto">
+          <ul>
+            <li className="active">
+              <div className="tag-button"  onClick={this.changeTag(0)} >all</div>
+            </li>
+            {
+              firstSetOfTags.map((tag, tagId) => {
+                return (<li key={tag.id}><div className="tag-button" onClick={this.changeTag(tag.id)}>{tag.name}</div></li>);
+              })
+            }
+          </ul>
+        </div>
+
+        <div className="section_panel_more">
+          <ul>
+            <li>more
+              <ul>
+              {
+                secondSetOfTags.map((tag, tagId) => {
+                  return (<li key={tag.id}><div className="tag-button" onClick={this.changeTag(tag.id)}>{tag.name}</div></li>);
+                })
+              }
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </>
+    );
   }
 
   render() {
     if (!this.state.pageRender) {
       return <Loading />
     }
-
     return (
-      <div>
+      <>
         <div className="blog_section">
           <div className="section_panel d-flex flex-row align-items-center justify-content-start">
-            <div className="section_title">Latest Articles</div>
+            <div className="section_title_home">Latest Articles</div>
+            {this.renderTags()}
           </div>
           <div className="section_content">
             <PostsLatestSection posts={this.state.posts} />
           </div>
         </div>
-
-        <div className="load_more">
-          <div id="load_more" className="load_more_button text-center trans_200" onClick={this.eventLoad}>
-            Load More
-          </div>
+        <div className="entry-footer clearfix">
+           <a className="readmore" onClick={this.eventLoad}>read more</a>
+           <div className="entry-footer-social"></div>
         </div>
-      </div>
+      </>
     );
   }
 }

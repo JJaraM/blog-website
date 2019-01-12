@@ -7,7 +7,6 @@ import apiTag from '../../api/tag';
 import apiPost from '../../api/post';
 
 import Post from '../../dto/Post';
-import Tag from '../../dto/Tag';
 
 import PostsLatestSection from '../../components/post/PostsLatestSection';
 import Slinder from '../../Slinder';
@@ -22,7 +21,7 @@ import '../../plugins/font-awesome-4.7.0/css/font-awesome.min.css';
 
 interface State {
   isLoading: boolean;
-  tags: Array<Tag>;
+  tags: any;
   posts: Array<Post>;
   redirect: boolean;
 }
@@ -40,13 +39,18 @@ export class Category extends React.Component<any, State> {
   }
 
   async componentDidMount() {
+    this.fetchPosts();
     this.fetchTags();
+  }
+
+  fetchTags = () => {
+    fetch(apiTag.findAll).then(response => response.json()).then(data => this.setState({tags: data}));
   }
 
   /*
    * Fetch the tag information from the microservice
    */
-  fetchTags = () => {
+  fetchPosts = () => {
     fetch(apiTag.byIds + this.props.match.params.id)
       .then(response => response.json())
       .then(data => {
@@ -61,7 +65,6 @@ export class Category extends React.Component<any, State> {
                 });
             });
           }
-
         });
       });
   }
@@ -74,7 +77,7 @@ export class Category extends React.Component<any, State> {
     return (
       <div>
         <div className="home_slinder">
-          <Slinder/>
+          <Slinder tags={this.state.tags}/>
         </div>
         <div className="super_container">
           <Header/>

@@ -27,7 +27,7 @@ export const About: React.StatelessComponent<{}> = (props) => {
         </div>
         <div className="site-title-block">
             <a href="https://lmpixels.com/wp/kerge-wp/demo2/">
-                <h1 className="site-title">Jonathan Jara</h1>
+                <h1 className="site-title">Jonathan Jara Morales</h1>
                 <p className="site-subtitle">Software Developer</p>
             </a>
         </div>
@@ -39,7 +39,7 @@ export const About: React.StatelessComponent<{}> = (props) => {
     					<div className="sub-content-main-image-title">
     						<div className="col-sm-12 col-md-12 col-lg-12">
     							<div className="title-block">
-                    <h2>Jonathan Jara</h2>
+                    <h2>Jonathan Jara Morales</h2>
                     <div className="sp-subtitle">Software Developer</div>
                   </div>
     						</div>

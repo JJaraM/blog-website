@@ -1,138 +1,228 @@
+/*
+* Copyright (c) Jonathan Jara Morales
+* @since 1.0
+*/
 import * as React from 'react';
 
 import { Link } from "react-router-dom";
 import { Loading } from './components/common/Loading';
 import { CircleAnimation } from './components/common/CircleAnimation';
 import Particles from 'react-particles-js';
-
 import Post from './dto/Post';
-import Tag from './dto/Tag';
-import apiTag from './api/tag';
 
-interface ProfileListProps { data: Array<Post>; }
-interface ProfileListState { hide: 'false'; tags: any; }
-interface PostSlinder { current: Post; next: Post; id: string; tags: Array<Tag>; }
+/*
+ * Set of properties that needs the page to work.
+ */
+interface Props { posts: Array<Post>; tags: any; }
 
-class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
+/*
+ * State of the component
+ */
+interface State {selection: number; }
 
-  constructor(props:ProfileListProps) {
+/*
+ * Component used to display the slinder items.
+ */
+class SlinderItems extends React.Component<Props, State> {
+
+  /*
+   * Constructor of the component
+   */
+  constructor(props:Props) {
     super(props);
+    this.initState();
+    this.quickView = this.quickView.bind(this);
   }
 
-  async componentDidMount() {
-    this.fetchTags();
+  /*
+   * Stablish the initial state of the component
+   */
+  initState() {
+    this.state = {
+      selection: 0
+    }
   }
 
-  fetchTags = () => {
-    fetch(apiTag.findAll).then(response => response.json()).then(data => this.setState({tags: data}));
-  }
-
-  handleChange(event: any) : void {
+  /*
+   * Select the item that will be displayed in the slinder
+   */
+  quickView(event: any) : void {
     const div = document.getElementById(event.target.id);
-
     if (div !== null) {
-      const hide = div.getAttribute('to-hide');
-      if (hide !== null) {
-        const divHide = document.getElementById('owl-' + hide);
-        if (divHide !== null) {
-          divHide.style.display = 'none';
-        }
-      }
-
       const show = div.getAttribute('to-show');
       if (show !== null) {
-        const divShow = document.getElementById('owl-' + show);
-        if (divShow !== null) {
-          divShow.style.display = 'inline';
-        }
+        const selectionIndex = Number(show);
+        this.setState({ selection: selectionIndex });
       }
     }
   }
 
+  /*
+   * Takes an array and transformer it as a map
+   */
   tagsAsMap = () => {
-    return this.state.tags.reduce(function(map, tag) {
+    return this.props.tags.reduce(function(map, tag) {
         map[tag.id] = tag;
         return map;
     }, {});
   }
 
-  buildPostSlinder = () => {
-    const array : Array<PostSlinder> = [];
-    const size = this.props.data.length - 1;
-    let nextItem = 0;
+  /*
+   * Render the post's tag
+   */
+  renderTag = (tagId:any) => {
     const result = this.tagsAsMap();
+    const tag = result[tagId];
 
-    this.props.data.forEach((item, index) => {
-      if (size !== index) {
-        nextItem = nextItem + 1;
-      } else if (size === index) {
-        nextItem = 0;
-      }
-
-      const postSlinder : PostSlinder = {
-        current : this.props.data[index],
-        next : this.props.data[nextItem],
-        id: String(index),
-        tags: []
-      };
-
-      const tags = new Array<Tag>();
-
-      if (postSlinder.current.tags !== null) {
-        postSlinder.current.tags.forEach((tagId) => {
-          tags.push(result[tagId]);
-        });
-        postSlinder.tags = tags;
-        array.push(postSlinder);
-      }
-
-    });
-    return array;
-  }
-
-  getPostSlinder() {
-    let array : Array<PostSlinder> = [];
-    if (this.state !== null && this.state.tags !== null) {
-      array = this.buildPostSlinder();
+    if (result === null || tag === null || tag === undefined) {
+      return <></>
     }
-    return array;
+
+    return (
+      <Link className="tag" to={`category/${tag.id}`}>
+        {tag.name}
+      </Link>
+    );
   }
 
-  renderTags = (tag:any, tagId:any) => {
+  /*
+   * Render the post's tags, if there are not tags for the current post, then
+   * nothing will be displayed
+   */
+  renderTags = () => {
+    const tags = this.props.posts[this.state.selection].tags;
+    if (tags === null || tags === undefined) {
+      return <></>
+    }
     return (
-      <div className="home_slider_item_category trans_200" key={tagId}>
-        <Link className="trans_200" to={`category/${tag.id}`}>
-          {tag.name}
-        </Link>
+      tags.map((tag, tagId) => {
+        return this.renderTag(tag);
+      })
+    )
+  }
+
+  renderSocialIcons = () => {
+    return (
+      <div className="social-icons">
+          <a href=""><i className="fa fa-facebook-f"></i></a>
+          <a href="#"><i className="fa fa-twitter"></i></a>
+          <a href="#"><i className="fa fa-google"></i></a>
+          <a href="#"><i className="fa fa-skype"></i></a>
+          <a href="#"><i className="fa fa-linkedin-in"></i></a>
       </div>
     );
   }
 
-  renderCircle = (post:any, postIt:any) => {
+
+  renderPostContent = () => {
+    return (
+      <div className="home_slider_content">
+        <div className="jjara-post-slinder-tags">
+        { this.renderTags() }
+        </div>
+        <div className="home_slider_item_title">
+          <Link to={`post/${this.props.posts[this.state.selection].id}`}>
+            {this.props.posts[this.state.selection].title}
+          </Link>
+        </div>
+        { this.renderSocialIcons() }
+        <div className="home_slider_item_link">
+          <Link to={`post/${this.props.posts[this.state.selection].id}`}>
+            Continue Reading
+            <svg version="1.1" id="link_arrow_1" x="0px" y="0px" width="19px" height="13px" viewBox="0 0 19 13">
+              <polygon fill="#FFFFFF" points="12.475,0 11.061,0 17.081,6.021 0,6.021 0,7.021 17.038,7.021 11.06,13 12.474,13 18.974,6.5 "/>
+            </svg>
+          </Link>
+        </div>
+      </div>
+    )
+  }
+
+  renderPostBackground = (post:any) => {
     let height = 366;
     let width = 366;
     let logoHeight = 206;
 
-    if ( window.screen.width <= 414) {
+    if (window.screen.width <= 414) {
       height = 246;
       width = 246;
       logoHeight = 86;
     }
 
-    if (post.current.image === null || post.current.image === '') {
+    if (post.image === null || post.image === '') {
       return (
         <CircleAnimation width={width} height={height} logoHeight={logoHeight}/>
       )
     }
+
     return (
-      <div id={'image-' + post.current.id} className="home_slider_background home_background_mask" style={{backgroundImage: `url(${post.current.image})`}}/>
+      <div>
+        <div id={'image-' + post.id} className="home_slider_background home_background_mask" style={{backgroundImage: `url(${post.image})`}}/>
+
+        <Particles
+          params={{
+            "particles": {
+                "number": {
+                    "value": 100
+                },
+                "size": {
+                    "value": 3
+                }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    }
+                }
+            }
+        }} />
+      </div>
+
     );
   }
 
-  render() {
-    const slinderItems = this.getPostSlinder();
 
-    if (slinderItems.length === 0) {
+  renderNextPosts = () => {
+    return (
+      <div className="d-flex flex-row align-items-end preview-items responsive-container">
+        {
+          this.props.posts.map((post, index) => {
+            return (
+              <div className="col-lg-3 col-md-6 similar_post_col post-quick-view" key={index}>
+                <div className="box1 post-quick-shared">
+                  <div className="similar_post trans_200">
+                    <a href="#">
+                      {post.title}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="box2 post-quick-shared">
+                  <div className="col-lg-6 post-quick-similar-post trans_200 post-quick-view-a">
+                    <a id={'post-quick-'+ post.id} onClick={this.quickView} to-show={index} href="#">
+                        Quick View
+                    </a>
+                  </div>
+
+                  <div className="col-lg-6 post-quick-similar-post trans_200 post-quick-view-b">
+                    <Link to={`post/${post.id}`}>
+                      Read
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )
+          })
+        }
+      </div>
+    )
+  }
+
+  render() {
+
+    if (this.props.posts.length === 0) {
       return (
           <div className="owl-item black-container">
               <div className="owl-slinder-center">
@@ -143,122 +233,32 @@ class SlinderItems extends React.Component<ProfileListProps, ProfileListState> {
     }
 
     return (
-      <div>
-        <div className="home_slinder">
+      <div className="home_slinder">
+      {
+        <div className="owl-item" style={{display: 'inline' }}>
           {
-            slinderItems.map((post, postIt) =>
-              <div key = {post.current.id}  className="owl-item" id={'owl-' + post.current.id}  style={{display: postIt === 0 ? 'inline': 'none' }}>
-                {
-                  (() => {
-                    return this.renderCircle(post, postIt);
-                  })()
-                }
-
-                <Particles
-                  params={{
-              	    "particles": {
-              	        "number": {
-              	            "value": 50
-              	        },
-              	        "size": {
-              	            "value": 3
-              	        }
-              	    },
-              	    "interactivity": {
-              	        "events": {
-              	            "onhover": {
-              	                "enable": true,
-              	                "mode": "repulse"
-              	            }
-              	        }
-              	    }
-              	}} />
-                
-                <div className="overlay-slinder-panel"/>
-
-
-                <div id={'home_slider_content_container'} className="home_slider_content_container">
-                  <div className="container">
-                    <div className="row">
-                      <div className="col">
-                        <div className="home_slider_content">
-    	                    <div className="row">
-                            {
-                              post.tags.map((tag, tagId) => {
-                                return this.renderTags(tag, tagId);
-                              })
-                            }
-                          </div>
-                          <div className="home_slider_item_title">
-                            <Link to={`post/${post.current.id}`}>
-                              {post.current.title}
-                            </Link>
-                          </div>
-                          <div className="home_slider_item_link">
-                            <Link to={`post/${post.current.id}`}>Continue Reading
-                              <svg version="1.1" id="link_arrow_1" x="0px" y="0px" width="19px" height="13px" viewBox="0 0 19 13">
-                                <polygon fill="#FFFFFF" points="12.475,0 11.061,0 17.081,6.021 0,6.021 0,7.021 17.038,7.021 11.06,13 12.474,13 18.974,6.5 "/>
-                              </svg>
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            (() => {
+              return this.renderPostBackground(this.props.posts[this.state.selection]);
+            })()
+          }
+          <div className="overlay-slinder-panel"/>
+          <div id='home_slider_content_container' className="home_slider_content_container">
+            <div className="container">
+              <div className="row">
+                <div className="col">
+                  { this.renderPostContent() }
                 </div>
               </div>
-            )
-          }
+            </div>
+          </div>
+        </div>
+      }
+      <div className="similar_posts_container">
+        <div className="container">
+          { this.renderNextPosts() }
+        </div>
       </div>
-        {
-          slinderItems.map((post, postIt) => {
-            return (
-              <div key={postIt}>
-                {
-                  <div className="similar_posts_container">
-                    <div className="container">
-                        <div className="d-flex flex-row align-items-end preview-items responsive-container">
-                          {
-                            slinderItems.map((answer, i) => {
-                              return (
-                                <div className="col-lg-3 col-md-6 similar_post_col post-quick-view" key ={i}>
-                                  <div className="box1 post-quick-shared">
-                                    <div className="similar_post trans_200">
-                                      <a href="#">
-                                        {answer.current.title}
-                                      </a>
-                                    </div>
-                                  </div>
-
-                                  <div className="box2 post-quick-shared">
-                                    <div className="col-lg-6 post-quick-similar-post trans_200 post-quick-view-a">
-                                      <a id={'post-quick-'+ answer.current.id}
-                                        to-show={answer.current.id}
-                                        to-hide={post.current.id}
-                                        onClick={this.handleChange} href="#">
-                                        Quick View
-                                      </a>
-                                    </div>
-
-                                    <div className="col-lg-6 post-quick-similar-post trans_200 post-quick-view-b">
-                                      <Link to={`post/${answer.current.id}`}>
-                                        Read
-                                      </Link>
-                                  </div>
-                                </div>
-                              </div>
-                            )
-                          })
-                        }
-                      </div>
-                    </div>
-                  </div>
-                }
-              </div>
-            )
-          })
-        }
-      </div>
+    </div>
     );
   }
 }

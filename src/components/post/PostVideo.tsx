@@ -75,7 +75,7 @@ export default class PostVideo extends React.Component<any, State> {
     return (
       <div className="blog_section">
         <div className="section_panel d-flex flex-row align-items-center justify-content-start">
-          <div className="section_title">Most Popular Videos</div>
+          <div className="section_title_home">Most Popular Videos</div>
         </div>
         <div className="section_content">
           <div className="row">
