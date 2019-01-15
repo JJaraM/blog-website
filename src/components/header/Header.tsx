@@ -79,6 +79,7 @@ export class Header extends React.Component<any, any> {
     						</nav>
 
     						<div className="search_container ml-auto">
+                  {/*
     							<div className="weather">
     								<div className="temperature">{application.home_initials}</div>
                       <a target="_blank" href={application.home_github}>
@@ -89,6 +90,7 @@ export class Header extends React.Component<any, any> {
                       <img className="weather_icon" src="../../images/In-White-34px-R.png" alt=""/>
                     </a>
     							</div>
+                  */}
     							<form action="#">
     								<input type="search" className="header_search_input" placeholder="Type to Search..."/>
     								<img className="header_search_icon" src="images/search.png" alt=""/>

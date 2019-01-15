@@ -8,7 +8,8 @@ import Slinder from '../../Slinder';
 import PostsLatest from '../post/PostsLatest';
 import { Header } from '../header/Header';
 import { Footer } from '../common/Footer';
-import PostVideo from '../post/PostVideo'
+import PostVideo from '../post/PostVideo';
+import ExperienceSide from '../common/ExperienceSide';
 
 import '../../bootstrap4/bootstrap.min.css'
 import '../../plugins/OwlCarousel2-2.2.1/owl.carousel.css';
@@ -43,8 +44,11 @@ export class Home extends React.Component<any, State> {
   render() {
 
     if (this.state === null || this.state.tags === null) {
-      return (<div></div>)
+      return (<></>)
     }
+
+
+
 
     return (
       <div className="super_container">
@@ -85,62 +89,115 @@ export class Home extends React.Component<any, State> {
                   <div className="sidebar_background"/>
 
                   <div className="sidebar_section">
-                    <aside id="about-3" className="widget about">
-                      <img className="about-image" src="https://media.licdn.com/dms/image/C5603AQGg6FHWARek0w/profile-displayphoto-shrink_100_100/0?e=1551916800&amp;v=beta&amp;t=mQl4bZVK8-i4jx3BxMcrYzlEHLcHOsFuQxMAwEwYMwA" alt=""/>
-                      <h2 className="widgettitle">Jonathan Jara Morales</h2>
-                      <div className="about-description">
-                        <span>
-                          I am a software developer who loves creates new apps.
-                        </span>
-                      </div>
-                    </aside>
+                    <div className="widget-body">
+                       <div className="pk-widget-author">
+                          <div className="pk-widget-author-container">
+                            <h5 className="title-block title-widget">Author</h5>
+                            <h5 className="pk-author-title">
+                              Jonathan Jara
+                            </h5>
+                             <div className="pk-author-avatar">
+                              <a href="https://expertlytheme.com/hanna-janssen/author/elliot/" rel="author">
+                                <img alt="" src="https://media.licdn.com/dms/image/C5603AQGg6FHWARek0w/profile-displayphoto-shrink_200_200/0?e=1553126400&v=beta&t=NUoSgMdhwyPr3v68P8bPLRWBNs5h42aa5AjPQsFEe7g" className="avatar avatar-80 photo lazyautosizes pk-lazyloaded" height="80" width="80"/>
+                              </a>
+                            </div>
+
+                             <div className="pk-author-data">
+                                <div className="author-description pk-color-secondary">
+                                  I am a software developer who loves creates new apps.
+                                </div>
+
+                                <div className="pk-author-social-links pk-social-links-wrap pk-social-links-template-default">
+                                  <div className="pk-social-links-items">
+                                     <div className="pk-social-links-item pk-social-links-website">
+                                       <a href="#" className="pk-social-links-link" target="_blank">
+                                         <i className="fa fa-linkedin"/>
+                                       </a>
+                                     </div>
+                                     <div className="pk-social-links-item pk-social-links-facebook">
+                                       <a href="#" className="pk-social-links-link" target="_blank">
+                                         <i className="fa fa-github"/>
+                                       </a>
+                                     </div>
+                                     <div className="pk-social-links-item pk-social-links-twitter">
+                                       <a href="#" className="pk-social-links-link" target="_blank">
+                                         <i className="fa fa-youtube"/>
+                                       </a>
+                                     </div>
+                                  </div>
+                               </div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+
+
+
+
+
+
+
 
                     <aside className="what_say_people">
+                      <span className="sidebar_title">What does the people say about me?</span>
 
-                      <span className="sidebar_title">What's say the people about me?</span>
-
-
-                      <span className="tooltip story_circle story_hotlink">
-                        <img width="415" height="415" src="https://media.licdn.com/dms/image/C4E03AQGwTHDmWYwFIQ/profile-displayphoto-shrink_800_800/0?e=1552521600&v=beta&t=nr15cDFWep-s0vdi-T5B9PChwlSxhsAk466IsegF-50" className="img-responsive wp-post-image"/>
-                        <span>
-                            <strong>Mario Chacón Campos</strong>
-                            <div className="description">
-                              Jonathan pays attention to details and is àlways learning and building software with new tech and languages.
+                      <div className="sidebar_section_content">
+                        <span className="tooltip story_circle story_hotlink">
+                          <img width="415" height="415" src="https://media.licdn.com/dms/image/C4E03AQFd3SloZ_TPLQ/profile-displayphoto-shrink_800_800/0?e=1553126400&v=beta&t=jo60srnWXpcZ9aos1uAVbl2_Y9Ohbj7OpY8nekMdnqo" className="img-responsive wp-post-image"/>
+                          <span>
+                            <div className="tooltip-desc">
+                              <strong>Luberth Morera</strong>
+                              <div className="description">
+                                We are proud to have you in our team and we encourage you to keep being a great
+                                ambassador of what we call achieve with dedication and passion
+                              </div>
                             </div>
+                          </span>
                         </span>
-                      </span>
 
-                    
+
+                        <span className="tooltip story_circle story_hotlink">
+                          <img width="415" height="415" src="https://media.licdn.com/dms/image/C4E03AQFd3SloZ_TPLQ/profile-displayphoto-shrink_800_800/0?e=1553126400&v=beta&t=jo60srnWXpcZ9aos1uAVbl2_Y9Ohbj7OpY8nekMdnqo" className="img-responsive wp-post-image"/>
+                          <span>
+                            <div className="tooltip-desc">
+                              <strong>Luberth Morera</strong>
+                              <div className="description">
+                                During 2017 we have constantly received outstanding feedback from the client
+                                who's is more than happy having Jonathan as part of their team: Consistency, commitment
+                                and great quality
+                              </div>
+                            </div>
+                          </span>
+                        </span>
+
+                        <span className="tooltip story_circle story_hotlink">
+                           <img width="415" height="415" src="https://media.licdn.com/dms/image/C4E03AQGwTHDmWYwFIQ/profile-displayphoto-shrink_800_800/0?e=1552521600&v=beta&t=nr15cDFWep-s0vdi-T5B9PChwlSxhsAk466IsegF-50" className="img-responsive wp-post-image"/>
+                           <span>
+                               <strong>Mario Chacón Campos</strong>
+                               <div className="description">
+                                 Jonathan pays attention to details and is àlways learning and building software with new tech and languages.
+                               </div>
+                           </span>
+                         </span>
+                        </div>
                     </aside>
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    <ExperienceSide />
                   </div>
+
 
                   <div className="sidebar_section">
                     <div className="advertising">
                       <div className="advertising_background" style={{backgroundImage: `url(https://images-na.ssl-images-amazon.com/images/I/81Kf5P10mKL.__BG0,0,0,0_FMpng_AC_UL320_SR260,320_.jpg)`}}></div>
                         <div className="advertising_content d-flex flex-column align-items-start justify-content-end">
-                      {/*<div className="advertising_perc">-15%</div>
+                        {/*
+                        <div className="advertising_perc">-15%</div>
                         <div className="advertising_link">
                           <a href="#">How Did van Gogh’s Turbulent Mind</a>
-                        </div>*/}
+                        </div>
+                        */}
                       </div>
                     </div>
                   </div>
-
-
-
                 </div>
               </div>
             </div>
