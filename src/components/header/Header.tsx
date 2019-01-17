@@ -5,6 +5,37 @@
 import * as React from 'react';
 import application from '../../application';
 import { Link } from "react-router-dom";
+import Autosuggest from 'react-autosuggest';
+import api from '../../api/post';
+
+// Imagine you have a list of languages that you'd like to autosuggest.
+
+
+
+// When suggestion is clicked, Autosuggest needs to populate the input
+// based on the clicked suggestion. Teach Autosuggest how to calculate the
+// input value for every given suggestion.
+const getSuggestionValue = suggestion => suggestion.name;
+
+// Use your imagination to render suggestions.
+const renderSuggestion = suggestion => (
+  <Link to={`post/${suggestion.id}`}>
+    <div className=" suggestion">
+      <div className="d-flex flex-row align-items-xl-center align-items-start justify-content-start smart_search">
+         <div className="side_post_image">
+            <div><img src={suggestion.image} alt=""/></div>
+         </div>
+         <div className="side_post_content">
+            <div className="side_post_title">{suggestion.title}</div>
+            <small className="post_meta">
+            Here I need to insert a desc
+            </small>
+         </div>
+      </div>
+    </div>
+  </Link>
+);
+
 
 /*
 * Component used to render the header section of the page when is being rendered by a browser
@@ -14,13 +45,62 @@ export class Header extends React.Component<any, any> {
 
   constructor(props:any) {
     super(props);
+    this.state = {
+      value: '',
+      suggestions: [],
+      posts: [],
+      isLoading: false
+    };
   }
+
+  onChange = (event, { newValue }) => {
+    this.setState({
+      value: newValue
+    });
+  };
+
+  // Autosuggest will call this function every time you need to update suggestions.
+  // You already implemented this logic above, so just use it.
+  onSuggestionsFetchRequested = ({ value }) => {
+    this.setState({
+      suggestions: this.getSuggestions(value)
+    });
+  };
+
+  // Teach Autosuggest how to calculate suggestions for any given input value.
+  getSuggestions = value => {
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
+
+    console.log(this.state.posts);
+
+    return inputLength === 0 ? [] : this.state.posts.filter(lang =>
+      lang.title.toLowerCase().slice(0, inputLength) === inputValue
+    );
+  };
+
+  // Autosuggest will call this function every time you need to clear suggestions.
+  onSuggestionsClearRequested = () => {
+    this.setState({
+      suggestions: []
+    });
+  };
 
   /*
    * When a component will be mount we add a handleScroll event
    */
   componentDidMount() {
       window.addEventListener('scroll', this.handleScroll);
+      this.fetchPost();
+  }
+
+  fetchPost = () => {
+    console.log(api);
+    this.setState({isLoading: true});
+    fetch(api.find + '0' + '/100' + "/0")
+      .then(response => response.json())
+      .catch(error => console.log(error))
+      .then(data =>  this.setState({posts: data, isLoading: false}));
   }
 
   /*
@@ -47,8 +127,21 @@ export class Header extends React.Component<any, any> {
   }
 
   render() {
+
+    const { value, suggestions } = this.state;
+
+    // Autosuggest will pass through all these props to the input.
+    const inputProps = {
+      placeholder: 'Type to Seach...',
+      value,
+      onChange: this.onChange
+    };
+
     return (
       <header className="header" id="main-header">
+
+
+
     		<div className="container">
     			<div className="row">
     				<div className="col">
@@ -79,22 +172,16 @@ export class Header extends React.Component<any, any> {
     						</nav>
 
     						<div className="search_container ml-auto">
-                  {/*
-    							<div className="weather">
-    								<div className="temperature">{application.home_initials}</div>
-                      <a target="_blank" href={application.home_github}>
-        								<img className="weather_icon" src="../../images/GitHub-Mark-Light-32px.png" alt=""/>
-                      </a>
-                    <span/>
-                    <a target="_blank" href={application.home_linkedIn}>
-                      <img className="weather_icon" src="../../images/In-White-34px-R.png" alt=""/>
-                    </a>
-    							</div>
-                  */}
-    							<form action="#">
-    								<input type="search" className="header_search_input" placeholder="Type to Search..."/>
-    								<img className="header_search_icon" src="images/search.png" alt=""/>
-    							</form>
+                    <Autosuggest
+                      suggestions={suggestions}
+                      onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                      onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                      getSuggestionValue={getSuggestionValue}
+                      renderSuggestion={renderSuggestion}
+                      inputProps={inputProps}
+                       />
+    								<img className="header_search_icon" src="/images/search.png" alt=""/>
+
     						</div>
     						<div className="hamburger ml-auto menu_mm">
     							<i className="fa fa-bars trans_200 menu_mm" aria-hidden="true"/>

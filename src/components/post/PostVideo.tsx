@@ -81,7 +81,7 @@ export default class PostVideo extends React.Component<any, State> {
           <div className="row">
             <div className="col">
               <div className="videos">
-              <YouTube videoId={ this.state.id } opts={opts} onReady={this._onReady} />
+                <YouTube videoId={ this.state.id } opts={opts} onReady={this._onReady} />
                 { this.renderPlaylist() }
               </div>
             </div>

@@ -42,13 +42,9 @@ export class Home extends React.Component<any, State> {
   }
 
   render() {
-
     if (this.state === null || this.state.tags === null) {
       return (<></>)
     }
-
-
-
 
     return (
       <div className="super_container">
@@ -63,84 +59,52 @@ export class Home extends React.Component<any, State> {
                 <div className="main_content">
                   <PostsLatest tags={this.state.tags} />
                   <PostVideo/>
-                  {/*<div className="blog_section">
-                    <div className="section_panel d-flex flex-row align-items-center justify-content-start">
-                      <div className="section_title">Carrer</div>
-                    </div>
-                    <div className="section_content">
-
-                    </div>
-                  </div>*/}
-
-
-
-
-
-
-
-
-
                   <div className="blog_section"></div>
-
                 </div>
               </div>
               <div className="col-lg-3">
                 <div className="sidebar">
                   <div className="sidebar_background"/>
-
                   <div className="sidebar_section">
                     <div className="widget-body">
                        <div className="pk-widget-author">
                           <div className="pk-widget-author-container">
                             <h5 className="title-block title-widget">Author</h5>
-                            <h5 className="pk-author-title">
-                              Jonathan Jara
-                            </h5>
-                             <div className="pk-author-avatar">
+                            <h5 className="pk-author-title">Jonathan Jara</h5>
+                            <div className="pk-author-avatar">
                               <a href="https://expertlytheme.com/hanna-janssen/author/elliot/" rel="author">
                                 <img alt="" src="https://media.licdn.com/dms/image/C5603AQGg6FHWARek0w/profile-displayphoto-shrink_200_200/0?e=1553126400&v=beta&t=NUoSgMdhwyPr3v68P8bPLRWBNs5h42aa5AjPQsFEe7g" className="avatar avatar-80 photo lazyautosizes pk-lazyloaded" height="80" width="80"/>
                               </a>
                             </div>
-
-                             <div className="pk-author-data">
-                                <div className="author-description pk-color-secondary">
-                                  I am a software developer who loves creates new apps.
-                                </div>
-
-                                <div className="pk-author-social-links pk-social-links-wrap pk-social-links-template-default">
-                                  <div className="pk-social-links-items">
-                                     <div className="pk-social-links-item pk-social-links-website">
-                                       <a href="#" className="pk-social-links-link" target="_blank">
-                                         <i className="fa fa-linkedin"/>
-                                       </a>
-                                     </div>
-                                     <div className="pk-social-links-item pk-social-links-facebook">
-                                       <a href="#" className="pk-social-links-link" target="_blank">
-                                         <i className="fa fa-github"/>
-                                       </a>
-                                     </div>
-                                     <div className="pk-social-links-item pk-social-links-twitter">
-                                       <a href="#" className="pk-social-links-link" target="_blank">
-                                         <i className="fa fa-youtube"/>
-                                       </a>
-                                     </div>
+                            <div className="pk-author-data">
+                              <div className="author-description pk-color-secondary">
+                                I am a software developer who loves creates new apps.
+                              </div>
+                              <div className="pk-author-social-links pk-social-links-wrap pk-social-links-template-default">
+                                <div className="pk-social-links-items">
+                                  <div className="pk-social-links-item pk-social-links-website">
+                                    <a href="#" className="pk-social-links-link" target="_blank">
+                                      <i className="fa fa-linkedin"/>
+                                    </a>
+                                    </div>
+                                    <div className="pk-social-links-item pk-social-links-facebook">
+                                      <a href="#" className="pk-social-links-link" target="_blank">
+                                        <i className="fa fa-github"/>
+                                      </a>
+                                    </div>
+                                    <div className="pk-social-links-item pk-social-links-twitter">
+                                      <a href="#" className="pk-social-links-link" target="_blank">
+                                        <i className="fa fa-youtube"/>
+                                      </a>
+                                    </div>
                                   </div>
                                </div>
                              </div>
                           </div>
                        </div>
                     </div>
-
-
-
-
-
-
-
-
                     <aside className="what_say_people">
                       <span className="sidebar_title">What does the people say about me?</span>
-
                       <div className="sidebar_section_content">
                         <span className="tooltip story_circle story_hotlink">
                           <img width="415" height="415" src="https://media.licdn.com/dms/image/C4E03AQFd3SloZ_TPLQ/profile-displayphoto-shrink_800_800/0?e=1553126400&v=beta&t=jo60srnWXpcZ9aos1uAVbl2_Y9Ohbj7OpY8nekMdnqo" className="img-responsive wp-post-image"/>
@@ -154,8 +118,6 @@ export class Home extends React.Component<any, State> {
                             </div>
                           </span>
                         </span>
-
-
                         <span className="tooltip story_circle story_hotlink">
                           <img width="415" height="415" src="https://media.licdn.com/dms/image/C4E03AQFd3SloZ_TPLQ/profile-displayphoto-shrink_800_800/0?e=1553126400&v=beta&t=jo60srnWXpcZ9aos1uAVbl2_Y9Ohbj7OpY8nekMdnqo" className="img-responsive wp-post-image"/>
                           <span>
@@ -169,7 +131,6 @@ export class Home extends React.Component<any, State> {
                             </div>
                           </span>
                         </span>
-
                         <span className="tooltip story_circle story_hotlink">
                            <img width="415" height="415" src="https://media.licdn.com/dms/image/C4E03AQGwTHDmWYwFIQ/profile-displayphoto-shrink_800_800/0?e=1552521600&v=beta&t=nr15cDFWep-s0vdi-T5B9PChwlSxhsAk466IsegF-50" className="img-responsive wp-post-image"/>
                            <span>
@@ -182,21 +143,6 @@ export class Home extends React.Component<any, State> {
                         </div>
                     </aside>
                     <ExperienceSide />
-                  </div>
-
-
-                  <div className="sidebar_section">
-                    <div className="advertising">
-                      <div className="advertising_background" style={{backgroundImage: `url(https://images-na.ssl-images-amazon.com/images/I/81Kf5P10mKL.__BG0,0,0,0_FMpng_AC_UL320_SR260,320_.jpg)`}}></div>
-                        <div className="advertising_content d-flex flex-column align-items-start justify-content-end">
-                        {/*
-                        <div className="advertising_perc">-15%</div>
-                        <div className="advertising_link">
-                          <a href="#">How Did van Gogh’s Turbulent Mind</a>
-                        </div>
-                        */}
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
