@@ -156,7 +156,7 @@ class SlinderItems extends React.Component<Props, State> {
     }
 
     return (
-      <div>
+      <>
         <div id={'image-' + post.id} className="home_slider_background home_background_mask" style={{backgroundImage: `url(${post.image})`}}/>
 
         <Particles
@@ -179,7 +179,7 @@ class SlinderItems extends React.Component<Props, State> {
                 }
             }
         }} />
-      </div>
+      </>
 
     );
   }

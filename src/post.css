@@ -2071,19 +2071,19 @@ h1,h2,h3,h4,h5,h6 {
 .post-quick-view-a, .post-quick-view-b {
 	width: 50%;
 	color: #343233;
-	background-color: #ffd152;
+	background-color: #6dc6b9;
 }
 .post-quick-view-a {
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
-	background: linear-gradient(to right, #dedede   50%, #ffd152 50%);
+	background: linear-gradient(to right, #dedede   50%, #6dc6b9 50%);
 	background-position:left bottom;
 }
 
 .post-quick-view-b {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
-	background: linear-gradient(to right, #ffd152 50%, #dedede 50%);
+	background: linear-gradient(to right, #6dc6b9 50%, #dedede 50%);
 	background-position:right bottom;
 }
 

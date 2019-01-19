@@ -7,6 +7,7 @@ import * as React from 'react';
 import Slinder from '../../Slinder';
 import PostsLatest from '../post/PostsLatest';
 import { Header } from '../header/Header';
+import Menu from '../header/Menu';
 import { Footer } from '../common/Footer';
 import PostVideo from '../post/PostVideo';
 import ExperienceSide from '../common/ExperienceSide';
@@ -49,6 +50,7 @@ export class Home extends React.Component<any, State> {
     return (
       <div className="super_container">
         <Header/>
+        <Menu/>
         <div className="home_slinder">
           <Slinder tags={this.state.tags} />
         </div>
