@@ -1569,7 +1569,7 @@ section
 	border-radius: 6px;
 	overflow: hidden;
 }
-.side_post_image div img
+.video .side_post_image div img
 {
 	max-width: 100%;
 	margin-top: 10px;

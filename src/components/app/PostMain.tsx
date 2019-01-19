@@ -2,8 +2,7 @@ import * as React from 'react';
 
 import PostSection from '../post/PostSection';
 
-import { Header } from '../header/Header';
-import { Footer } from '../common/Footer';
+
 
 import '../../bootstrap4/bootstrap.min.css'
 import '../../plugins/OwlCarousel2-2.2.1/owl.carousel.css';
@@ -21,11 +20,9 @@ export class PostMain extends React.Component<any, any> {
 
   render() {
     return (
-      <div className="super_container">
-        <Header/>
-          <PostSection id={this.props.match.params.id} editable={this.props.match.params.editable}/>
-        <Footer/>
-      </div>
+      <>
+        <PostSection id={this.props.match.params.id} editable={this.props.match.params.editable}/>
+      </>
     );
   }
 }

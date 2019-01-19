@@ -139,8 +139,7 @@ export class Header extends React.Component<any, any> {
       inputProps.value = " ";
     }
 
-    console.log('input');
-    console.log(window.location.href.includes('/post/'));
+
 
 
     return (

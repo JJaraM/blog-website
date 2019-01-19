@@ -56,6 +56,7 @@ interface State {
   tags: Array<Tag>;
   redirect: boolean;
   render: boolean;
+  isFromSearch: boolean;
 }
 
 /*
@@ -65,6 +66,7 @@ class PostSection extends React.Component<Props, State> {
 
   constructor(props:Props) {
     super(props);
+
   }
 
   /*
@@ -73,7 +75,11 @@ class PostSection extends React.Component<Props, State> {
    * and then will use the Prism library to highlight the code sections.
    */
   componentDidMount() {
-    this.setState({isLoading: true, redirect: false, render: false});
+    this.setState({isLoading: true, redirect: false, render: false, isFromSearch: false});
+    this.fetchData();
+  }
+
+  fetchData = () => {
     this.fetchPost();
     this.fetchTags();
   }
@@ -84,8 +90,15 @@ class PostSection extends React.Component<Props, State> {
   componentDidUpdate() {
     if (this.state.post !== undefined && !this.state.render) {
       this.setState({render: true});
-      Prism.highlightAll();
-      this.cleanBullets();
+    }
+
+    if (this.state !== undefined && this.state.post !== undefined) {
+      const propsId = Number.parseInt(this.props.id, 0);
+      const postId = Number.parseInt(this.state.post.id, 0);
+      if (postId !== propsId && !this.state.isFromSearch) {
+        this.setState({isFromSearch: true});
+        this.fetchData();
+      }
     }
   }
 
@@ -105,7 +118,11 @@ class PostSection extends React.Component<Props, State> {
     fetch(apiPost.findById  + this.props.id)
       .then(response => response.json())
       .catch(error => this.setState({redirect: true}))
-      .then(data => this.setState({post: data, isLoading: false}));
+      .then(data => {
+        this.setState({post: data, isLoading: false});
+        Prism.highlightAll();
+        this.cleanBullets();
+      });
   }
 
   /*
@@ -177,10 +194,6 @@ class PostSection extends React.Component<Props, State> {
         {this.renderNextPost()}
         {this.renderPostBackground(post)}
         <div className="home_content">
-          {/*<div className="post_category trans_200">
-            <a href="category.html" className="trans_200">sport</a>
-          </div>
-          */}
           <div className="post_title">{post.title}</div>
         </div>
       </div>
@@ -266,6 +279,8 @@ class PostSection extends React.Component<Props, State> {
    * specific section.
    */
   render() {
+
+
     if (this.state != null && this.state.redirect) {
       return <Redirect to='/notFound'/>;
     }
@@ -278,7 +293,9 @@ class PostSection extends React.Component<Props, State> {
       )
     }
 
+
     const date = new Date(this.state.post.createDate);
+
     return (
       <div>
         {this.renderHeader(this.state.post)}

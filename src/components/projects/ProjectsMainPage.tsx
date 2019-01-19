@@ -3,7 +3,7 @@
 * @since 1.0
 */
 import * as React from 'react';
-import { Header } from '../header/Header';
+
 import { Footer } from '../common/Footer';
 import '../../bootstrap4/bootstrap.min.css'
 import '../../plugins/OwlCarousel2-2.2.1/owl.carousel.css';
@@ -25,8 +25,8 @@ export class ProjectsMainPage extends React.Component<any, any> {
 
   render() {
     return (
-      <div className="super_container">
-        <Header/>
+      <>
+
         <div className="home_slinder_projects">
         </div>
         <div className="page_content">
@@ -204,7 +204,7 @@ export class ProjectsMainPage extends React.Component<any, any> {
           </div>
         </div>
         <Footer/>
-      </div>
+      </>
     );
   }
 }
