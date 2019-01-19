@@ -17,9 +17,8 @@ import api from '../../api/post';
 // input value for every given suggestion.
 const getSuggestionValue = suggestion => suggestion.name;
 
-// Use your imagination to render suggestions.
 const renderSuggestion = suggestion => (
-  <Link to={`post/${suggestion.id}`}>
+  <Link to={`/post/${suggestion.id}`} >
     <div className=" suggestion">
       <div className="d-flex flex-row align-items-xl-center align-items-start justify-content-start smart_search">
          <div className="side_post_image">
@@ -30,6 +29,9 @@ const renderSuggestion = suggestion => (
             <small className="post_meta">
             Here I need to insert a desc
             </small>
+            <div className="post_meta">
+              Last Update: {new Date(suggestion.updateDate).toLocaleDateString()}
+            </div>
          </div>
       </div>
     </div>
@@ -71,11 +73,8 @@ export class Header extends React.Component<any, any> {
   getSuggestions = value => {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
-
-    console.log(this.state.posts);
-
     return inputLength === 0 ? [] : this.state.posts.filter(lang =>
-      lang.title.toLowerCase().slice(0, inputLength) === inputValue
+      lang.title.toLowerCase().includes(inputValue.toLowerCase())
     );
   };
 
@@ -95,7 +94,6 @@ export class Header extends React.Component<any, any> {
   }
 
   fetchPost = () => {
-    console.log(api);
     this.setState({isLoading: true});
     fetch(api.find + '0' + '/100' + "/0")
       .then(response => response.json())
@@ -114,7 +112,7 @@ export class Header extends React.Component<any, any> {
     const pos = window.scrollY;
     const element = document.getElementById("main-header");
     if (element !== null) {
-      if (pos > 100) {
+      if (pos > 85) {
         if (element.classList !== null) {
             element.classList.add("scrolled");
         }
@@ -136,6 +134,14 @@ export class Header extends React.Component<any, any> {
       value,
       onChange: this.onChange
     };
+
+    if (inputProps.value === undefined) {
+      inputProps.value = " ";
+    }
+
+    console.log('input');
+    console.log(window.location.href.includes('/post/'));
+
 
     return (
       <header className="header" id="main-header">

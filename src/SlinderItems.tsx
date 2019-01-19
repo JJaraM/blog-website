@@ -174,7 +174,8 @@ class SlinderItems extends React.Component<Props, State> {
                     "onhover": {
                         "enable": true,
                         "mode": "repulse"
-                    }
+                    },
+                    "resize": true
                 }
             }
         }} />

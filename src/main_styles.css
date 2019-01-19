@@ -1322,13 +1322,20 @@ section
 }
 .playlist
 {
-	position: absolute;
+	/*position: absolute;*/
 	top: 0;
 	right: 0;
 	width: 263px;
 	height: 100%;
-	padding-top: 35px;
+	padding-top: 10px;
 	padding-bottom: 35px;
+
+}
+.ytp-title-text {
+	display: none !important;
+}
+.html5-video-player a {
+	display: none !important;
 }
 .playlist_background
 {
@@ -1343,9 +1350,13 @@ section
 {
 	cursor: pointer;
 }
+.video_container:hover {
+	background: rgba(255,255,255,0.2);
+}
 .video_container:not(:last-child)
 {
-	margin-bottom: 15px;
+	/*margin-bottom: 15px;*/
+	border-bottom: 1px solid #2c3e38;
 }
 .video_container.active .video_image::after
 {
@@ -1426,15 +1437,13 @@ section
 }
 .video_title
 {
-	font-size: 14px;
-	font-weight: 500;
-	color: rgba(255,255,255,0.25);
+
+	color: #FFF;
 	line-height: 1.285;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
+
+	    font-family: 'Open Sans', sans-serif;
+			font-size: 12px;
+    font-weight: 600;
 }
 .video:hover .video_title,
 .video_container.active .video_title
@@ -1443,16 +1452,12 @@ section
 }
 .video_info
 {
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 12px;
-	font-weight: 500;
-	color: rgba(255,255,255,0.1);
-	margin-top: 9px;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
+	font-size: 10px;
+	margin: 0;
+	opacity: 0.6;
+	font-weight: 400;
+	font-family: 'Open Sans', sans-serif;
+	color:#FFF;
 }
 .video:hover .video_info,
 .video_container.active .video_info
@@ -1567,6 +1572,7 @@ section
 .side_post_image div img
 {
 	max-width: 100%;
+	margin-top: 10px;
 }
 .side_post_content
 {
@@ -2241,4 +2247,43 @@ padding-left: 25px;
     color: #fff;
     font-size: 16px;
     padding: 0px 8px;
+}
+
+.video-search {
+	display: inline-block;
+  width: 100%;
+  /* height: 46px; */
+  background: rgba(255,255,255,.2);
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding-left: 49px;
+  color: #fff;
+}
+
+.video-search-section {
+	padding: 0px 10px 0px 10px;
+}
+
+.jjara-playlist {
+	position: absolute;
+  top: 0;
+  right: 0;
+  width: 263px;
+  height: 100%;
+	padding-top: 10px;
+  padding-bottom: 35px;
+	overflow: hidden;
+}
+
+.video {
+	padding-left: 10px;
+}
+@media only screen and (max-width: 900px) {
+	.jjara-video {
+		width: 100%;
+		height: 100%;
+	}
+
+
 }
