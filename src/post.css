@@ -609,7 +609,7 @@ section
 	top: 0;
 	left: 0;
 	width: 100%;
-	background-color: rgba(0,0,0,.6);
+	background-color: rgba(0,0,0,.1);
 }
 
 .home_content
@@ -2306,9 +2306,7 @@ h1,h2,h3,h4,h5,h6 {
 	height: auto;
 }
 
-.story_circle:hover {
-	border: 1px solid #6dc6b9;
-}
+
 
 .what_say_people {
 	padding-top: 30px;

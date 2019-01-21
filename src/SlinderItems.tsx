@@ -115,6 +115,13 @@ class SlinderItems extends React.Component<Props, State> {
 
 
   renderPostContent = () => {
+    const letters = this.props.posts[this.state.selection].title.split('');
+
+
+    // &nbsp
+    console.log(letters);
+
+    // {this.props.posts[this.state.selection].title}
     return (
       <div className="home_slider_content">
         <div className="jjara-post-slinder-tags">
@@ -122,7 +129,19 @@ class SlinderItems extends React.Component<Props, State> {
         </div>
         <div className="home_slider_item_title">
           <Link to={`post/${this.props.posts[this.state.selection].id}`}>
-            {this.props.posts[this.state.selection].title}
+            {
+              letters.map((letter, index) => {
+                let letterClass = "shake_letter";
+
+                if (letter === ' ') {
+                  letterClass = "shake_letter_space";
+                }
+
+                return (
+                  <span className={letterClass} key={index}>{letter}</span>
+                )
+              })
+            }
           </Link>
         </div>
         { this.renderSocialIcons() }
