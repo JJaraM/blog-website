@@ -2308,15 +2308,7 @@ h1,h2,h3,h4,h5,h6 {
 
 
 
-.what_say_people {
-	padding-top: 30px;
-	padding-bottom: 30px;
-}
 
-.what_say_people > .sidebar_section_content {
-	padding-top: 30px;
-	text-align: center;
-}
 
 .tooltip {
 	opacity: 1 !important;
@@ -2592,4 +2584,20 @@ body {
 
 .tag.green {
 	background: #28a745;
+}
+
+.add_about_me a {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background-color: #f3f3f3;
+
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 51px;
+}
+.add_about_me a > .fa {
+    color: #c9c9c9;
 }

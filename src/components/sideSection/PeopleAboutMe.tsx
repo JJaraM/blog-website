@@ -5,6 +5,7 @@
 import * as React from 'react';
 
 import api from '../../api/peopleAboutMe';
+import './peopleAboutMe.scss';
 
 /*
 * Component used to render the index page
@@ -18,8 +19,10 @@ export class PeopleAboutMe extends React.Component<any, any> {
 
   render() {
     return (
-      <aside className="what_say_people">
-        <span className="sidebar_title">What does the people say about me?</span>
+      <aside className="jjara_container_what_say_people">
+        <h4 className="jjara_sidebar_title">
+          <span>What does the people say about me?</span>
+        </h4>
         <div className="sidebar_section_content">
           {
             api.data.map((person, personIt) => {
@@ -38,6 +41,11 @@ export class PeopleAboutMe extends React.Component<any, any> {
               )
             })
           }
+          <span className="add_about_me tooltip story_circle story_hotlink">
+            <a href="">
+              <i className="fa fa-plus"/>
+            </a>
+          </span>
         </div>
       </aside>
     );
