@@ -96,6 +96,22 @@ export default class PostsLatest extends React.Component<Props, State> {
       array = [];
       this.setState({tag: tagId});
       this.fetchPost(tagId);
+      this.selectTab(tagId);
+  }
+
+  selectTab = (tagId:number) => {
+    const tagSection = document.getElementById('tags-section');
+    if (tagSection !== null) {
+      const li = tagSection.getElementsByTagName("li");
+      Array.prototype.forEach.call(li, function (item) {
+        const id = Number(item.id.replace('tag-', ''));
+        if (id === tagId) {
+          item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+      });
+    }
   }
 
   renderTags = () => {
@@ -104,14 +120,18 @@ export default class PostsLatest extends React.Component<Props, State> {
 
     return (
       <>
-        <div className="section_tags ml-auto">
+        <div id="tags-section" className="section_tags ml-auto">
           <ul>
-            <li className="active">
+            <li id="tag-0" key="tag-0" className="active">
               <div className="tag-button"  onClick={this.changeTag(0)} >all</div>
             </li>
             {
               firstSetOfTags.map((tag, tagId) => {
-                return (<li key={tag.id}><div className="tag-button" onClick={this.changeTag(tag.id)}>{tag.name}</div></li>);
+                return (
+                  <li id={'tag-'+ tag.id} key={'tag-'+ tag.id}>
+                    <div className="tag-button" onClick={this.changeTag(tag.id)}>{tag.name}</div>
+                  </li>
+                );
               })
             }
           </ul>

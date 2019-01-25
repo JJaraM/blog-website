@@ -118,9 +118,6 @@ class SlinderItems extends React.Component<Props, State> {
     const letters = this.props.posts[this.state.selection].title.split('');
 
 
-    // &nbsp
-    console.log(letters);
-
     // {this.props.posts[this.state.selection].title}
     return (
       <div className="home_slider_content">

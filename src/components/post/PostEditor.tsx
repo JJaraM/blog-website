@@ -18,8 +18,7 @@ import Post from '../../dto/Post';
 import Tag from '../../dto/Tag';
 
 import { Loading } from '../common/Loading';
-import { Header } from '../header/Header';
-import { Footer } from '../common/Footer';
+
 
 import '../../react-tags.css';
 import 'react-notifications/lib/notifications.css';
@@ -198,7 +197,7 @@ class PostEditor extends React.Component<Props, State> {
     }
     return (
       <div className="super_container">
-        <Header/>
+
         <div>
           <div className="home">
             <div className="home_background home_background_mask parallax-window" data-parallax="scroll" style={{backgroundImage: `url(${this.state.post.draftImage})`}} data-speed="0.8"/>
@@ -280,7 +279,7 @@ class PostEditor extends React.Component<Props, State> {
   */}
            <NotificationContainer/>
         </div>
-        <Footer/>
+
       </div>
 
     );

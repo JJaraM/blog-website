@@ -1744,79 +1744,6 @@ section
 	margin-top: 13px;
 }
 
-/*********************************
-12. Footer
-*********************************/
-
-.footer
-{
-	width: 100%;
-	background: #1f1f1f;
-}
-.footer_content
-{
-	padding-top: 50px;
-	text-align: center;
-	padding-bottom: 17px;
-}
-.footer_logo a
-{
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 20px;
-	font-weight: 700;
-	color: #FFFFFF;
-	letter-spacing: 0.075em;
-	text-transform: uppercase;
-	line-height: 0.75;
-}
-.footer_social
-{
-	margin-top: 34px;
-}
-.footer_social ul li
-{
-	display: inline-block;
-}
-.footer_social ul li:not(:last-child)
-{
-	margin-right: 21px;
-}
-.footer_social ul li i
-{
-	color: #8f8f8f;
-}
-.footer_social_facebook:hover i
-{
-	color: #3b5999;
-}
-.footer_social_twitter:hover i
-{
-	color: #55acee;
-}
-.footer_social_pinterest:hover i
-{
-	color: #bd081c;
-}
-.footer_social_vimeo:hover i
-{
-	color: #1ab7ea;
-}
-.footer_social_instagram:hover i
-{
-	color: #c26d7a;
-}
-.footer_social_google:hover i
-{
-	color: #dd4b39;
-}
-.copyright
-{
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 12px;
-	font-weight: 500;
-	color: rgba(255,255,255,0.1);
-	margin-top: 40px;
-}
 .subscribe
 {
 	width: 100%;
@@ -2054,6 +1981,10 @@ padding-left: 25px;
     border: 0px;
 }
 
+.home > .overlay-slinder-panel {
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+}
 .overlay-slinder-panel {
 	width: 45%;
   height: 100%;
@@ -2295,12 +2226,9 @@ padding-left: 25px;
 
 .shake_letter {
 	display: inline-block;
-
-
   color: #fff;
   border-radius: 5px;
   text-decoration: none;
-
   animation-duration: 1s;
   animation-fill-mode: both;
   animation-iteration-count: 1;
@@ -2309,23 +2237,6 @@ padding-left: 25px;
 .shake_letter:hover {
   animation-name: rubberBand;
 	color: #6dc6b9;
-}
-
-.story_circle {
-	animation-duration: 1s;
-	animation-fill-mode: both;
-	animation-iteration-count: 1;
-}
-
-.story_circle:hover {
-	animation-name: right;
-	border: 1px solid #6dc6b9;
-}
-
-@keyframes right {
-	0% { right: 0;}
-
-	100%{ right: 20px;}
 }
 
 @keyframes rubberBand {

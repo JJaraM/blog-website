@@ -139,14 +139,8 @@ export class Header extends React.Component<any, any> {
       inputProps.value = " ";
     }
 
-
-
-
     return (
       <header className="header" id="main-header">
-
-
-
     		<div className="container">
     			<div className="row">
     				<div className="col">
@@ -163,7 +157,7 @@ export class Header extends React.Component<any, any> {
                         Home
                       </Link>
                     </li>
-    								<li>
+    								{/*<li>
                       <Link to="/about">
                         About
                       </Link>
@@ -173,6 +167,7 @@ export class Header extends React.Component<any, any> {
                         Projects
                       </Link>
                     </li>
+                    */}
     							</ul>
     						</nav>
 

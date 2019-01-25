@@ -1,15 +1,12 @@
 import * as React from 'react';
 
-import { Header } from '../header/Header';
-import { Footer } from '../common/Footer';
-
 import apiTag from '../../api/tag';
 import apiPost from '../../api/post';
 
 import Post from '../../dto/Post';
 
 import PostsLatestSection from '../../components/post/PostsLatestSection';
-import Slinder from '../../Slinder';
+
 
 import '../../bootstrap4/bootstrap.min.css'
 import '../../plugins/OwlCarousel2-2.2.1/owl.carousel.css';
@@ -58,9 +55,18 @@ export class Category extends React.Component<any, State> {
           if (tag.posts !== null) {
             tag.posts.forEach((postId) => {
               fetch(apiPost.findById + postId)
-                .then(response => response.json())
+                .then(response => {
+                  console.log(response)
+                  if (response.status !== 200) {
+                    return null;
+                  }
+                  return response.json();
+                })
                 .then(postData => {
-                  this.state.posts.push(postData);
+                  if (postData !== null) {
+                    this.state.posts.push(postData);
+                  }
+
                   this.setState({isLoading: false})
                 });
             });
@@ -74,13 +80,21 @@ export class Category extends React.Component<any, State> {
       return <div>Loading</div>
     }
 
+    const post = this.state.posts[0];
+    const tag = this.state.tags.filter(el => Number(el.id) === Number(this.props.match.params.id))[0];
+
+    console.log(tag);
     return (
-      <div>
-        <div className="home_slinder">
-          <Slinder tags={this.state.tags}/>
+      <>
+        <div className="home">
+          <div className="overlay-slinder-panel"/>
+          <div className="home_background home_background_mask parallax-window" style={{backgroundImage: `url(${post.image})`}} />
+          <div className="home_content">
+            <div className="post_title">{tag.name}</div>
+          </div>
         </div>
         <div className="super_container">
-          <Header/>
+
           <div className="page_content">
             <div className="container">
               <div className="row row-lg-eq-height">
@@ -97,9 +111,8 @@ export class Category extends React.Component<any, State> {
               </div>
             </div>
           </div>
-          <Footer/>
-      </div>
-      </div>
+        </div>
+      </>
     );
   }
 }

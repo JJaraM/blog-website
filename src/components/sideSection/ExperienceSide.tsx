@@ -12,8 +12,6 @@ class ExperienceSide extends React.Component {
   render() {
 
     const style1 = {
-      // transform: 'translate3d(-465px, 0px, 0px)',
-      // transition: 'all 1.2s ease 0s',
       width: '1628px'
     }
 
@@ -24,8 +22,9 @@ class ExperienceSide extends React.Component {
     return (
       <div className="sidebar_section">
          <div className="sidebar_title_container">
-            <div className="sidebar_title">Experience</div>
-
+           <h4 className="jjara_sidebar_title">
+             <span>Experience</span>
+           </h4>
          </div>
 
          <div className="sidebar_section_content">
@@ -90,10 +89,6 @@ class ExperienceSide extends React.Component {
                            </div>
                         </div>
                      </div>
-                  </div>
-                  <div className="owl-nav disabled">
-                     <div className="owl-prev">prev</div>
-                     <div className="owl-next">next</div>
                   </div>
                </div>
             </div>

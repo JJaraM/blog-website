@@ -9,7 +9,7 @@ import PostsLatest from '../post/PostsLatest';
 
 import { Loading } from '../common/Loading';
 import PostVideo from '../post/PostVideo';
-import ExperienceSide from '../common/ExperienceSide';
+import ExperienceSide from '../sideSection/ExperienceSide';
 import { PeopleAboutMe } from '../sideSection/PeopleAboutMe';
 
 import '../../bootstrap4/bootstrap.min.css'
@@ -77,7 +77,7 @@ export class Home extends React.Component<any, State> {
                             <h5 className="title-block title-widget">Author</h5>
                             <h5 className="pk-author-title">Jonathan Jara</h5>
                             <div className="pk-author-avatar">
-                              <a href="https://expertlytheme.com/hanna-janssen/author/elliot/" rel="author">
+                              <a href="#" rel="author">
                                 <img alt="" src="https://media.licdn.com/dms/image/C5603AQGg6FHWARek0w/profile-displayphoto-shrink_200_200/0?e=1553126400&v=beta&t=NUoSgMdhwyPr3v68P8bPLRWBNs5h42aa5AjPQsFEe7g" className="avatar avatar-80 photo lazyautosizes pk-lazyloaded" height="80" width="80"/>
                               </a>
                             </div>

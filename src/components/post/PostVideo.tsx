@@ -7,8 +7,7 @@ import * as React from 'react';
 import YouTube from 'react-youtube';
 import data from '../../api/postVideo';
 
-// Import Components
-import $ from 'jquery';
+
 
 
 
@@ -31,12 +30,7 @@ export default class PostVideo extends React.Component<any, State> {
       autoplay: 0
     }
 
-    if (typeof window !== 'undefined') {
-        console.log('Cargué');
-        $(function() {
-          console.log($("#P1"));
-        });
-    }
+
   }
 
   handleChange = (val: any) => (event: any) => {
@@ -97,7 +91,7 @@ export default class PostVideo extends React.Component<any, State> {
      }
 */}
 
-  console.log(document.getElementsByClassName("jjara-video")[0])
+
 
 
    }

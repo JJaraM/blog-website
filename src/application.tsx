@@ -4,6 +4,6 @@ export default {
     home_linkedIn: 'https://www.linkedin.com/in/jonathan-jara-morales-360577112/',
     home_youtube: 'https://www.youtube.com/channel/UCjqLariAG_i0jwzlxMSwUDQ',
     home_initials: 'JJM',
-    author_image: 'https://media.licdn.com/dms/image/C5603AQGg6FHWARek0w/profile-displayphoto-shrink_100_100/0?e=1551916800&v=beta&t=mQl4bZVK8-i4jx3BxMcrYzlEHLcHOsFuQxMAwEwYMwA'
-
+    author_image: 'https://media.licdn.com/dms/image/C5603AQGg6FHWARek0w/profile-displayphoto-shrink_100_100/0?e=1551916800&v=beta&t=mQl4bZVK8-i4jx3BxMcrYzlEHLcHOsFuQxMAwEwYMwA',
+    about_me: "Hi, I am Jonathan a software developer who loves develop new applications, learn new technologies."
 }

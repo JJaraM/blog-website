@@ -17,6 +17,7 @@ import application from '../../application';
 import Post from '../../dto/Post';
 import Tag from '../../dto/Tag';
 
+import PostComment from './PostComment';
 // Custom Components
 import { Loading } from '../common/Loading';
 import { CircleAnimation } from '../common/CircleAnimation';
@@ -66,7 +67,35 @@ class PostSection extends React.Component<Props, State> {
 
   constructor(props:Props) {
     super(props);
+    this.openComments = this.openComments.bind(this);
+  }
 
+  openComments(event: any) : void {
+    const div = document.getElementById("comments-section");
+    const title = document.getElementById("comments-section-title");
+
+    if (div !== null) {
+      const currentClassName = div.classList[1];
+      if (currentClassName === 'comments_hide' || currentClassName === 'auto_hide_comments_absolute') {
+        div.classList.remove('comments_hide');
+        div.classList.remove('auto_hide_comments_absolute');
+        div.classList.add('comments_show');
+      } else {
+        div.classList.remove('comments_show');
+        div.classList.add('comments_hide');
+      }
+    }
+
+    if (title !== null) {
+      const currentClassName = title.classList[1];
+      if (currentClassName === 'auto_hide_comments_close') {
+        title.classList.remove('auto_hide_comments_close');
+        title.classList.add('auto_hide_comments_open');
+      } else {
+        title.classList.remove('auto_hide_comments_open');
+        title.classList.add('auto_hide_comments_close');
+      }
+    }
   }
 
   /*
@@ -180,7 +209,7 @@ class PostSection extends React.Component<Props, State> {
       )
     }
     return (
-      <div className="home_background home_background_mask parallax-window" data-parallax="scroll" style={{backgroundImage: `url(${this.state.post.image})`}} data-speed="0.8"/>
+      <div className="home_background home_background_mask parallax-window" style={{backgroundImage: `url(${this.state.post.image})`}} />
     );
   }
 
@@ -218,7 +247,11 @@ class PostSection extends React.Component<Props, State> {
               const result = mapTags[tag];
               if (result !== undefined) {
                 return (
-                  <li key={tagId} className="post_tag"><a href="#">{mapTags[tag].name}</a></li>
+                  <li key={tagId} className="post_tag">
+                    <Link to={`/category/${mapTags[tag].id}`}>
+                      {mapTags[tag].name}
+                    </Link>
+                  </li>
                 )
               }
               return null;
@@ -297,11 +330,29 @@ class PostSection extends React.Component<Props, State> {
     const date = new Date(this.state.post.createDate);
 
     return (
-      <div>
+      <>
         {this.renderHeader(this.state.post)}
+
+
+
         <div className="page_content">
+
+        <div className="auto_hide_comments_container">
+          <div className="auto_hide_comments auto_hide_comments_close" id="comments-section-title" onClick={this.openComments}>
+            <i className="fa fa-comments-o" aria-hidden="true"></i>
+          </div>
+          <div className="content auto_hide_comments_absolute" id="comments-section">
+            <PostComment />
+          </div>
+        </div>
+
+
           <div className="container">
+
+
             <div className="row row-lg-eq-height">
+
+
               <div className="col-lg-9">
                 <div className="post_content">
                   <div className="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
@@ -310,7 +361,8 @@ class PostSection extends React.Component<Props, State> {
                         <img src={application.author_image} alt=""/>
                       </div>
                     </div>
-                    <div className="post_meta"><a href="#">Jonathan Jara Morales</a>
+                    <div className="post_meta">
+                      <a href="#">Jonathan Jara Morales</a>
                       <span> {date.toLocaleDateString()} </span>
                     </div>
                     <div className="post_share ml-sm-auto">
@@ -337,14 +389,27 @@ class PostSection extends React.Component<Props, State> {
       										</div>
       									</div>
       								</div>
+
+                      {/*
+                      <PostComment />
+                      */}
+
+
+
       							</div>
                   </div>
+                </div>
+              </div>
+              <div className="col-lg-3">
+                <div className="sidebar">
+                  <div className="sidebar_background"></div>
+
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }
