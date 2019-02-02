@@ -6,14 +6,13 @@ import * as React from 'react';
 
 import api from '../../api/peopleAboutMe';
 import './peopleAboutMe.css';
-import './peopleAboutMeV2.css';
 import '../../styles/sidebar.css';
 
 /*
 * Component used to render the index page
 * @since 1.0
 */
-export class PeopleAboutMe extends React.Component<any, any> {
+export class PeopleAboutMeV2 extends React.Component<any, any> {
 
   constructor(props:any) {
     super(props);
@@ -22,10 +21,9 @@ export class PeopleAboutMe extends React.Component<any, any> {
   render() {
     return (
       <aside className="jjara_container_what_say_people">
-        <div className="mkdf-widget-title-holder">
-          <span className="mkdf-widget-title-before"/>
-          <h6 className="mkdf-widget-title">Testimonials</h6>
-        </div>
+        <h4 className="jjara_sidebar_title">
+          <span>Testimonials</span>
+        </h4>
         <div className="sidebar_section_content jjara_story_circle_container">
           {
             api.data.map((person, i) => {

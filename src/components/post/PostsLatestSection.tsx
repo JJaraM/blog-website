@@ -100,6 +100,28 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
     );
   }
 
+  renderBig = (post:Post, key:number) => {
+    const date = new Date(post.createDate);
+    return (
+      <div className="card card_large_with_background grid-item grid-item" key={key}>
+        <img className="card-img-top" src={post.image} alt=""/>
+        <div className="card-body">
+          <div className="card-title card-title-small">
+            <Link to={`/post/${post.id}`}>
+              {post.title}
+            </Link>
+          </div>
+          <small className="post_meta">
+            <Link to={`/post/${post.id}`}>
+              Jonathan Jara Morales
+            </Link>
+            <span>{date.toLocaleDateString()}</span>
+          </small>
+        </div>
+      </div>
+    );
+  }
+
 
   render() {
 
@@ -128,6 +150,7 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
               special = true;
               return this.renderSpecial(post, i);
             }
+            special = false;
             return this.renderNoSpecial(post, i);
           })
         }

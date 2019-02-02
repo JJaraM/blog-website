@@ -69,7 +69,9 @@
 .footer_title {
 	font-size: 13px;
 	margin-bottom: 20px;
-  letter-spacing: 3px;
+	font-size: 20px;
+  line-height: 32px;
+  margin-bottom: 15px;
   font-weight: 500;
 	text-transform: uppercase;
 	color: #dadada;
@@ -77,6 +79,9 @@
 	border: 1px solid #303030;
 	line-height: 44px;
   text-align: center;
+	font-family: 'Unica One', cursive;
+  letter-spacing: 0.5px;
+	border-radius: 5px;
 }
 
 .footer_center {
@@ -116,20 +121,44 @@
   font-size: 14px;
   color: #dddddd;
 	text-align: center;
+	padding-top: 10px;
 }
 
 
 .footer-about-img-picture {
-	background-image: url("https://scontent.fsyq3-1.fna.fbcdn.net/v/t1.0-9/46439121_2800303783329866_1630665470153588736_n.jpg?_nc_cat=105&_nc_ht=scontent.fsyq3-1.fna&oh=c06f7a111be12972ec7e03e6542fb085&oe=5D001153");
- 	width: 176px;
-	 height: 176px;
-	 border-radius: 50%;
-	 background-repeat: no-repeat;
-	 /*background-position: center;*/
+	width: 176px;
+	height: 176px;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	/*background-position: center;*/
 	background-size: 330px;
 	display: inline-block;
 }
 
 .footer-about-img {
 	text-align: center;
+}
+
+.footer img {
+	height: 70px;
+  width: 100px;
+  border-radius: 5px;
+	background: #FFF;
+}
+
+.footer > .side_post_image div {
+	height: 100%;
+	width: 100%;
+}
+
+.footer .side_post_title {
+	color: #dadada;
+}
+
+.footer .post_meta {
+	color: #dadada;
+}
+
+.footer .post_meta span {
+ color: #dadada;
 }

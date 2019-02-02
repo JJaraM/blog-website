@@ -4,7 +4,7 @@
 */
 import * as React from 'react';
 
-import { Footer } from '../common/Footer';
+import Footer from '../common/Footer';
 import '../../bootstrap4/bootstrap.min.css'
 import '../../plugins/OwlCarousel2-2.2.1/owl.carousel.css';
 import '../../plugins/OwlCarousel2-2.2.1/owl.theme.default.css';

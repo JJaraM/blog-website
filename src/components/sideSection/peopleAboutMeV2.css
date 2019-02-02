@@ -1,0 +1,53 @@
+.jjara_container_what_say_people {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.jjara_container_what_say_people > .sidebar_section_content {
+	padding-top: 0px;
+	text-align: center;
+}
+
+.jjara_story_circle_container {
+	 display: flex;
+}
+.jjara_story_circle:hover
+{
+	border: 1px solid #6dc6b9;
+	background-color: #6dc6b9;
+}
+.jjara_story_circle {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    padding: 4px;
+    border: 1px solid #fff;
+		background-color: #fff;
+    margin-right: -10px;
+    margin-left: -10px;
+    cursor: pointer;
+    vertical-align: middle;
+		animation-duration: 1s;
+		animation-fill-mode: both;
+		animation-iteration-count: 1;
+}
+
+.jjara_story_circle:hover {
+	animation-name: right;
+	border: 1px solid #6dc6b9;
+}
+
+.jjara_story_circle img {
+  border-radius: 50%;
+	vertical-align: middle;
+	border: 0;
+	max-width: 100%;
+	height: auto;
+}
+
+@keyframes right {
+	0% { right: 0;}
+	100%{ right: 20px;}
+}

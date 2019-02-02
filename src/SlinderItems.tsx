@@ -200,6 +200,23 @@ class SlinderItems extends React.Component<Props, State> {
     );
   }
 
+  renderNextPostsCircle = () => {
+    return (
+      <div className="home_slider_image_section_container">
+      {
+        this.props.posts.map((post, index) => {
+          return (
+            <div className="home_slider_img_container" key={index}>
+
+              <span className="home_slinder_img" style={{backgroundImage: `url(${post.image})`}}></span>
+            </div>
+          )
+        })
+      }
+
+      </div>
+      )
+  }
 
   renderNextPosts = () => {
     return (

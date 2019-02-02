@@ -219,7 +219,7 @@ section
 }
 
 .super_container > .page_content > .container {
-	    padding-bottom: 20px;
+
 }
 
 .prlx_parent
@@ -873,15 +873,17 @@ section
 }
 
 .post_body ul, .post_body ol {
-	list-style-type: circle;
+	/*list-style-type: circle;*/
 	/*padding: 0px 0px 0px 3em;*/
 	color: rgba(0,0,0,0.8);
 	text-align: justify;
-	margin-bottom: 1.25rem;
 	font-family: Helvetica,Arial,sans-serif;
 	font-size: 14px;
 }
 
+.post_body ul {
+	counter-reset: section;
+}
 
 .post_body p, .post_body ol {
 	text-indent: 40px;
@@ -2118,7 +2120,8 @@ h1,h2,h3,h4,h5,h6 {
 	background: #F5F5F5;
   border: 1px solid #EEEEEE;
 	list-style: none;
-  counter-reset: my-awesome-counter;
+	counter-reset: section;
+  list-style-type: none;
   text-decoration: none;
 	border-radius: 5px;
 }
@@ -2129,13 +2132,13 @@ h1,h2,h3,h4,h5,h6 {
 
 
 .post_body > ul li {
-  counter-increment: my-awesome-counter;
 	padding-left: 1rem;
 }
 
 .post_body > ul li::before {
-  content: counter(my-awesome-counter) ". ";
   color: black;
+	counter-increment: section;
+	content: counters(section,".") " ";
   font-weight: bold;
 }
 
@@ -2256,7 +2259,7 @@ h1,h2,h3,h4,h5,h6 {
 .tooltip span
 {
     border-radius:2px;
-
+box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
 }
 
 .tooltip-desc {
@@ -2683,6 +2686,11 @@ ol.children {
 	top: -9px;
 }
 
+.auto_hide_comments_container_open {
+	top: 0px;
+	z-index: 9999;
+}
+
 .comments_hide {
 	animation: hide 1s linear;
   animation-fill-mode: forwards;
@@ -2745,8 +2753,7 @@ ol.children {
 
 @media only screen and (max-height: 900px) {
 	.auto_hide_comments_container .comments {
-		height: 26% !important;
-
+		/*height: 26% !important;*/
 	}
 }
 

@@ -73,6 +73,7 @@ class PostSection extends React.Component<Props, State> {
   openComments(event: any) : void {
     const div = document.getElementById("comments-section");
     const title = document.getElementById("comments-section-title");
+    const commentContainer = document.getElementById("comment-container");
 
     if (div !== null) {
       const currentClassName = div.classList[1];
@@ -95,6 +96,15 @@ class PostSection extends React.Component<Props, State> {
         title.classList.remove('auto_hide_comments_open');
         title.classList.add('auto_hide_comments_close');
       }
+    }
+
+    if (commentContainer !== null) {
+        const currentClassName = commentContainer.classList[1];
+        if (currentClassName === null || currentClassName === undefined) {
+          commentContainer.classList.add('auto_hide_comments_container_open');
+        } else {
+          commentContainer.classList.remove('auto_hide_comments_container_open');
+        }
     }
   }
 
@@ -320,8 +330,20 @@ class PostSection extends React.Component<Props, State> {
 
     if (this.state === null || this.state.isLoading) {
       return (
-        <div className="home_loading">
-          <Loading />
+        <div className="home_slinder">
+          <div className="home_slider_container">
+            <div className="owl-carousel owl-theme owl-loaded">
+              <div className="owl-stage-outer">
+                <div className="owl-stage">
+                  <div className="owl-item black-container">
+                    <div className="owl-slinder-center">
+                      <Loading/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       )
     }
@@ -337,7 +359,7 @@ class PostSection extends React.Component<Props, State> {
 
         <div className="page_content">
 
-        <div className="auto_hide_comments_container">
+        <div className="auto_hide_comments_container" id="comment-container">
           <div className="auto_hide_comments auto_hide_comments_close" id="comments-section-title" onClick={this.openComments}>
             <i className="fa fa-comments-o" aria-hidden="true"></i>
           </div>
@@ -355,6 +377,8 @@ class PostSection extends React.Component<Props, State> {
 
               <div className="col-lg-9">
                 <div className="post_content">
+
+
                   <div className="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
                     <div className="author_image">
                       <div>
@@ -371,6 +395,8 @@ class PostSection extends React.Component<Props, State> {
                       { this.renderShareSection() }
                     </div>
                   </div>
+
+
                   <div className="post_body">
                     <Markdown source={this.state.post.content} escapeHtml={false}/>
                     {this.renderTags(this.state.post)}

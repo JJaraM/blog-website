@@ -195,6 +195,9 @@ class PostEditor extends React.Component<Props, State> {
         </div>
       );
     }
+
+    this.loadCurrentTags();
+    
     return (
       <div className="super_container">
 

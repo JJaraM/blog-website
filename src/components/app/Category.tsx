@@ -101,6 +101,7 @@ export class Category extends React.Component<any, State> {
                 <div className="col-lg-9">
                   <div className="main_content">
                     <PostsLatestSection posts={this.state.posts} />
+                    <div className="blog_section"></div>
                   </div>
                 </div>
                 <div className="col-lg-3">

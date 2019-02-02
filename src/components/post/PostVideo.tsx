@@ -6,6 +6,7 @@ import * as React from 'react';
 
 import YouTube from 'react-youtube';
 import data from '../../api/postVideo';
+import OwlCarousel from 'react-owl-carousel2';
 
 
 
@@ -97,46 +98,69 @@ export default class PostVideo extends React.Component<any, State> {
    }
 
   render() {
+
     const opts = {
-      height: '395', // 390
-      width: '583',// 575
-      playerVars: {
-        autoplay: this.state.autoplay,
-        rel: 0,
-        modestbranding: 1,
-        autohide: 1,
-        info: 0,
-        controls: 0,
-        frameborder: 0,
-        fs: 0,
-        showInfo: 0
-      }
+          height: '300', // 390
+          width: '847',// 575
+          playerVars: {
+            autoplay: this.state.autoplay,
+            rel: 0,
+            modestbranding: 1,
+            autohide: 1,
+            info: 0,
+            controls: 0,
+            frameborder: 0,
+            fs: 0,
+            showInfo: 0
+          }
+        };
+
+
+    const options = {
+        items: 3,
+        nav: true,
+        rewind: true,
+        autoplay: true,
+        dots:false,
+        navText: ["Prev", "Next"]
     };
 
-
-
     return (
+
       <div className="blog_section">
-        <div className="section_panel d-flex flex-row align-items-center justify-content-start">
-          <div className="section_title_home">Most Popular Videos</div>
-        </div>
-        <div className="section_content">
-          <div className="row">
-            <div className="col">
-              <div className="videos">
+         <div className="section_panel d-flex flex-row align-items-center justify-content-start">
+           <div className="section_title_home">Lastest Videos</div>
+         </div>
+         <div className="section_content">
+           <div className="row">
+             <div className="col">
 
-              <div className="player_container">
-									<YouTube className="jjara-video" videoId={ this.state.id } opts={opts} onReady={this._onReady} />
-								</div>
+               <YouTube className="jjara-video" videoId={ this.state.id } opts={opts} onReady={this._onReady} />
 
+              <div className="video_section">
+                <OwlCarousel options={options}>
+                {
+                  data.data.map((video, videoId) => {
+                    return (
+                      <div key={videoId}>
+                        <div className="video_carrousel_section" >
+                          <img src={video.img} onClick={this.handleChange(video)}/>
+                          <div className="video_slide_section">
+                            <div className="video_title">{video.title}</div>
+                            <div className="video_info"><span>{video.createdDate}</span></div>
+                          </div>
 
-
-                { this.renderPlaylist() }
+                        </div>
+                      </div>
+                    )
+                  })
+                }
+                </OwlCarousel>
+              </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
     );
   }
 }

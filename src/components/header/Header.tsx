@@ -38,6 +38,16 @@ const renderSuggestion = suggestion => (
   </Link>
 );
 
+const menu = [
+  {
+    to: "/",
+    label: "Home"
+  },
+  {
+    to: "/resume",
+    label: "Resume"
+  }
+]
 
 /*
 * Component used to render the header section of the page when is being rendered by a browser
@@ -139,6 +149,8 @@ export class Header extends React.Component<any, any> {
       inputProps.value = " ";
     }
 
+
+
     return (
       <header className="header" id="main-header">
     		<div className="container">
@@ -152,11 +164,22 @@ export class Header extends React.Component<any, any> {
                 </div>
                 <nav className="main_nav">
     							<ul>
-    								<li className="active">
-                      <Link to="/">
-                        Home
-                      </Link>
-                    </li>
+
+                    {
+                      menu.map((option, i) => {
+                        const currentSelection = window.location.pathname;
+                        const className = currentSelection === option.to ? 'active' : '';
+
+                        return (
+                          <li className={className} key={i}>
+                            <Link to={option.to}>
+                              {option.label}
+                            </Link>
+                          </li>
+                         )
+                      })
+                    }
+
     								{/*<li>
                       <Link to="/about">
                         About
