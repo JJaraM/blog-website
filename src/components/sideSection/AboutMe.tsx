@@ -3,7 +3,7 @@
  * @since 1.0
  */
 import * as React from 'react';
-
+import application from '../../application';
 /*
 * Component used to render the not found page
 * @since 1.0
@@ -18,7 +18,7 @@ class AboutMe extends React.Component {
               <h5 className="pk-author-title">Jonathan Jara</h5>
               <div className="pk-author-avatar">
                 <a href="#" rel="author">
-                  <img alt="" src="https://media.licdn.com/dms/image/C5603AQGg6FHWARek0w/profile-displayphoto-shrink_200_200/0?e=1553126400&v=beta&t=NUoSgMdhwyPr3v68P8bPLRWBNs5h42aa5AjPQsFEe7g" className="avatar avatar-80 photo lazyautosizes pk-lazyloaded" height="80" width="80"/>
+                  <img alt="" src={application.author_image} className="avatar avatar-80 photo lazyautosizes pk-lazyloaded" height="80" width="80"/>
                 </a>
               </div>
               <div className="pk-author-data">

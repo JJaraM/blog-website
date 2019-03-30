@@ -41,12 +41,12 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
       <div className="card card_default card_small_no_image grid-item" key={key}>
         <div className="card-body">
           <div className="card-title card-title-small">
-            <Link to={`/post/${post.id}`}>
+            <Link to={`/post/view/${post.id}`}>
               {post.title}
             </Link>
           </div>
           <small className="post_meta">
-            <Link to={`/post/${post.id}`}>
+            <Link to={`/post/view/${post.id}`}>
               Jonathan Jara Morales
             </Link>
             <span>{date.toLocaleDateString()}</span>
@@ -63,12 +63,12 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
         <div className="card_background" style={{backgroundImage: `url(${post.image})`}}></div>
         <div className="card-body card-body-mask">
           <div className="card-title card-title-small">
-            <Link to={`/post/${post.id}`}>
+            <Link to={`/post/view/${post.id}`}>
               {post.title}
             </Link>
           </div>
           <small className="post_meta">
-            <Link to={`/post/${post.id}`}>
+            <Link to={`/post/view/${post.id}`}>
               Jonathan Jara Morales
             </Link>
             <span>{date.toLocaleDateString()}</span>
@@ -85,12 +85,12 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
         <img className="card-img-top" src={post.image} alt=""/>
         <div className="card-body">
           <div className="card-title card-title-small">
-            <Link to={`/post/${post.id}`}>
+            <Link to={`/post/view/${post.id}`}>
               {post.title}
             </Link>
           </div>
           <small className="post_meta">
-            <Link to={`/post/${post.id}`}>
+            <Link to={`/post/view/${post.id}`}>
               Jonathan Jara Morales
             </Link>
             <span>{date.toLocaleDateString()}</span>
@@ -107,12 +107,12 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
         <img className="card-img-top" src={post.image} alt=""/>
         <div className="card-body">
           <div className="card-title card-title-small">
-            <Link to={`/post/${post.id}`}>
+            <Link to={`/post/view/${post.id}`}>
               {post.title}
             </Link>
           </div>
           <small className="post_meta">
-            <Link to={`/post/${post.id}`}>
+            <Link to={`/post/view/${post.id}`}>
               Jonathan Jara Morales
             </Link>
             <span>{date.toLocaleDateString()}</span>

@@ -139,6 +139,8 @@ class PostSection extends React.Component<Props, State> {
    * Updates the highlight when the page is updated
    */
   componentDidUpdate() {
+
+
     if (this.state.post !== undefined && !this.state.render) {
       this.setState({render: true});
     }
@@ -257,7 +259,7 @@ class PostSection extends React.Component<Props, State> {
   renderTags = (post:Post) => {
     const mapTags = this.tagsAsMap();
 
-    if (post.tags === null) {
+    if (post.tags === null || post.tags === undefined) {
       return (<div></div>)
     }
 
@@ -291,7 +293,7 @@ class PostSection extends React.Component<Props, State> {
   renderEditableLink = (post:Post) => {
     if (this.props.editable === "true") {
       return (
-        <Link to={`/postEdit/${post.id}`}>
+        <Link to={`/post/edit/${post.id}`}>
           <span>edit</span>
         </Link>
       )

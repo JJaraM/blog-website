@@ -1,10 +1,14 @@
+import * as React from 'react';
 /*
 * Copyright (c) Jonathan Jara Morales
 * @since 1.0
 */
-import * as React from 'react';
+
+import './postEdit.css';
+
+
+
 import * as Markdown from 'react-markdown';
-import { Redirect } from 'react-router'
 import { Link } from "react-router-dom";
 import ReactTags from 'react-tag-autocomplete';
 
@@ -16,8 +20,6 @@ import apiTag from '../../api/tag';
 
 import Post from '../../dto/Post';
 import Tag from '../../dto/Tag';
-
-import { Loading } from '../common/Loading';
 
 
 import '../../react-tags.css';
@@ -39,7 +41,7 @@ interface State {
   tagMount: boolean;
 }
 
-class PostEditor extends React.Component<Props, State> {
+export class PostAddMain extends React.Component<any, State> {
 
   constructor(props:Props) {
     super(props);
@@ -62,7 +64,7 @@ class PostEditor extends React.Component<Props, State> {
 
   componentDidMount() {
     this.setState({isLoading: true, redirect: false, postMount: false, tagMount: false});
-    this.fetchPost();
+
     this.fetchTags();
   }
 
@@ -76,13 +78,6 @@ class PostEditor extends React.Component<Props, State> {
       el.innerHTML = el.innerHTML.replace(/&lt;&lt;/g, '');
       el.innerHTML = el.innerHTML.replace(/&gt;&gt;/g, '');
     });
-  }
-
-  fetchPost = () => {
-    fetch(api.findById + this.props.id)
-      .then(response => response.json())
-      .catch(error => this.setState({redirect: true}))
-      .then(data => this.setState({post: data, isLoading: false, postMount: true}));
   }
 
   fetchTags = () => {
@@ -147,15 +142,16 @@ class PostEditor extends React.Component<Props, State> {
   }
 
   httpPut = (message:string) => {
-    fetch(api.put  + this.state.post.id, {
-        method: 'PUT',
+    console.log(this.state.post);
+    fetch(api.put, {
+        method: 'POST',
         body: JSON.stringify(this.state.post),
         headers: {
             'Content-Type': 'application/json'
         }
       })
       .then(response => {
-          if (response.status === 200) {
+          if (response.status === 201) {
             NotificationManager.success(message, 'Saved');
           } else {
             NotificationManager.error(message, "Error");
@@ -183,22 +179,8 @@ class PostEditor extends React.Component<Props, State> {
   }
 
   render() {
-
-    if (this.state != null && this.state.redirect) {
-      return <Redirect to='/notFound'/>;
-    }
-
-    if (this.state === null || this.state.isLoading) {
-      return (
-        <div className="home_loading">
-          <Loading />
-        </div>
-      );
-    }
-
-    this.loadCurrentTags();
-
     return (
+      <div className="super_container">
       <div className="super_container">
 
         <div>
@@ -284,9 +266,7 @@ class PostEditor extends React.Component<Props, State> {
         </div>
 
       </div>
-
+      </div>
     );
   }
 }
-
-export default PostEditor;

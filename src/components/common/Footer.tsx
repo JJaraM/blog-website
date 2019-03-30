@@ -41,7 +41,7 @@ class Footer extends React.Component<any, State> {
         const date = new Date(post.createDate);
         return (
           <div className="side_post" key={it}>
-            <Link to={`/post/${post.id}`}>
+            <Link to={`/post/view/${post.id}`}>
               <div className="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
                  <div className="side_post_image">
                     <div className="footer_popular_post_img" style={{backgroundImage: `url(${post.image})`}}/>

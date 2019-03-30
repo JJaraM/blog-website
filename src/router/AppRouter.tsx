@@ -4,18 +4,18 @@
  */
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { About } from '../about/About';
-import { Profile } from '../about/Profile';
-import { Home } from './Home';
-import { Resume } from './Resume';
-import { PostMain } from './PostMain';
-import { PostEditorMain } from '../post/PostEditorMain';
-import { Category } from './Category';
-import { ProjectsMainPage } from '../projects/ProjectsMainPage';
-import NotFound from '../common/NotFound';
-import Footer from '../common/Footer';
-import { Header } from '../header/Header';
-import Menu from '../header/Menu';
+import { About } from '../components/about/About';
+import { Profile } from '../components/about/Profile';
+import { Home } from '../components/app/Home';
+import { Resume } from '../components/app/Resume';
+
+import { Category } from '../components/app/Category';
+import { ProjectsMainPage } from '../components/projects/ProjectsMainPage';
+import NotFound from '../components/common/NotFound';
+import Footer from '../components/common/Footer';
+import { Header } from '../components/header/Header';
+import Menu from '../components/header/Menu';
+import { PostRouter } from './PostRouter';
 
 /*
 * Component used to redirect the request to the correspond component.
@@ -33,8 +33,8 @@ export const AppRouter: React.StatelessComponent = () => {
           <Route exact path="/about" component={About} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/projects" component={ProjectsMainPage} />
-          <Route exact path="/post/:id/:editable?" component={PostMain} />
-          <Route exact path="/postEdit/:id" component={PostEditorMain} />
+          <Route path="/post" component={PostRouter} />
+
           <Route exact path="/category/:id" component={Category} />
           <Route component={NotFound} />
         </Switch>
