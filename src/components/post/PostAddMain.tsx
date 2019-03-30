@@ -6,8 +6,6 @@ import * as React from 'react';
 
 import './postEdit.css';
 
-
-
 import * as Markdown from 'react-markdown';
 import { Link } from "react-router-dom";
 import ReactTags from 'react-tag-autocomplete';

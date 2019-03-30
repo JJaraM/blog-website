@@ -5,7 +5,7 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { PostMain } from '../components/app/PostMain';
-import { PostEditorMain } from '../components/post/PostEditorMain';
+import PostEditor from '../components/post/PostEditor';
 import { PostAddMain } from '../components/post/PostAddMain';
 
 /*
@@ -16,7 +16,7 @@ export const PostRouter: React.StatelessComponent = () => {
   console.log('t');
   return (
     <Switch>
-      <Route exact path="/post/edit/:id" component={PostEditorMain} />
+      <Route exact path="/post/edit/:id" component={PostEditor} />
       <Route exact path="/post/view/:id/:editable?" component={PostMain} />
       <Route exact path="/post/add" component={PostAddMain} />
     </Switch>

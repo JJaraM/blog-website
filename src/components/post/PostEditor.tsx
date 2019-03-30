@@ -23,10 +23,7 @@ import { Loading } from '../common/Loading';
 import '../../react-tags.css';
 import 'react-notifications/lib/notifications.css';
 import '../common/custom-notifications.css';
-
-interface Props {
-  id: string;
-}
+import './postEdit.css';
 
 interface State {
   id: string;
@@ -39,12 +36,12 @@ interface State {
   tagMount: boolean;
 }
 
-class PostEditor extends React.Component<Props, State> {
+class PostEditor extends React.Component<any, State> {
 
-  constructor(props:Props) {
+  constructor(props:any) {
     super(props);
     this.state = {
-      id : '',
+      id : this.props.match.params.id,
       isLoading: false,
       post: {} as Post,
       redirect: false,
@@ -79,7 +76,7 @@ class PostEditor extends React.Component<Props, State> {
   }
 
   fetchPost = () => {
-    fetch(api.findById + this.props.id)
+    fetch(api.findById + this.props.match.params.id)
       .then(response => response.json())
       .catch(error => this.setState({redirect: true}))
       .then(data => this.setState({post: data, isLoading: false, postMount: true}));
@@ -99,7 +96,7 @@ class PostEditor extends React.Component<Props, State> {
           return map;
       }, {});
       const tagsResult = new Array();
-      if (this.state.post.tags !== null) {
+      if (this.state.post.tags !== null && this.state.post.tags !== undefined) {
         this.state.post.tags.map((post) => {
           tagsResult.push(result[post]);
         });
@@ -111,8 +108,24 @@ class PostEditor extends React.Component<Props, State> {
   }
 
   draft = () => {
-    NotificationManager.success('Draft', 'Saving');
-    this.httpPut('Draft');
+    if (this.state.post.draftTitle === null) {
+      NotificationManager.error("Title Required", "Error");
+    } else {
+      NotificationManager.success('Draft', 'Saving');
+      this.httpPut('Draft');
+    }
+
+  }
+
+  publish = () => {
+    if (this.state.post.draftTitle === null) {
+      NotificationManager.error("Title Required", "Error");
+    } else {
+      this.state.post.title = this.state.post.draftTitle;
+      this.state.post.image = this.state.post.draftImage;
+      this.state.post.content = this.state.post.draftContent;
+    }
+    this.httpPut('Publish');
   }
 
   handleDelete = (i:any) => {
@@ -139,12 +152,7 @@ class PostEditor extends React.Component<Props, State> {
       this.updatePostTags(tags);
   }
 
-  publish = () => {
-    this.state.post.title = this.state.post.draftTitle;
-    this.state.post.image = this.state.post.draftImage;
-    this.state.post.content = this.state.post.draftContent;
-    this.httpPut('Publish');
-  }
+
 
   httpPut = (message:string) => {
     fetch(api.put  + this.state.post.id, {
@@ -206,10 +214,10 @@ class PostEditor extends React.Component<Props, State> {
             <div className="home_background home_background_mask parallax-window" data-parallax="scroll" style={{backgroundImage: `url(${this.state.post.draftImage})`}} data-speed="0.8"/>
             <div className="home_content">
               <div className="post_title">
-                <input className="title-draft" value={this.state.post.draftImage} onChange={this.updateImage} />
+                <input className="title-draft" placeholder="Image" value={this.state.post.draftImage} onChange={this.updateImage} />
               </div>
               <div className="post_title">
-                <input className="title-draft" value={this.state.post.draftTitle} onChange={this.updateTitle} />
+                <input className="title-draft" placeholder="Title" value={this.state.post.draftTitle} onChange={this.updateTitle} />
               </div>
             </div>
           </div>
