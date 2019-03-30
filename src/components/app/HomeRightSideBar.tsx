@@ -8,7 +8,7 @@ import ExperienceSide from '../sideSection/ExperienceSide';
 import { PeopleAboutMe } from '../sideSection/PeopleAboutMe';
 import { Tags } from '../sideSection/Tags';
 import AboutMe from '../sideSection/AboutMe';
-
+import MemeSide from '../sideSection/MemeSide';
 import config from '../../config';
 
 /*
@@ -40,6 +40,10 @@ export class HomeRightSideBar extends React.Component<any, any> {
         case 'home_side_tags':
           component = <Tags />;
           break;
+
+        case 'home_side_meme':
+            component = <MemeSide />;
+            break;
       }
     }
     return component;

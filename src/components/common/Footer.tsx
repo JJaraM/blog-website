@@ -44,7 +44,7 @@ class Footer extends React.Component<any, State> {
             <Link to={`/post/${post.id}`}>
               <div className="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
                  <div className="side_post_image">
-                    <div><img src={post.image} alt=""/></div>
+                    <div className="footer_popular_post_img" style={{backgroundImage: `url(${post.image})`}}/>
                  </div>
                  <div className="side_post_content">
                     <div className="side_post_title">{post.title}</div>

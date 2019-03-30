@@ -19,7 +19,7 @@ export default {
       },
       {
         id: 'home_side_people_about_me',
-        display: true,
+        display: false,
         order: 2
       },
       {
@@ -31,6 +31,18 @@ export default {
         id: 'home_side_tags',
         display: true,
         order: 4
+      },
+      {
+        id: 'home_side_meme',
+        display: true,
+        order: 5
+      }
+    ],
+    post_below_section: [
+      {
+        id: 'recommendations',
+        display: true,
+        order: 1
       }
     ]
 }

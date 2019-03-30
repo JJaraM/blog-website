@@ -8,6 +8,8 @@ import * as Markdown from 'react-markdown';
 import { Redirect } from 'react-router'
 import { Link } from "react-router-dom";
 
+import OwlCarousel from 'react-owl-carousel2';
+
 // Application Configurations
 import apiPost from '../../api/post';
 import apiTag from '../../api/tag';
@@ -30,6 +32,7 @@ import 'prismjs/components/prism-bash';
 import '../../customPrism.js';
 import '../../customPrism.css';
 import '../prismjs/prism-comment.js';
+import $ from 'jquery';
 
 /*
  * Props interface, which consists of:
@@ -116,6 +119,15 @@ class PostSection extends React.Component<Props, State> {
   componentDidMount() {
     this.setState({isLoading: true, redirect: false, render: false, isFromSearch: false});
     this.fetchData();
+    this.storeIp();
+  }
+
+  storeIp = () => {
+    $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
+      function(json) {
+        console.log(json.ip);
+      }
+    );
   }
 
   fetchData = () => {
@@ -351,6 +363,42 @@ class PostSection extends React.Component<Props, State> {
 
     const date = new Date(this.state.post.createDate);
 
+    const options = {
+        items: 4,
+        nav: false,
+        rewind: true,
+        autoplay: true,
+        dots:false,
+        navContainer: "custom"
+    };
+
+    const test = [
+      {
+        img: "https://cdn-images-1.medium.com/max/1600/1*OF0xEMkWBv-69zvmNs6RDQ.gif"
+      },
+      {
+        img: "https://i.gifer.com/A8gJ.gif"
+      },
+      {
+        img: "https://cdn-images-1.medium.com/max/2000/1*i0qclSPNcjj8cWOPr3wLxg.png"
+      },
+      {
+        img: "http://static1.squarespace.com/static/593ad95da5790a81949b5613/596e36861b631b26f3e85655/5a4e791df9619a322dbdb99e/1545148198326/web+design.jpg?format=1500w"
+      },
+      {
+        img: "https://cdn-images-1.medium.com/max/1600/1*OF0xEMkWBv-69zvmNs6RDQ.gif"
+      },
+      {
+        img: "https://cdn-images-1.medium.com/max/2000/1*i0qclSPNcjj8cWOPr3wLxg.png"
+      },
+      {
+        img: "http://static1.squarespace.com/static/593ad95da5790a81949b5613/596e36861b631b26f3e85655/5a4e791df9619a322dbdb99e/1545148198326/web+design.jpg?format=1500w"
+      },
+      {
+        img: "https://cdn-images-1.medium.com/max/1600/1*OF0xEMkWBv-69zvmNs6RDQ.gif"
+      }
+    ]
+
     return (
       <>
         {this.renderHeader(this.state.post)}
@@ -432,9 +480,47 @@ class PostSection extends React.Component<Props, State> {
 
                 </div>
               </div>
+
+
             </div>
+
+
           </div>
+
+
+          <div className="row recommended_post">
+
+              <div className="col-lg-2  recommended_post_section_title_wrap">
+                <div className="recommended_post_section_title">
+                  <h1>Recommend Posts</h1>
+                </div>
+              </div>
+              <div className="col-lg-10 recommended_post_carrousel">
+
+                <OwlCarousel options={options}>
+                {
+                  test.map((video, videoId) => {
+                    return (
+                      <a href="#"  key={videoId}>
+
+                        <div className="recommended_post_section" >
+                          <img src={video.img} />
+                          <div className="middle">
+                            <div className="text">Chapter 1: Java Building Blocks</div>
+                          </div>
+                        </div>
+                      </a>
+                    )
+                  })
+                }
+                </OwlCarousel>
+              </div>
+
+          </div>
+
         </div>
+
+
       </>
     );
   }

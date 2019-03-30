@@ -2541,7 +2541,7 @@ border-radius: 100%;
 	 background: #000000;
 }
 
-.owl-carousel .owl-item img {
+.owl-carousel .owl-item .video_carrousel_section img {
 	width: 130px;
 	height: 100px !important;
 	margin: -5% 0;
@@ -2598,4 +2598,28 @@ border-radius: 100%;
 }
 .tag-list li {
     display: inline-block;
+}
+
+.meme_section {
+	 margin: 0 -2px -4px;
+}
+
+.meme_section li {
+	float: left;
+	position: relative;
+	box-sizing: border-box;
+	border: none!important;
+	padding: 0 2px;
+  margin: 0 0 4px;
+	height: 80px;
+}
+
+.meme_section img {
+	width: 114px;
+	height: 80px;
+	display: block;
+}
+
+.micro-space {
+  margin: 0 -2px -4px;
 }

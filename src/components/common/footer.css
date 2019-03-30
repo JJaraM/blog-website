@@ -124,7 +124,15 @@
 	padding-top: 10px;
 }
 
-
+.footer_popular_post_img {
+	width: 176px;
+	height: 176px;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 330px;
+	display: inline-block;
+}
 .footer-about-img-picture {
 	width: 176px;
 	height: 176px;
