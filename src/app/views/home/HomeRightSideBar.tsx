@@ -57,7 +57,11 @@ export class HomeRightSideBar extends React.Component<any, any> {
           <div className="sidebar_section">
             {
               config.home_right_sidebar.sort((a, b) => a.order - b.order).map((section, i) => {
-                return this.renderSidebarSelection(section);
+                return (
+                  <div key={i}>
+                    { this.renderSidebarSelection(section) }
+                  </div>
+                );
               })
             }
           </div>

@@ -41,7 +41,11 @@ export class HomeMain extends React.Component<Props, any> {
         <div className="main_content">
           {
             config.home_main_content.sort((a, b) => a.order - b.order).map((section, i) => {
-              return this.renderMainContentSelection(section);
+              return (
+                <div key={i}>
+                  { this.renderMainContentSelection(section) }
+                </div>
+              );
             })
            }
           <div className="blog_section"></div>
