@@ -56,11 +56,13 @@ export class PostAddMain extends React.Component<any, State> {
   }
 
   componentDidUpdate() {
+    console.log(Prism);
     Prism.highlightAll();
     this.cleanBullets();
   }
 
   componentDidMount() {
+      console.log(Prism);
     this.setState({isLoading: true, redirect: false, postMount: false, tagMount: false});
 
     this.fetchTags();

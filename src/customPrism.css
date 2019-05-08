@@ -12,6 +12,11 @@
   font-style: normal;
 }
 
+.token.sup {
+  vertical-align: super;
+  font-size: .83em;
+}
+
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
 	background: #343233;
 }

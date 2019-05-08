@@ -4,10 +4,10 @@
 */
 import * as React from 'react';
 
-import PostsLatest from '../post/PostsLatest';
-import PostVideo from '../post/PostVideo';
+import PostsLatest from '../../../components/post/PostsLatest';
+import PostVideo from '../../../components/post/PostVideo';
 
-import config from '../../config';
+import config from '../../../config';
 
 interface Props { tags: any }
 /*

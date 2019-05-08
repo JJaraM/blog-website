@@ -13,7 +13,6 @@ import { PostAddMain } from '../components/post/PostAddMain';
 * @since 1.0
 */
 export const PostRouter: React.StatelessComponent = () => {
-  console.log('t');
   return (
     <Switch>
       <Route exact path="/post/edit/:id" component={PostEditor} />

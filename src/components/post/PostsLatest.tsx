@@ -118,6 +118,21 @@ export default class PostsLatest extends React.Component<Props, State> {
     const firstSetOfTags = this.props.tags.slice(0, 5);
     const secondSetOfTags = this.props.tags.slice(5);
 
+    if (this.props.tags.length === 0) {
+      return (
+        <div id="tags-section" className="section_tags ml-auto">
+          <ul>
+            <li>
+              <div className="tag-button">
+                Loading...
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      )
+    }
+
     return (
       <>
         <div id="tags-section" className="section_tags ml-auto">

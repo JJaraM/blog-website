@@ -8,7 +8,8 @@ Prism.languages.insertBefore('js', 'operator', {
 });
 
 Prism.languages.insertBefore('js', 'comment', {
-	'bullet': /([/]*[<]{2}(.*?)[\>]{2})/
+	'bullet': /([/]*[<]{2}(.*?)[\>]{2})/,
+	'sup':/(['^']{2}(.*?)['^']{2})/
 });
 
 

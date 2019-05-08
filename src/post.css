@@ -2876,3 +2876,25 @@ ol.children {
     -moz-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
 }
+
+.post_body table {
+    width: 100%;
+    margin-bottom: 1rem;
+		border-radius: 5px;
+		box-shadow: 0 2px 4px rgba(126,142,177,.12);
+		background: #FFF;
+    border: 1px solid #EEEEEE;
+		font-size: .7875rem;
+}
+
+.post_body > table thead th {
+    font-size: .7875rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #000;
+    border-bottom-width: 1px;
+    background-color: #EEEEEE;
+    text-transform: uppercase;
+		padding: 10px 0px 10px 0px;
+}

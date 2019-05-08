@@ -4,12 +4,12 @@
 */
 import * as React from 'react';
 
-import ExperienceSide from '../sideSection/ExperienceSide';
-import { PeopleAboutMe } from '../sideSection/PeopleAboutMe';
-import { Tags } from '../sideSection/Tags';
-import AboutMe from '../sideSection/AboutMe';
-import MemeSide from '../sideSection/MemeSide';
-import config from '../../config';
+import ExperienceSide from '../../../components/sideSection/ExperienceSide';
+import { PeopleAboutMe } from '../../../components/sideSection/PeopleAboutMe';
+import { Tags } from '../../../components/sideSection/Tags';
+import AboutMe from '../../../components/sideSection/AboutMe';
+import MemeSide from '../../../components/sideSection/MemeSide';
+import config from '../../../config';
 
 /*
 * Component used to render the index page
