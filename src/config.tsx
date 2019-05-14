@@ -7,7 +7,7 @@ export default {
       },
       {
         id: 'show_home_post_video',
-        display: true,
+        display: false,
         order: 2
       }
     ],

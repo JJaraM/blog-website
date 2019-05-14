@@ -36,7 +36,10 @@ export class Category extends React.Component<any, State> {
   }
 
   async componentDidMount() {
-    this.fetchPosts();
+    this.setState({isLoading: true});
+    const response = await fetch(apiPost.find + '0' + '/3' + "/" + this.props.match.params.id);
+    const data = await response.json();
+    this.setState({posts: data, isLoading: false});
     this.fetchTags();
   }
 
@@ -48,9 +51,12 @@ export class Category extends React.Component<any, State> {
    * Fetch the tag information from the microservice
    */
   fetchPosts = () => {
-    fetch(apiTag.byIds + this.props.match.params.id)
+
+
+    /*fetch(apiTag.byIds + this.props.match.params.id)
       .then(response => response.json())
       .then(data => {
+        console.log(data);
         data.forEach((tag) => {
           if (tag.posts !== null) {
             tag.posts.forEach((postId) => {
@@ -72,7 +78,9 @@ export class Category extends React.Component<any, State> {
             });
           }
         });
-      });
+      });*/
+
+
   }
 
   render() {
@@ -83,7 +91,10 @@ export class Category extends React.Component<any, State> {
     const post = this.state.posts[0];
     const tag = this.state.tags.filter(el => Number(el.id) === Number(this.props.match.params.id))[0];
 
-    console.log(tag);
+    if (tag === undefined) {
+      return null;
+    }
+
     return (
       <>
         <div className="home">

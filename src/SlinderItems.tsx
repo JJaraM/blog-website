@@ -115,10 +115,12 @@ class SlinderItems extends React.Component<Props, State> {
 
 
   renderPostContent = () => {
-    const letters = this.props.posts[this.state.selection].title.split('');
+    let letters = new Array();
+    const title = this.props.posts[this.state.selection].title;
+    if (title !== undefined && title !== null) {
+      letters = title.split('');
+    }
 
-
-    // {this.props.posts[this.state.selection].title}
     return (
       <div className="home_slider_content">
         <div className="jjara-post-slinder-tags">
