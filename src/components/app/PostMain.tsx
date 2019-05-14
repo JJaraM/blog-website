@@ -11,6 +11,7 @@ import '../../plugins/OwlCarousel2-2.2.1/animate.css';
 import '../../post.css';
 import '../../post_responsive.css';
 import '../../plugins/font-awesome-4.7.0/css/font-awesome.min.css';
+import '../../prism-okaida.css';
 
 export class PostMain extends React.Component<any, any> {
 

@@ -127,7 +127,7 @@ class SlinderItems extends React.Component<Props, State> {
         { this.renderTags() }
         </div>
         <div className="home_slider_item_title">
-          <Link to={`post/${this.props.posts[this.state.selection].id}`}>
+          <Link to={`post/view/${this.props.posts[this.state.selection].id}`}>
             {
               letters.map((letter, index) => {
                 let letterClass = "shake_letter";
@@ -145,7 +145,7 @@ class SlinderItems extends React.Component<Props, State> {
         </div>
         { this.renderSocialIcons() }
         <div className="home_slider_item_link">
-          <Link to={`post/${this.props.posts[this.state.selection].id}`}>
+          <Link to={`post/view/${this.props.posts[this.state.selection].id}`}>
             Continue Reading
             <svg version="1.1" id="link_arrow_1" x="0px" y="0px" width="19px" height="13px" viewBox="0 0 19 13">
               <polygon fill="#FFFFFF" points="12.475,0 11.061,0 17.081,6.021 0,6.021 0,7.021 17.038,7.021 11.06,13 12.474,13 18.974,6.5 "/>
@@ -243,7 +243,7 @@ class SlinderItems extends React.Component<Props, State> {
                   </div>
 
                   <div className="col-lg-6 post-quick-similar-post trans_200 post-quick-view-b">
-                    <Link to={`post/${post.id}`}>
+                    <Link to={`post/view/${post.id}`}>
                       Read
                     </Link>
                   </div>

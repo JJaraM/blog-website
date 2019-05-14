@@ -19,11 +19,14 @@ export class Home extends React.Component<any, State> {
 
   async componentDidMount() {
     this.fetchTags();
-    this.setState({ isLoading: true });
+
   }
 
   fetchTags = () => {
-    fetch(apiTag.findAll).then(response => response.json()).then(data => this.setState({tags: data, isLoading: false}));
+    fetch(apiTag.findAll)
+      .then(response => response.json())
+      .then(data => this.setState({tags: data, isLoading: false}));
+    this.setState({ isLoading: true });
   }
 
   render() {

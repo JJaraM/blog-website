@@ -1,19 +1,10 @@
-/*
-* Copyright (c) Jonathan Jara Morales
-* @since 1.0
-*/
 import * as React from 'react';
-
 import PostsLatest from '../../../components/post/PostsLatest';
 import PostVideo from '../../../components/post/PostVideo';
-
 import config from '../../../config';
 
 interface Props { tags: any }
-/*
-* Component used to render the index page
-* @since 1.0
-*/
+
 export class HomeMain extends React.Component<Props, any> {
 
   constructor(props:any) {

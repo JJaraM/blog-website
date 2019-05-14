@@ -22,7 +22,7 @@ interface Props { tags: any }
 
 let pageNumber: number = 0;
 let array : Array<Post> = [];
-const items: string = '/5';
+const items: string = '/30';
 
 /*
 * Component used to render the index page

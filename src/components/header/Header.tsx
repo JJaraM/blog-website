@@ -18,7 +18,7 @@ import api from '../../api/post';
 const getSuggestionValue = suggestion => suggestion.name;
 
 const renderSuggestion = suggestion => (
-  <Link to={`/post/${suggestion.id}`} >
+  <Link to={`/post/view/${suggestion.id}`} >
     <div className=" suggestion">
       <div className="d-flex flex-row align-items-xl-center align-items-start justify-content-start smart_search">
          <div className="side_post_image">
