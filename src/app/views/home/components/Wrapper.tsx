@@ -11,7 +11,7 @@ export class Wrapper extends React.Component<any, any> {
       <div className="page_content">
          <div className="container">
            <div className="row row-lg-eq-height">
-             {this.props.children}
+             { this.props.children }
            </div>
          </div>
       </div>

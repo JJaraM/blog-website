@@ -6,7 +6,8 @@
 /*
  * Link that connect with the post microservice
  */
-const host = 'https://blog-microservice-post.herokuapp.com'; // const host = 'http://localhost:5001';
+const host = 'https://blog-microservice-post.herokuapp.com';
+// const host = 'http://localhost:5001';
 
 /*
  * EndPoints

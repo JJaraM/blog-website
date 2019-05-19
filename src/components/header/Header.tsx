@@ -194,18 +194,24 @@ export class Header extends React.Component<any, any> {
     							</ul>
     						</nav>
 
-    						<div className="search_container ml-auto">
-                    <Autosuggest
-                      suggestions={suggestions}
-                      onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                      onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                      getSuggestionValue={getSuggestionValue}
-                      renderSuggestion={renderSuggestion}
-                      inputProps={inputProps}
-                       />
-    								<img className="header_search_icon" src="/images/search.png" alt=""/>
-
+    						<div className="search_container ml-auto flex">
+                    <div className="">
+                      <Autosuggest
+                        suggestions={suggestions}
+                        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                        getSuggestionValue={getSuggestionValue}
+                        renderSuggestion={renderSuggestion}
+                        inputProps={inputProps}
+                         />
+      								<img className="header_search_icon" src="/images/search.png" alt=""/>
+                    </div>
+                    {/*<div className="weather sign_in">
+      								<i className="fa fa-sign-in" aria-hidden="true" />
+      							</div>
+                    */}
     						</div>
+
     						<div className="hamburger ml-auto menu_mm">
     							<i className="fa fa-bars trans_200 menu_mm" aria-hidden="true"/>
     						</div>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export class HomeSlinder extends React.Component<any, any> {
+export class HomeSlinder extends React.Component {
 
   constructor(props:any) {
     super(props);

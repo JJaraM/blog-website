@@ -31,7 +31,7 @@ export class Home extends React.Component<any, State> {
     let Component = () => <HomeSlinderLoading />;
 
     if (!this.state.isLoading) {
-      Component = () => <Slinder tags={ this.state.tags } />;
+      Component = () => <Slinder { ...this.state } />;
     }
 
     return (
@@ -40,7 +40,7 @@ export class Home extends React.Component<any, State> {
           <Component />
         </HomeSlinder>
         <Wrapper>
-          <HomeMain tags={ this.state.tags } />
+          <HomeMain { ...this.state } />
           <HomeRightSideBar />
         </Wrapper>
       </>

@@ -2,7 +2,6 @@ import * as React from 'react';
 import PostsLatest from '../../../components/post/PostsLatest';
 import PostVideo from '../../../components/post/PostVideo';
 import config from '../../../config';
-
 interface Props { tags: any }
 
 export class HomeMain extends React.Component<Props, any> {

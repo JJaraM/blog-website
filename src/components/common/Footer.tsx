@@ -61,7 +61,7 @@ class Footer extends React.Component<any, State> {
     console.log(popularPost);
     return (
       <footer className="footer">
-
+        {/*
         <div className="container">
           <div className="row row-lg-eq-height footer_center">
             <div className="col-lg-4">
@@ -86,6 +86,7 @@ class Footer extends React.Component<any, State> {
             </div>
           </div>
         </div>
+        */}
         <div className="center">
           <div className="container">
             <div className="row row-lg-eq-height footer_center ">
