@@ -1,41 +1,37 @@
 import * as React from 'react';
-
 import apiTag from '../../../api/tag';
 import Slinder from '../../../Slinder';
-
 import { HomeMain } from './HomeMain';
 import { HomeRightSideBar } from './HomeRightSideBar';
 import { HomeSlinderLoading } from './components/HomeSlinderLoading';
 import { HomeSlinder } from './components/HomeSlinder';
 import { Wrapper } from './components/Wrapper';
 
-interface State { tags: any; isLoading: boolean }
-
 export class Home extends React.Component<any, State> {
 
   constructor(props:any) {
     super(props);
+    this.state = {
+      isLoading: true,
+      tags: [],
+    }
   }
 
   async componentDidMount() {
     this.fetchTags();
-
   }
 
   fetchTags = () => {
     fetch(apiTag.findAll)
       .then(response => response.json())
-      .then(data => this.setState({tags: data, isLoading: false}));
-    this.setState({ isLoading: true });
+      .then(data => this.setState({ tags: data, isLoading: false }));
   }
 
   render() {
-    let tags = [];
     let Component = () => <HomeSlinderLoading />;
 
-    if (this.state !== null && !this.state.isLoading) {
-      tags = this.state.tags;
-      Component = () => <Slinder tags={tags} />;
+    if (!this.state.isLoading) {
+      Component = () => <Slinder tags={ this.state.tags } />;
     }
 
     return (
@@ -44,10 +40,15 @@ export class Home extends React.Component<any, State> {
           <Component />
         </HomeSlinder>
         <Wrapper>
-          <HomeMain tags={ tags } />
+          <HomeMain tags={ this.state.tags } />
           <HomeRightSideBar />
         </Wrapper>
       </>
     );
   }
+}
+
+interface State {
+  tags: any;
+  isLoading: boolean
 }

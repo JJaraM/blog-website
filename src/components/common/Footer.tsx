@@ -62,7 +62,7 @@ class Footer extends React.Component<any, State> {
     return (
       <footer className="footer">
 
-        {/*<div className="container">
+        <div className="container">
           <div className="row row-lg-eq-height footer_center">
             <div className="col-lg-4">
               <div className="footer_title"> Popular Post </div>
@@ -116,10 +116,12 @@ class Footer extends React.Component<any, State> {
             </div>
           </div>
         </div>
-        */}
+
         <div className="bottom">
           <div className="container">
             © COPYRIGHT {application.home_logo} 2019  ALL RIGHTS RESERVED.
+            <br />
+            Project Build using React Native
           </div>
         </div>
       </footer>
