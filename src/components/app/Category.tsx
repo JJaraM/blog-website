@@ -5,7 +5,7 @@ import apiPost from '../../api/post';
 
 import Post from '../../dto/Post';
 
-import PostsLatestSection from '../../components/post/PostsLatestSection';
+import PostsLatestSection from '../../app/components/PostsLatestSection/PostsLatestSection';
 
 
 import '../../bootstrap4/bootstrap.min.css'
@@ -84,7 +84,7 @@ export class Category extends React.Component<any, State> {
   }
 
   render() {
-  
+
     const post = this.state.posts[0];
     const tag = this.state.tags.filter(el => Number(el.id) === Number(this.props.match.params.id))[0];
 

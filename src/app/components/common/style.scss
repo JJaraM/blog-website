@@ -1,0 +1,23 @@
+
+.readmore {
+    border-radius: 100px;
+    height: 40px;
+    display: block;
+    width: 180px;
+    background: #ededed;
+    text-align: center;
+    line-height: 40px;
+    text-transform: uppercase;
+    color: #323249;
+    font-weight: 500;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -7px;
+		z-index: 1;
+}
+
+.readmore:hover {
+	cursor: pointer;
+	background: #FFFFFF;
+}

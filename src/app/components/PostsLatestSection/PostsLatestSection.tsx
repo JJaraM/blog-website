@@ -1,28 +1,13 @@
 import * as React from 'react';
 
-import Post from '../../dto/Post';
+import Post from '../../../dto/Post';
 import { Link } from "react-router-dom";
 import Masonry from 'react-masonry-component';
-import './skeleton.css';
+import  PostLatestSectionLoading from '../PostLatestSectionLoading';
 
-interface ProfileListProps {
-  posts: Array<Post>;
-  isLoading: boolean;
-}
+class PostsLatestSection extends React.Component<Props, State> {
 
-interface ProfileListState {
-  posts: Array<Post>;
-  page: number;
-}
-
-const masonryOptions = {
-    gutter: 20,
-    transitionDuration: '0.8s'
-};
-
-class PostsLatestSection extends React.Component<ProfileListProps, ProfileListState> {
-
-  constructor(props: ProfileListProps) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       posts: [],
@@ -102,15 +87,22 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
 
   renderBig = (post:Post, key:number) => {
     const date = new Date(post.createDate);
+
     return (
-      <div className="card card_large_with_background grid-item grid-item" key={key}>
-        <img className="card-img-top" src={post.image} alt=""/>
+      <div className="card card_largest_with_image grid-item" key={key}>
+        <Link to={`/post/view/${post.id}`}>
+          <img className="card-img-top" src={post.image} alt=""/>
+        </Link>
         <div className="card-body">
-          <div className="card-title card-title-small">
+          <div className="card-title ">
             <Link to={`/post/view/${post.id}`}>
               {post.title}
             </Link>
           </div>
+
+          <p className="card-text">
+            {/* briefDescription */}
+          </p>
           <small className="post_meta">
             <Link to={`/post/view/${post.id}`}>
               Jonathan Jara Morales
@@ -124,51 +116,17 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
 
 
   render() {
-    let special = false;
-    const Loading = () => (
-      <div className="row">
-        <div className="col-4">
-          <div className="post small">
-            <div className="line" />
-          </div>
-          <div className="post small">
-            <div className="line" />
-          </div>
-          <div className="post big">
-            <div className="line" />
-          </div>
-        </div>
-        <div className="col-4">
-          <div className="post big">
-            <div className="line" />
-          </div>
-          <div className="post small">
-            <div className="line" />
-          </div>
-          <div className="post small">
-            <div className="line" />
-          </div>
-        </div>
-        <div className="col-4">
-          <div className="post small">
-            <div className="line" />
-          </div>
-          <div className="post big">
-            <div className="line" />
-          </div>
-          <div className="post small">
-            <div className="line" />
-          </div>
-        </div>
-      </div>
-    )
     if (this.props.isLoading) {
       return (
         <div className="skeleton-container">
-          <Loading />
+          <PostLatestSectionLoading />
         </div>
       );
     }
+
+    let special = false;
+    const maxRepetitions = 5;
+    let repetitions = 0;
 
     return (
       <Masonry options={masonryOptions}>
@@ -179,9 +137,15 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
             }
             if (!special) {
               special = true;
+              repetitions += 1;
               return this.renderSpecial(post, i);
             }
             special = false;
+            if (maxRepetitions === repetitions) {
+              repetitions = 0;
+              return this.renderBig(post, i);
+            }
+
             return this.renderNoSpecial(post, i);
           })
         }
@@ -189,5 +153,20 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
     );
   }
 }
+
+interface Props {
+  posts: Array<Post>;
+  isLoading: boolean;
+}
+
+interface State {
+  posts: Array<Post>;
+  page: number;
+}
+
+const masonryOptions = {
+  gutter: 20,
+  transitionDuration: '0.8s'
+};
 
 export default PostsLatestSection;

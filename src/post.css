@@ -2225,28 +2225,6 @@ pre[class*="language-"] {
 		    padding-top: 15px;
 }
 
-.readmore {
-    border-radius: 100px;
-    height: 40px;
-    display: block;
-    width: 180px;
-    background: #ededed;
-    text-align: center;
-    line-height: 40px;
-    text-transform: uppercase;
-    color: #323249;
-    font-weight: 500;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: -7px;
-		    z-index: 1;
-}
-
-.readmore:hover {
-	cursor: pointer;
-	background: #FFFFFF;
-}
 
 .entry-footer-social {
 	padding: 18px 0;
@@ -2908,7 +2886,10 @@ ol.children {
     border: 1px solid #EEEEEE;
 		font-size: .7875rem;
 }
-
+.post_body > h1 {
+	font-size: 21px;
+	font-weight: 800;
+}
 .post_body > table thead th {
     font-size: .7875rem;
     font-weight: 700;

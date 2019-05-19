@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PostsLatest from '../../../components/post/PostsLatest';
+import PostsLatest from '../../components/PostsLatestSection/PostsLatest';
 import PostVideo from '../../../components/post/PostVideo';
 import config from '../../../config';
 interface Props { tags: any }
