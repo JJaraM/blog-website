@@ -84,10 +84,7 @@ export class Category extends React.Component<any, State> {
   }
 
   render() {
-    if (this.state.posts.length === 0) {
-      return <div>Loading</div>
-    }
-
+  
     const post = this.state.posts[0];
     const tag = this.state.tags.filter(el => Number(el.id) === Number(this.props.match.params.id))[0];
 
@@ -111,7 +108,7 @@ export class Category extends React.Component<any, State> {
               <div className="row row-lg-eq-height">
                 <div className="col-lg-9">
                   <div className="main_content">
-                    <PostsLatestSection posts={this.state.posts} />
+                    <PostsLatestSection posts={this.state.posts} isLoading={this.state.posts.length === 0}/>
                     <div className="blog_section"></div>
                   </div>
                 </div>

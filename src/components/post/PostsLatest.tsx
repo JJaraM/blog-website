@@ -6,10 +6,7 @@ import * as React from 'react';
 
 import api from '../../api/post';
 import Post from '../../dto/Post';
-
 import PostsLatestSection from '../../components/post/PostsLatestSection';
-
-import { Loading } from '../../components/common/Loading';
 
 interface State {
   posts: Array<Post>;
@@ -170,9 +167,8 @@ export default class PostsLatest extends React.Component<Props, State> {
   }
 
   render() {
-    if (!this.state.pageRender) {
-      return <Loading />
-    }
+
+
     return (
       <>
         <div className="blog_section">
@@ -181,7 +177,7 @@ export default class PostsLatest extends React.Component<Props, State> {
             {this.renderTags()}
           </div>
           <div className="section_content">
-            <PostsLatestSection posts={this.state.posts} />
+            <PostsLatestSection posts={this.state.posts} isLoading={!this.state.pageRender} />
           </div>
         </div>
         <div className="entry-footer clearfix">

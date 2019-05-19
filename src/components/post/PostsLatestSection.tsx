@@ -3,14 +3,15 @@ import * as React from 'react';
 import Post from '../../dto/Post';
 import { Link } from "react-router-dom";
 import Masonry from 'react-masonry-component';
+import './skeleton.css';
 
 interface ProfileListProps {
   posts: Array<Post>;
+  isLoading: boolean;
 }
 
 interface ProfileListState {
   posts: Array<Post>;
-  isLoading: boolean;
   page: number;
 }
 
@@ -25,7 +26,6 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
     super(props);
     this.state = {
       posts: [],
-      isLoading: false,
       page: 0
     };
   }
@@ -124,18 +124,49 @@ class PostsLatestSection extends React.Component<ProfileListProps, ProfileListSt
 
 
   render() {
-
-    if (this.state.isLoading) {
-      return (
-        <div>Loading</div>
-      );
-    }
-
     let special = false;
-
-    if (this.state.isLoading) {
+    const Loading = () => (
+      <div className="row">
+        <div className="col-4">
+          <div className="post small">
+            <div className="line" />
+          </div>
+          <div className="post small">
+            <div className="line" />
+          </div>
+          <div className="post big">
+            <div className="line" />
+          </div>
+        </div>
+        <div className="col-4">
+          <div className="post big">
+            <div className="line" />
+          </div>
+          <div className="post small">
+            <div className="line" />
+          </div>
+          <div className="post small">
+            <div className="line" />
+          </div>
+        </div>
+        <div className="col-4">
+          <div className="post small">
+            <div className="line" />
+          </div>
+          <div className="post big">
+            <div className="line" />
+          </div>
+          <div className="post small">
+            <div className="line" />
+          </div>
+        </div>
+      </div>
+    )
+    if (this.props.isLoading) {
       return (
-        <div>Loading</div>
+        <div className="skeleton-container">
+          <Loading />
+        </div>
       );
     }
 
