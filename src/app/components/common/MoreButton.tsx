@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import './style.scss'
+import './style.css'
 
 const MoreButton: React.StatelessComponent<Props> = (props) => (
   <div className="entry-footer clearfix">

@@ -17,6 +17,11 @@
 		z-index: 1;
 }
 
+.entry-footer-social {
+	padding: 18px 0;
+	border-top: solid 1px #d7d7d7;
+}
+
 .readmore:hover {
 	cursor: pointer;
 	background: #FFFFFF;

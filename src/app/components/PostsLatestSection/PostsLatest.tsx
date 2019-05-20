@@ -26,20 +26,20 @@ export default class PostsLatest extends React.Component<Props, State> {
     super(props);
     this.state = {
       posts: [],
-      isLoading: false,
+      isLoadingPage: false,
+      renderPosts: false,
       tag: 0
     };
   }
-  
+
   readMore = () => {
     const div = document.getElementById("load_more");
     if (div !== null) {
       div.innerHTML = 'Loading...';
     }
-    this.setState({isLoading: true});
-    this.fetchPost(this.state.tag);
-
     pageNumber++;
+    this.setState({isLoadingPage: true});
+    this.fetchPost(this.state.tag);
   }
 
   populate = (data) => {
@@ -52,16 +52,16 @@ export default class PostsLatest extends React.Component<Props, State> {
       div.innerHTML = readMore;
     }
 
-    if (array) {
-      this.setState({posts: array, isLoading: false});
+    if (array.length > 0) {
+      this.setState({posts: array, isLoadingPage: false, renderPosts:true});
     } else {
-      this.setState({isLoading: false});
+      this.setState({isLoadingPage: false, renderPosts:true});
       pageNumber--;
     }
   }
 
   async componentDidMount() {
-    this.setState({isLoading: true});
+    this.setState({isLoadingPage: true});
     this.fetchPost(this.state.tag);
   }
 
@@ -76,12 +76,21 @@ export default class PostsLatest extends React.Component<Props, State> {
   changeTag = (tagId:number) => (event: any) => {
     pageNumber = 0;
     array = [];
-    this.setState({tag: tagId});
+    this.setState({ tag: tagId });
     this.fetchPost(tagId);
     selectTag(tagId);
   }
 
   render() {
+    let ButtonToRender = () => <React.Fragment />;
+    if (this.state.posts.length > 0) {
+      ButtonToRender = () => (
+        <MoreButton
+          title={readMore}
+          onClick={this.readMore}
+        />
+      );
+    }
     return (
       <>
         <div className="blog_section">
@@ -93,13 +102,13 @@ export default class PostsLatest extends React.Component<Props, State> {
             />
           </div>
           <div className="section_content">
-            <PostsLatestSection posts={this.state.posts} isLoading={this.state.isLoading} />
+            <PostsLatestSection
+              posts={this.state.posts}
+              isLoading={!this.state.renderPosts}
+            />
           </div>
         </div>
-        <MoreButton
-          title={readMore}
-          onClick={this.readMore}
-        />
+        <ButtonToRender />
       </>
     );
   }
@@ -107,7 +116,8 @@ export default class PostsLatest extends React.Component<Props, State> {
 
 interface State {
   posts: Array<Post>;
-  isLoading: boolean;
+  isLoadingPage: boolean;
+  renderPosts: boolean;
   tag: number;
 }
 

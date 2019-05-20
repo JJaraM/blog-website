@@ -1,6 +1,12 @@
 import * as React from 'react';
 
+import PostLatestSectionTagItemsLoading from '../PostLatestSectionTagItemsLoading';
+
 const PostLatestSectionTagItems: React.StatelessComponent<Props> = (props) => {
+
+  if (props.tags.length === 0) {
+    return <PostLatestSectionTagItemsLoading />;
+  }
 
   const firstList = props.tags.slice(0, 5).map(tag => (
     <li id={'tag-'+ tag.id} key={'tag-'+ tag.id}>
@@ -39,7 +45,7 @@ const PostLatestSectionTagItems: React.StatelessComponent<Props> = (props) => {
 }
 
 interface Props {
-  tags: any;
+  tags: Array<any>;
   onClick: (id: number) => any,
 }
 
