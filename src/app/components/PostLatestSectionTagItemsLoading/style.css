@@ -2,13 +2,17 @@
   padding: 0 0 0 0 !important;
 }
 
-.tag-header.small .line {
+.tag-header-loading ul li:hover {
+  background: #ededed;
+}
+
+.tag-header.small .line-tag {
   width: 75px;
   height: 28px;
   animation: tag-header-small 1.6s infinite linear;
 }
 
-.tag-header .line {
+.tag-header .line-tag {
   float: left;
   border-radius: 7px;
   background-image: linear-gradient(90deg, #ededed 0px, #f0f0f0 40px, #ededed 80px);
@@ -16,11 +20,11 @@
   border-radius: 14px;
 }
 
-.tag-header .line ~ .line {
+.tag-header .line-tag ~ .line-tag {
   background-color: #ddd;
 }
 
-.tag-header.medium .line {
+.tag-header.medium .line-tag {
   width: 180px;
   height: 28px;
   animation: tag-header-medium 1.6s infinite linear;

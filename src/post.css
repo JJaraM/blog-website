@@ -1025,6 +1025,15 @@ section
 	color: rgba(0,0,0,0.5);
 	font-weight: 500;
 }
+
+.card-body-mask > .post_tags > ul .post_tag  a {
+	color: #FFF;
+}
+
+.card-body-mask > .post_tags > ul .post_tag  a:hover {
+	color: rgba(0,0,0,0.5);
+}
+
 .post_tag:hover
 {
 	background: #ededed;
@@ -1331,6 +1340,7 @@ section
 {
 	font-size: 16px;
 	line-height: 1.375;
+	cursor: pointer;
 }
 .card-title a:hover
 {
@@ -1582,7 +1592,6 @@ section
 .side_post_content
 {
 	padding-left: 20px;
-	margin-top: -5px;
 }
 .side_post_title
 {
@@ -1973,8 +1982,7 @@ h1,h2,h3,h4,h5,h6 {
 
 .card-body-mask {
 	background-color: rgba(0,0,0,.6);
-	border-top-left-radius: 6px;
-	border-top-right-radius: 6px;
+	border-radius: 6px;
 }
 
 .post-quick-shared {

@@ -92,24 +92,23 @@ export default class PostsLatest extends React.Component<Props, State> {
       );
     }
     return (
-      <>
-        <div className="blog_section">
-          <div className="section_panel d-flex flex-row align-items-center justify-content-start">
-            <div className="section_title_home">Latest Articles</div>
-            <PostLatestSectionTagItems
-              tags={this.props.tags}
-              onClick={this.changeTag}
-            />
-          </div>
-          <div className="section_content">
-            <PostsLatestSection
-              posts={this.state.posts}
-              isLoading={!this.state.renderPosts}
-            />
-          </div>
+      <div className="blog_section">
+        <div className="section_panel d-flex flex-row align-items-center justify-content-start">
+          <div className="section_title_home">Latest Articles</div>
+          <PostLatestSectionTagItems
+            tags={this.props.tags}
+            onClick={this.changeTag}
+          />
+        </div>
+        <div className="section_content">
+          <PostsLatestSection
+            posts={this.state.posts}
+            tags={this.props.tags}
+            isLoading={!this.state.renderPosts}
+          />
         </div>
         <ButtonToRender />
-      </>
+      </div>
     );
   }
 }

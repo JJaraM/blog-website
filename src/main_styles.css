@@ -1149,6 +1149,7 @@ section
 {
 	font-size: 16px;
 	line-height: 1.375;
+	cursor: pointer;
 }
 .card-title a:hover
 {
@@ -1564,6 +1565,7 @@ section
 .side_post a
 {
 	display: block;
+	font-size: 12px;
 }
 .side_post:not(:last-child)
 {
@@ -1576,6 +1578,9 @@ section
 	border-radius: 6px;
 	overflow: hidden;
 }
+.side_post_override {
+	height: 100% !important;
+}
 .video .side_post_image div img
 {
 	max-width: 100%;
@@ -1584,7 +1589,6 @@ section
 .side_post_content
 {
 	padding-left: 20px;
-	margin-top: -5px;
 }
 .side_post_title
 {
@@ -2623,6 +2627,11 @@ border-radius: 100%;
 .micro-space {
   margin: 0 -2px -4px;
 }
+
+.card-body > .post_tags {
+	 margin-top: 10px;
+}
+
 /*
 .timeline-item {
     background: #fff;

@@ -10,7 +10,6 @@ class PostsLatestSection extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      posts: [],
       page: 0
     };
   }
@@ -22,6 +21,8 @@ class PostsLatestSection extends React.Component<Props, State> {
 
   renderNoImage = (post:Post, key:number) => {
     const date = new Date(post.createDate);
+    const tags = this.renderTags(post);
+
     return (
       <div className="card card_default card_small_no_image grid-item" key={key}>
         <div className="card-body">
@@ -36,6 +37,7 @@ class PostsLatestSection extends React.Component<Props, State> {
             </Link>
             <span>{date.toLocaleDateString()}</span>
           </small>
+          { tags }
         </div>
       </div>
     );
@@ -43,6 +45,7 @@ class PostsLatestSection extends React.Component<Props, State> {
 
   renderSpecial = (post:Post, key:number) => {
     const date = new Date(post.createDate);
+    const tags = this.renderTags(post);
     return (
       <div className="card card_default card_small_with_background grid-item" key={key}>
         <div className="card_background" style={{backgroundImage: `url(${post.image})`}}></div>
@@ -58,6 +61,7 @@ class PostsLatestSection extends React.Component<Props, State> {
             </Link>
             <span>{date.toLocaleDateString()}</span>
           </small>
+          { tags }
         </div>
       </div>
     );
@@ -65,6 +69,8 @@ class PostsLatestSection extends React.Component<Props, State> {
 
   renderNoSpecial = (post:Post, key:number) => {
     const date = new Date(post.createDate);
+    const tags = this.renderTags(post);
+
     return (
       <div className="card card_small_with_image grid-item" key={key}>
         <img className="card-img-top" src={post.image} alt=""/>
@@ -80,13 +86,41 @@ class PostsLatestSection extends React.Component<Props, State> {
             </Link>
             <span>{date.toLocaleDateString()}</span>
           </small>
+          { tags }
         </div>
+      </div>
+    );
+  }
+
+  renderTags = (post:Post) => {
+    const mapTags = this.tagsAsMap();
+
+    return (
+      <div className="post_tags">
+        <ul>
+          {
+            post.tags.map((tag, tagId) => {
+              const result = mapTags[tag];
+              if (result !== undefined) {
+                return (
+                  <li key={tagId} className="post_tag">
+                    <Link to={`/category/${mapTags[tag].id}`}>
+                      {mapTags[tag].name}
+                    </Link>
+                  </li>
+                )
+              }
+              return null;
+            })
+          }
+        </ul>
       </div>
     );
   }
 
   renderBig = (post:Post, key:number) => {
     const date = new Date(post.createDate);
+    const tags = this.renderTags(post);
 
     return (
       <div className="card card_largest_with_image grid-item" key={key}>
@@ -109,11 +143,21 @@ class PostsLatestSection extends React.Component<Props, State> {
             </Link>
             <span>{date.toLocaleDateString()}</span>
           </small>
+          { tags }
         </div>
       </div>
     );
   }
 
+  tagsAsMap = () => {
+    if (this.props.tags !== undefined) {
+      return this.props.tags.reduce(function(map, tag) {
+          map[tag.id] = tag;
+          return map;
+      }, {});
+    }
+    return [];
+  }
 
   render() {
     if (this.props.isLoading) {
@@ -127,6 +171,7 @@ class PostsLatestSection extends React.Component<Props, State> {
     let special = false;
     const maxRepetitions = 5;
     let repetitions = 0;
+
 
     return (
       <Masonry options={masonryOptions}>
@@ -156,11 +201,11 @@ class PostsLatestSection extends React.Component<Props, State> {
 
 interface Props {
   posts: Array<Post>;
+  tags: Array<any>;
   isLoading: boolean;
 }
 
 interface State {
-  posts: Array<Post>;
   page: number;
 }
 

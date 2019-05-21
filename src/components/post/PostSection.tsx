@@ -8,7 +8,7 @@ import * as Markdown from 'react-markdown';
 import { Redirect } from 'react-router'
 import { Link } from "react-router-dom";
 
-import OwlCarousel from 'react-owl-carousel2';
+// import OwlCarousel from 'react-owl-carousel2';
 
 // Application Configurations
 import apiPost from '../../api/post';
@@ -57,6 +57,7 @@ interface Props {
 interface State {
   isLoading: boolean;
   post: Post;
+  extraPosts: Array<Post>;
   tags: Array<Tag>;
   redirect: boolean;
   render: boolean;
@@ -70,7 +71,17 @@ class PostSection extends React.Component<Props, State> {
 
   constructor(props:Props) {
     super(props);
+    /*this.state = {
+      extraPosts: [],
+      isLoading: false,
+      post: {} as Post,
+      tags: [],
+      redirect: false,
+      render: false,
+      isFromSearch: false,
+    }*/
     this.openComments = this.openComments.bind(this);
+    this.changePost = this.changePost.bind(this);
   }
 
   openComments(event: any) : void {
@@ -120,6 +131,11 @@ class PostSection extends React.Component<Props, State> {
     this.setState({isLoading: true, redirect: false, render: false, isFromSearch: false});
     this.fetchData();
     this.storeIp();
+  }
+
+  componentWillReceiveProps() {
+    Prism.highlightAll();
+    this.cleanBullets();
   }
 
   storeIp = () => {
@@ -175,6 +191,18 @@ class PostSection extends React.Component<Props, State> {
         this.setState({post: data, isLoading: false});
         Prism.highlightAll();
         this.cleanBullets();
+        if (this.state.post.tags.length > 0) {
+          this.fetchMorePosts(this.state.post.tags[0]);
+        }
+      });
+  }
+
+  fetchMorePosts = (tagId) => {
+    fetch(apiPost.findLast  + "0/10/"+ tagId)
+      .then(response => response.json())
+      .catch(error => this.setState({redirect: true}))
+      .then(data => {
+        this.setState({extraPosts: data});
       });
   }
 
@@ -328,6 +356,10 @@ class PostSection extends React.Component<Props, State> {
     )
   }
 
+  changePost = (value: Post) => (event: any) => {
+    this.setState({post: value});
+  }
+
   /*
    * Render the page when the result is complete, in case that the state indicates that is necessary to
    * redirect the page will redirect to the page not found, this could happens if there is any issue
@@ -365,7 +397,7 @@ class PostSection extends React.Component<Props, State> {
 
     const date = new Date(this.state.post.createDate);
 
-    const options = {
+    /*const options = {
         items: 4,
         nav: false,
         rewind: true,
@@ -399,7 +431,21 @@ class PostSection extends React.Component<Props, State> {
       {
         img: "https://cdn-images-1.medium.com/max/1600/1*OF0xEMkWBv-69zvmNs6RDQ.gif"
       }
-    ]
+    ]*/
+
+    const style1 = {
+      width: '1628px'
+    }
+
+    const style2 = {
+      width: '232.5px'
+    }
+
+    let extraPostToRender = Array<Post>();
+    if (this.state.extraPosts !== undefined && this.state.extraPosts.length > 0) {
+      extraPostToRender = this.state.extraPosts;
+
+    }
 
     return (
       <>
@@ -479,7 +525,68 @@ class PostSection extends React.Component<Props, State> {
               <div className="col-lg-3">
                 <div className="sidebar">
                   <div className="sidebar_background"></div>
+                  <div className="sidebar_section">
+                    <div className="sidebar_title_container">
+                      <div className="mkdf-widget-title-holder">
+                        <span className="mkdf-widget-title-before"/>
+                        <h6 className="mkdf-widget-title">Latest Post</h6>
+                      </div>
+                    </div>
 
+
+
+
+                    <div className="sidebar_section_content">
+                       <div className="sidebar_slider_container">
+                          <div className="owl-carousel owl-theme sidebar_slider_top owl-loaded owl-drag">
+                             <div className="owl-stage-outer">
+                                <div className="owl-stage" style={style1}>
+                                   <div className="owl-item cloned" style={style2}>
+                                      <div className="owl-item">
+
+                                      {
+                                        extraPostToRender.map((item, i) => {
+                                          const dateExtraPost = new Date(item.createDate);
+                                          return (
+                                            <div className="side_post" key={i} onClick={this.changePost(item)}>
+                                               <a href="#">
+                                                  <div className="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
+                                                     <div className="side_post_image">
+                                                        <div className="side_post_override">
+                                                           <img onClick={this.changePost(item)} src={item.image} alt=""/>
+                                                       </div>
+                                                     </div>
+                                                     <div className="side_post_content">
+                                                         <div className="side_post_title" onClick={this.changePost(item)}>
+                                                             {item.title}
+                                                         </div>
+                                                        <small className="post_meta">
+                                                          <span>{dateExtraPost.toLocaleDateString()}</span>
+
+                                                        </small>
+                                                     </div>
+                                                  </div>
+                                               </a>
+                                            </div>
+                                          )
+                                        })
+                                      }
+                                      </div>
+                                   </div>
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+
+
+
+
+
+
+
+
+                  </div>
                 </div>
               </div>
 
@@ -489,7 +596,7 @@ class PostSection extends React.Component<Props, State> {
 
           </div>
 
-
+          {/*
           <div className="row recommended_post">
 
               <div className="col-lg-2  recommended_post_section_title_wrap">
@@ -519,7 +626,7 @@ class PostSection extends React.Component<Props, State> {
               </div>
 
           </div>
-
+  */}
         </div>
 
 

@@ -1,3 +1,66 @@
+.react-tags {
+  border-radius: 5px;
+}
+
+.react-tags__selected-tag {
+  display: inline-block;
+  width: auto;
+  height: 24px;
+  border: solid 1px #d7d7d7;
+  border-radius: 3px;
+  background: transparent;
+  margin-bottom: 5px;
+  -webkit-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  transition: all 200ms ease;
+  padding: 0;
+  margin: 0 6px 6px 0;
+}
+
+.react-tags__selected-tag-name {
+  line-height: 22px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: rgba(0,0,0,0.5);
+  font-weight: 500;
+}
+
+.react-tags__selected-tag:after {
+  content: '\2715';
+  color: #AAA;
+  margin-left: 0px;
+  font-size: 9px;
+  margin-right: 5px;
+}
+
+.react-tags__search {
+  padding: 7px 7px;
+  font-size: 12px;
+}
+
+.react-tags__suggestions {
+  z-index: 1;
+  font-size: 12px;
+}
+
+.react-tags__selected-tag:hover {
+  font-size: 12px;
+  background: #ededed;
+	border-color: #ededed;
+  cursor: pointer;
+}
+
+/*https://github.com/i-like-robots/react-tags/blob/2921df905f244eeb7484f032718a6a9c72a59638/example/styles.css*/
+.react-tags__suggestions ul {
+  font-size: 12px;
+}
+
+.react-tags__suggestions li:hover {
+  background: #ededed;
+}
+
 .preview-editor {
   margin: 0.9em;
 }

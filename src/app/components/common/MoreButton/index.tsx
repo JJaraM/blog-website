@@ -4,8 +4,8 @@ import './style.css'
 
 const MoreButton: React.StatelessComponent<Props> = (props) => (
   <div className="entry-footer clearfix">
-      <a className="readmore" onClick={props.onClick}>{props.title}</a>
-     <div className="entry-footer-social"></div>
+    <a className="readmore" onClick={props.onClick}>{props.title}</a>
+    <div className="entry-footer-social"></div>
   </div>
 )
 
