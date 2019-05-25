@@ -195,9 +195,9 @@ export class PostAddMain extends React.Component<any, State> {
               </div>
             </div>
           </div>
-          <div className="page_content">
+          <div className="jjara_page_content">
             <div className="container">
-              <div className="row row-lg-eq-height">
+              <div className="row ">
                 <div className="col-lg-12">
                   <div className="post_content">
                     <div className="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">

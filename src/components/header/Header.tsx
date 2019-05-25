@@ -7,6 +7,7 @@ import application from '../../application';
 import { Link } from "react-router-dom";
 import Autosuggest from 'react-autosuggest';
 import api from '../../api/post';
+import HomeMenu from '../../app/components/HomeMenu';
 
 // Imagine you have a list of languages that you'd like to autosuggest.
 
@@ -37,17 +38,6 @@ const renderSuggestion = suggestion => (
     </div>
   </Link>
 );
-
-const menu = [
-  {
-    to: "/",
-    label: "Home"
-  },
-  {
-    to: "/resume",
-    label: "Resume"
-  }
-]
 
 /*
 * Component used to render the header section of the page when is being rendered by a browser
@@ -118,18 +108,34 @@ export class Header extends React.Component<any, any> {
       window.removeEventListener('scroll', this.handleScroll);
   }
 
+  topFunction = (event) => {
+    if (document !== null && document.body !== null && document.documentElement !== null) {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+  }
+
+
   handleScroll(event) {
     const pos = window.scrollY;
+
+    const scrolled = 'scrolled';
     const element = document.getElementById("main-header");
-    if (element !== null) {
+    if (element !== null && element.classList !== null) {
       if (pos > 85) {
-        if (element.classList !== null) {
-            element.classList.add("scrolled");
-        }
+        element.classList.add(scrolled);
       } else {
-        if (element.classList !== null) {
-            element.classList.remove('scrolled');
-        }
+        element.classList.remove(scrolled);
+      }
+    }
+
+    const topButton = document.getElementById("topButton");
+    if (topButton !== null) {
+      if (pos > 20 ) {
+        topButton.style.display = "block";
+      } else {
+        topButton.style.display = "none";
       }
     }
   }
@@ -153,6 +159,7 @@ export class Header extends React.Component<any, any> {
 
     return (
       <header className="header" id="main-header">
+        <button id="topButton" onClick={this.topFunction} title="Go to top">Top</button>
     		<div className="container">
     			<div className="row">
     				<div className="col">
@@ -162,63 +169,30 @@ export class Header extends React.Component<any, any> {
                     {application.home_logo}
                   </Link>
                 </div>
-                <nav className="main_nav">
-    							<ul>
-
-                    {
-                      menu.map((option, i) => {
-                        const currentSelection = window.location.pathname;
-                        const className = currentSelection === option.to ? 'active' : '';
-
-                        return (
-                          <li className={className} key={i}>
-                            <Link to={option.to}>
-                              {option.label}
-                            </Link>
-                          </li>
-                         )
-                      })
-                    }
-
-    								{/*<li>
-                      <Link to="/about">
-                        About
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/projects">
-                        Projects
-                      </Link>
-                    </li>
-                    */}
-    							</ul>
-    						</nav>
+                <HomeMenu />
 
     						<div className="search_container ml-auto flex">
-                    <div className="">
-                      <Autosuggest
-                        suggestions={suggestions}
-                        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                        getSuggestionValue={getSuggestionValue}
-                        renderSuggestion={renderSuggestion}
-                        inputProps={inputProps}
-                         />
-      								<img className="header_search_icon" src="/images/search.png" alt=""/>
-                    </div>
-                    {/*<div className="weather sign_in">
-      								<i className="fa fa-sign-in" aria-hidden="true" />
-      							</div>
-                    */}
-    						</div>
 
-    						<div className="hamburger ml-auto menu_mm">
-    							<i className="fa fa-bars trans_200 menu_mm" aria-hidden="true"/>
+                    <Autosuggest
+                      suggestions={suggestions}
+                      onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                      onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                      getSuggestionValue={getSuggestionValue}
+                      renderSuggestion={renderSuggestion}
+                      inputProps={inputProps}
+                       />
+    								<img className="header_search_icon" src="/images/search.png" alt=""/>
+
     						</div>
+                <div className="hamburger ml-auto menu_mm">
+                  <i className="fa fa-bars trans_200 menu_mm" aria-hidden="true"/>
+                </div>
     					</div>
     				</div>
     			</div>
     		</div>
+
+
     	</header>
     );
   }

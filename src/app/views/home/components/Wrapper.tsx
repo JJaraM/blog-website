@@ -8,9 +8,9 @@ export class Wrapper extends React.Component<any, any> {
 
   render() {
     return (
-      <div className="page_content">
+      <div className="jjara_page_content">
          <div className="container">
-           <div className="row row-lg-eq-height">
+           <div className="row ">
              { this.props.children }
            </div>
          </div>

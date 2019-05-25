@@ -1,6 +1,6 @@
 /*
 * Copyright (c) Jonathan Jara Morales
-* 
+*
 */
 import * as React from 'react';
 
@@ -52,18 +52,19 @@ export class HomeRightSideBar extends React.Component<any, any> {
   render() {
     return (
       <div className="col-lg-3">
-        <div className="sidebar">
-          <div className="sidebar_background"/>
-          <div className="sidebar_section">
-            {
-              config.home_right_sidebar.sort((a, b) => a.order - b.order).map((section, i) => {
-                return (
-                  <div key={i}>
-                    { this.renderSidebarSelection(section) }
-                  </div>
-                );
-              })
-            }
+
+          <div className="sidebar">
+            <div className="sidebar_background"/>
+            <div className="sidebar_section">
+              {
+                config.home_right_sidebar.sort((a, b) => a.order - b.order).map((section, i) => {
+                  return (
+                    <div key={i}>
+                      { this.renderSidebarSelection(section) }
+                    </div>
+                  );
+                })
+              }
           </div>
         </div>
       </div>

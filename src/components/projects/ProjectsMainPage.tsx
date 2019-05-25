@@ -29,7 +29,7 @@ export class ProjectsMainPage extends React.Component<any, any> {
 
         <div className="home_slinder_projects">
         </div>
-        <div className="page_content">
+        <div className="jjara_page_content">
           <div className="container">
             <div className="row">
 

@@ -6,10 +6,11 @@ const selectTag = (id:number) => {
     const li = el.getElementsByTagName("li");
     Array.prototype.forEach.call(li, function (item) {
       const idLi = Number(item.id.replace('tag-', ''));
+      item.classList.remove(clazz);
+
       if (idLi === id) {
+        console.log(item);
         item.classList.add(clazz);
-      } else {
-        item.classList.remove(clazz);
       }
     });
   }

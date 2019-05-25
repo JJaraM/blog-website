@@ -36,6 +36,7 @@ export class Home extends React.Component<any, State> {
 
     return (
       <>
+        
         <HomeSlinder>
           <Component />
         </HomeSlinder>

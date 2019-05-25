@@ -103,12 +103,16 @@ export class Category extends React.Component<any, State> {
         </div>
         <div className="super_container">
 
-          <div className="page_content">
+          <div className="jjara_page_content">
             <div className="container">
-              <div className="row row-lg-eq-height">
+              <div className="row ">
                 <div className="col-lg-9">
                   <div className="main_content">
-                    <PostsLatestSection posts={this.state.posts} isLoading={this.state.posts.length === 0} tags={this.state.tags} />
+                    <PostsLatestSection
+                      posts={this.state.posts}
+                      isLoading={this.state.posts.length === 0}
+                      tags={this.state.tags}
+                    />
                     <div className="blog_section"></div>
                   </div>
                 </div>

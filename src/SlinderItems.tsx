@@ -79,7 +79,7 @@ class SlinderItems extends React.Component<Props, State> {
     }
 
     return (
-      <Link className="tag" to={`category/${tag.id}`}>
+      <Link className="tag" to={`category/${tag.id}`} key={tag.id}>
         {tag.name}
       </Link>
     );
@@ -115,10 +115,13 @@ class SlinderItems extends React.Component<Props, State> {
 
 
   renderPostContent = () => {
-    let letters = new Array();
+    let words = new Array();
+    const maxLetters = 20;
+    let lettersToBreakLine = 0;
+
     const title = this.props.posts[this.state.selection].title;
     if (title !== undefined && title !== null) {
-      letters = title.split('');
+      words = title.split(' ');
     }
 
     return (
@@ -129,16 +132,29 @@ class SlinderItems extends React.Component<Props, State> {
         <div className="home_slider_item_title">
           <Link to={`post/view/${this.props.posts[this.state.selection].id}`}>
             {
-              letters.map((letter, index) => {
-                let letterClass = "shake_letter";
+              words.map((word, index) => {
 
-                if (letter === ' ') {
-                  letterClass = "shake_letter_space";
+                let BreakLine = () => <></>;
+                const letters = word.split('');
+                lettersToBreakLine += letters.length;
+
+                const lettersComponent = letters.map((letter, letterIdx) => (
+                  <span className="shake_letter" key={index + letterIdx}>{letter}</span>
+                ));
+
+                if (lettersToBreakLine >= maxLetters) {
+                  BreakLine = () => <br />;
+                  lettersToBreakLine = 0;
                 }
 
                 return (
-                  <span className={letterClass} key={index}>{letter}</span>
-                )
+                  <React.Fragment key={index}>
+                    <BreakLine />
+                    { lettersComponent }
+                    <span className="shake_letter_space"> </span>
+                  </ React.Fragment>
+                );
+
               })
             }
           </Link>
@@ -209,7 +225,6 @@ class SlinderItems extends React.Component<Props, State> {
         this.props.posts.map((post, index) => {
           return (
             <div className="home_slider_img_container" key={index}>
-
               <span className="home_slinder_img" style={{backgroundImage: `url(${post.image})`}}></span>
             </div>
           )
@@ -237,7 +252,7 @@ class SlinderItems extends React.Component<Props, State> {
 
                 <div className="box2 post-quick-shared">
                   <div className="col-lg-6 post-quick-similar-post trans_200 post-quick-view-a">
-                    <a id={'post-quick-'+ post.id} onClick={this.quickView} to-show={index} href="#">
+                    <a id={'post-quick-'+ post.id} onClick={this.quickView} to-show={index}>
                         Quick View
                     </a>
                   </div>
@@ -267,7 +282,6 @@ class SlinderItems extends React.Component<Props, State> {
           </div>
       );
     }
-
     return (
       <div className="home_slinder">
       {

@@ -63,7 +63,7 @@ class Footer extends React.Component<any, State> {
       <footer className="footer">
         {/*
         <div className="container">
-          <div className="row row-lg-eq-height footer_center">
+          <div className="row footer_center">
             <div className="col-lg-4">
               <div className="footer_title"> Popular Post </div>
               { popularPost }
@@ -89,7 +89,7 @@ class Footer extends React.Component<any, State> {
         */}
         <div className="center">
           <div className="container">
-            <div className="row row-lg-eq-height footer_center ">
+            <div className="row footer_center ">
               <div className="footer-logo-box">
                 <div className="footer_logo">
                   <a href="#">{application.home_logo}</a>

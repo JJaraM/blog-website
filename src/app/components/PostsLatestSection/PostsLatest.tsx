@@ -7,7 +7,7 @@ import * as React from 'react';
 import api from '../../../api/post';
 import Post from '../../../dto/Post';
 import PostsLatestSection from './PostsLatestSection';
-import PostLatestSectionTagItems from '../PostLatestSectionTagItems';
+import PostLatestHeader from '../PostLatestHeader';
 import { selectTag } from './actions';
 import MoreButton from '../common/MoreButton';
 
@@ -28,7 +28,8 @@ export default class PostsLatest extends React.Component<Props, State> {
       posts: [],
       isLoadingPage: false,
       renderPosts: false,
-      tag: 0
+      tag: 0,
+      renderViewMode: 'grid',
     };
   }
 
@@ -81,6 +82,11 @@ export default class PostsLatest extends React.Component<Props, State> {
     selectTag(tagId);
   }
 
+  changeView = (type:string) => (event: any) => {
+    console.log(type);
+    this.setState({renderViewMode : type})
+  }
+
   render() {
     let ButtonToRender = () => <React.Fragment />;
     if (this.state.posts.length > 0) {
@@ -91,19 +97,26 @@ export default class PostsLatest extends React.Component<Props, State> {
         />
       );
     }
+    let Header = () => <></>
+    if (this.props.header) {
+      Header = () => (
+        <PostLatestHeader
+          changeView={this.changeView}
+          tags={this.props.tags}
+          changeTag={this.changeTag}
+          selectedTag={this.state.tag}
+        />
+      )
+    }
+
     return (
       <div className="blog_section">
-        <div className="section_panel d-flex flex-row align-items-center justify-content-start">
-          <div className="section_title_home">Latest Articles</div>
-          <PostLatestSectionTagItems
-            tags={this.props.tags}
-            onClick={this.changeTag}
-          />
-        </div>
+        <Header />
         <div className="section_content">
           <PostsLatestSection
             posts={this.state.posts}
             tags={this.props.tags}
+            view={this.state.renderViewMode}
             isLoading={!this.state.renderPosts}
           />
         </div>
@@ -118,8 +131,10 @@ interface State {
   isLoadingPage: boolean;
   renderPosts: boolean;
   tag: number;
+  renderViewMode: string;
 }
 
 interface Props {
-  tags: any
+  tags: any;
+  header?: any;
 }

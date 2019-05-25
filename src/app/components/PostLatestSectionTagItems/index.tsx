@@ -8,25 +8,25 @@ const PostLatestSectionTagItems: React.StatelessComponent<Props> = (props) => {
     return <PostLatestSectionTagItemsLoading />;
   }
 
-  const firstList = props.tags.slice(0, 5).map(tag => (
-    <li id={'tag-'+ tag.id} key={'tag-'+ tag.id}>
+  const Li = (tag) => (
+    <li id={'tag-'+ tag.id} key={'tag-'+ tag.id} className={ props.selectedTag === tag.id ? "active" : ""}>
       <div className="tag-button" onClick={props.onClick(tag.id)}>{tag.name}</div>
     </li>
+  )
+
+  const firstList = props.tags.slice(0, 5).map(tag => (
+    <Li {...tag} />
   ));
 
   const secondList = props.tags.slice(5).map(tag => (
-    <li id={'tag-'+ tag.id} key={'tag-'+ tag.id}>
-      <div className="tag-button" onClick={props.onClick(tag.id)}>{tag.name}</div>
-    </li>
+    <Li {...tag} />
   ));
 
   return (
     <>
       <div id="tags-section" className="section_tags ml-auto">
         <ul>
-          <li id="tag-0" key="tag-0" className="active">
-            <div className="tag-button" onClick={props.onClick(0)} >all</div>
-          </li>
+          <Li {... { id: 0, name: 'all' }} />
           { firstList }
         </ul>
       </div>
@@ -46,6 +46,7 @@ const PostLatestSectionTagItems: React.StatelessComponent<Props> = (props) => {
 
 interface Props {
   tags: Array<any>;
+  selectedTag: number;
   onClick: (id: number) => any,
 }
 

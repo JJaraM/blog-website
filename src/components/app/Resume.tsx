@@ -121,7 +121,7 @@ export class Resume extends React.Component<any, any> {
           <div className="home_background home_background_mask parallax-window" style={{backgroundImage: `url(${backgroundImage})`}} />
         </div>
 
-        <div className="page_content">
+        <div className="jjara_page_content">
           <div className="container">
             <div className="row">
               <div className="col-lg-9">

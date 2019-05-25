@@ -191,7 +191,7 @@ class PostSection extends React.Component<Props, State> {
         this.setState({post: data, isLoading: false});
         Prism.highlightAll();
         this.cleanBullets();
-        if (this.state.post.tags.length > 0) {
+        if (this.state.post.tags !== undefined && this.state.post.tags.length > 0) {
           this.fetchMorePosts(this.state.post.tags[0]);
         }
       });
@@ -453,7 +453,7 @@ class PostSection extends React.Component<Props, State> {
 
 
 
-        <div className="page_content">
+        <div className="jjara_page_content">
 
         <div className="auto_hide_comments_container" id="comment-container">
           <div className="auto_hide_comments auto_hide_comments_close" id="comments-section-title" onClick={this.openComments}>
@@ -468,7 +468,7 @@ class PostSection extends React.Component<Props, State> {
           <div className="container">
 
 
-            <div className="row row-lg-eq-height">
+            <div className="row ">
 
 
               <div className="col-lg-9">

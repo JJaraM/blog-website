@@ -14,6 +14,12 @@ class PostsLatestSection extends React.Component<Props, State> {
     };
   }
 
+  getDefaultProps() {
+   return {
+     view: "grid"
+   };
+  }
+
   load = () => {
     const pageNumber = this.state.page + 1;
     this.setState({page: pageNumber});
@@ -177,21 +183,26 @@ class PostsLatestSection extends React.Component<Props, State> {
       <Masonry options={masonryOptions}>
         {
           this.props.posts.map((post, i) => {
-            if (post.image === null || post.image === '') {
-              return this.renderNoImage(post, i);
-            }
-            if (!special) {
-              special = true;
-              repetitions += 1;
-              return this.renderSpecial(post, i);
-            }
-            special = false;
-            if (maxRepetitions === repetitions) {
-              repetitions = 0;
-              return this.renderBig(post, i);
-            }
+            // if (this.props.view === 'grid') {
+              if (post.image === null || post.image === '') {
+                return this.renderNoImage(post, i);
+              }
+              if (!special) {
+                special = true;
+                repetitions += 1;
+                return this.renderSpecial(post, i);
+              }
+              special = false;
+              if (maxRepetitions === repetitions) {
+                repetitions = 0;
+                return this.renderBig(post, i);
+              }
 
-            return this.renderNoSpecial(post, i);
+              return this.renderNoSpecial(post, i);
+            // } else {
+            //  return this.renderBig(post, i);
+            // }
+
           })
         }
     </Masonry>
@@ -203,6 +214,7 @@ interface Props {
   posts: Array<Post>;
   tags: Array<any>;
   isLoading: boolean;
+  view?: string;
 }
 
 interface State {
