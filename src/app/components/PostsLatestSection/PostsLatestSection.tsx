@@ -100,7 +100,9 @@ class PostsLatestSection extends React.Component<Props, State> {
 
   renderTags = (post:Post) => {
     const mapTags = this.tagsAsMap();
-
+    if (post.tags === null) {
+      return (<></>);
+    }
     return (
       <div className="post_tags">
         <ul>

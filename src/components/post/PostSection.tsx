@@ -191,7 +191,9 @@ class PostSection extends React.Component<Props, State> {
         this.setState({post: data, isLoading: false});
         Prism.highlightAll();
         this.cleanBullets();
-        if (this.state.post.tags !== undefined && this.state.post.tags.length > 0) {
+        if (this.state.post.tags !== undefined &&
+          this.state.post.tags !== null &&
+          this.state.post.tags.length > 0) {
           this.fetchMorePosts(this.state.post.tags[0]);
         }
       });

@@ -885,7 +885,7 @@ section
 	text-align: justify;
 	font-family: Helvetica,Arial,sans-serif;
 	font-size: 14px;
-	margin: 0 0 15px;
+	/*margin: 0 0 15px;*/
 }
 
 .post_body ul {
@@ -1968,11 +1968,7 @@ section
   background: transparent;
 }
 
-.post_body > h3 {
-	line-height: 1.2;
-	font-size: 18px;
-	font-weight: 800;
-}
+
 
 h1,h2,h3,h4,h5,h6 {
 	margin-bottom: 1.25rem;
@@ -2147,6 +2143,8 @@ h1,h2,h3,h4,h5,h6 {
   text-decoration: none;
 	border-radius: 5px;
 	margin-bottom: 10px;
+	min-width: 50%;
+  display: inline-block;
 }
 
 .post_body > h1 + ul li {
@@ -2889,9 +2887,29 @@ ol.children {
 		font-size: .7875rem;
 }
 .post_body > h1 {
+	line-height: 1.2;
 	font-size: 21px;
 	font-weight: 800;
 }
+
+.post_body > h2 {
+	line-height: 1.2;
+	font-size: 18px;
+	font-weight: 800;
+}
+
+.post_body > h3 {
+	line-height: 1.2;
+	font-size: 16px;
+	font-weight: 800;
+}
+
+.post_body > h4 {
+	line-height: 1.2;
+	font-size: 14px;
+	font-weight: 800;
+}
+
 .post_body > table thead th {
     font-size: .7875rem;
     font-weight: 700;

@@ -87,18 +87,21 @@ export class Category extends React.Component<any, State> {
 
     const post = this.state.posts[0];
     const tag = this.state.tags.filter(el => Number(el.id) === Number(this.props.match.params.id))[0];
+    let tagName = 'Loading ...';
+    let img = '';
 
-    if (tag === undefined) {
-      return null;
+    if (tag !== undefined) {
+      tagName = tag.name;
+      img = post.image;
     }
 
     return (
       <>
         <div className="home">
           <div className="overlay-slinder-panel"/>
-          <div className="home_background home_background_mask parallax-window" style={{backgroundImage: `url(${post.image})`}} />
+          <div className="home_background home_background_mask parallax-window" style={{backgroundImage: `url(${img})`}} />
           <div className="home_content">
-            <div className="post_title">{tag.name}</div>
+            <div className="post_title">{tagName}</div>
           </div>
         </div>
         <div className="super_container">
