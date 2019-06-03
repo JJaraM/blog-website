@@ -1,0 +1,10 @@
+.side-tags-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.side-tags {
+  padding: 19px;
+  border-left: 1px solid hsl(0, 0%, 90%);
+  height: 100%;
+}

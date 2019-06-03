@@ -1,0 +1,20 @@
+.side-image {
+  padding: 19px;
+}
+
+.side-image img {
+    width: 100%;
+}
+
+.big-card-title {
+  color: #000;
+}
+
+.big-card-text {
+  font-size: 12px;
+}
+
+.big-card:last-child {
+  box-shadow: hsl(0, 0%, 90%) 0 0 16px;
+  margin-bottom: 15px;
+}

@@ -6,5 +6,9 @@ export default [
   {
     to: "/resume",
     label: "Resume"
+  },
+  {
+    to: "/projects",
+    label: "Projects"
   }
 ];

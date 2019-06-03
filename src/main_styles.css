@@ -1230,10 +1230,7 @@ section
 {
 	padding-top: 17px;
 }
-.card_small_with_image .post_meta
-{
-	margin-top: 32px;
-}
+
 .card_default:not(:last-child)
 {
 	/*margin-bottom: 15px;*/
@@ -2772,3 +2769,12 @@ border-radius: 100%;
     left: 300px;
 	}
 */
+
+.notFoundMsg {
+	color: #000;
+	font-family: 'Ubuntu', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 0.075em;
+  line-height: 0.75;
+}

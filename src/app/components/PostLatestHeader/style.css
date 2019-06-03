@@ -1,0 +1,14 @@
+
+.views {
+	 padding-left: 20px;
+}
+
+.views > i {
+	color: #000;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.views > i[class*="disable"] {
+  color: hsl(0, 0%, 70%);
+}

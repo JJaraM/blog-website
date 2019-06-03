@@ -1,9 +1,11 @@
 import * as React from 'react';
-
+import * as Prism from 'prismjs';
 import Post from '../../../dto/Post';
 import { Link } from "react-router-dom";
 import Masonry from 'react-masonry-component';
 import  PostLatestSectionLoading from '../PostLatestSectionLoading';
+import '../../../prism-okaida.css';
+import ViewTags from '../../../app/components/ViewTags';
 
 class PostsLatestSection extends React.Component<Props, State> {
 
@@ -23,6 +25,14 @@ class PostsLatestSection extends React.Component<Props, State> {
   load = () => {
     const pageNumber = this.state.page + 1;
     this.setState({page: pageNumber});
+  }
+
+  componentDidMount() {
+    Prism.highlightAll();
+  }
+
+  componentDidUpdate() {
+    Prism.highlightAll();
   }
 
   renderNoImage = (post:Post, key:number) => {
@@ -99,29 +109,10 @@ class PostsLatestSection extends React.Component<Props, State> {
   }
 
   renderTags = (post:Post) => {
-    const mapTags = this.tagsAsMap();
-    if (post.tags === null) {
-      return (<></>);
-    }
+
     return (
       <div className="post_tags">
-        <ul>
-          {
-            post.tags.map((tag, tagId) => {
-              const result = mapTags[tag];
-              if (result !== undefined) {
-                return (
-                  <li key={tagId} className="post_tag">
-                    <Link to={`/category/${mapTags[tag].id}`}>
-                      {mapTags[tag].name}
-                    </Link>
-                  </li>
-                )
-              }
-              return null;
-            })
-          }
-        </ul>
+        <ViewTags tags={this.props.tags} itemTags={post.tags} />
       </div>
     );
   }
@@ -157,22 +148,26 @@ class PostsLatestSection extends React.Component<Props, State> {
     );
   }
 
-  tagsAsMap = () => {
-    if (this.props.tags !== undefined) {
-      return this.props.tags.reduce(function(map, tag) {
-          map[tag.id] = tag;
-          return map;
-      }, {});
-    }
-    return [];
-  }
-
   render() {
     if (this.props.isLoading) {
       return (
         <div className="skeleton-container">
           <PostLatestSectionLoading />
         </div>
+      );
+    }
+
+    if (!this.props.isLoading &&  this.props.posts.length === 0) {
+      return (
+        <pre>
+          <code className='language-html'>
+{
+`<NoData>
+  !Someone Stole the information
+</NoData>`
+}
+          </code>
+        </pre>
       );
     }
 

@@ -2,19 +2,8 @@ import * as React from 'react';
 
 import apiTag from '../../api/tag';
 import apiPost from '../../api/post';
-
 import Post from '../../dto/Post';
-
 import PostsLatestSection from '../../app/components/PostsLatestSection/PostsLatestSection';
-
-
-import '../../bootstrap4/bootstrap.min.css'
-import '../../plugins/OwlCarousel2-2.2.1/owl.carousel.css';
-import '../../plugins/OwlCarousel2-2.2.1/owl.theme.default.css';
-import '../../plugins/OwlCarousel2-2.2.1/animate.css';
-import '../../post.css';
-import '../../post_responsive.css';
-import '../../plugins/font-awesome-4.7.0/css/font-awesome.min.css';
 
 interface State {
   isLoading: boolean;
@@ -84,14 +73,20 @@ export class Category extends React.Component<any, State> {
   }
 
   render() {
-
     const post = this.state.posts[0];
     const tag = this.state.tags.filter(el => Number(el.id) === Number(this.props.match.params.id))[0];
-    let tagName = 'Loading ...';
+    let tagName = 'Invalid Category';
     let img = '';
+
+    if (this.state.isLoading) {
+      tagName = 'Loading ...';
+    }
 
     if (tag !== undefined) {
       tagName = tag.name;
+    }
+
+    if (post !== undefined) {
       img = post.image;
     }
 
@@ -113,7 +108,7 @@ export class Category extends React.Component<any, State> {
                   <div className="main_content">
                     <PostsLatestSection
                       posts={this.state.posts}
-                      isLoading={this.state.posts.length === 0}
+                      isLoading={this.state.isLoading}
                       tags={this.state.tags}
                     />
                     <div className="blog_section"></div>

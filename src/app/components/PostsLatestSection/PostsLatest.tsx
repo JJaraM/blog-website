@@ -7,6 +7,7 @@ import * as React from 'react';
 import api from '../../../api/post';
 import Post from '../../../dto/Post';
 import PostsLatestSection from './PostsLatestSection';
+import ListView from "../ListView";
 import PostLatestHeader from '../PostLatestHeader';
 import { selectTag } from './actions';
 import MoreButton from '../common/MoreButton';
@@ -29,8 +30,16 @@ export default class PostsLatest extends React.Component<Props, State> {
       isLoadingPage: false,
       renderPosts: false,
       tag: 0,
-      renderViewMode: 'grid',
+      renderViewMode: this.getView(),
     };
+  }
+
+  getView() {
+    let homeView = localStorage.getItem('homeView');
+    if (homeView === null) {
+      homeView = 'grid';
+    }
+    return homeView;
   }
 
   readMore = () => {
@@ -83,7 +92,7 @@ export default class PostsLatest extends React.Component<Props, State> {
   }
 
   changeView = (type:string) => (event: any) => {
-    console.log(type);
+    localStorage.setItem('homeView', type);
     this.setState({renderViewMode : type})
   }
 
@@ -105,20 +114,31 @@ export default class PostsLatest extends React.Component<Props, State> {
           tags={this.props.tags}
           changeTag={this.changeTag}
           selectedTag={this.state.tag}
+          renderViewMode={this.state.renderViewMode}
         />
       )
+    }
+
+    let View = () => <PostsLatestSection
+        posts={this.state.posts}
+        tags={this.props.tags}
+        view={this.state.renderViewMode}
+        isLoading={!this.state.renderPosts}
+      />;
+
+    if (this.state.renderViewMode === 'list') {
+      View = () => <ListView
+        repos={this.state.posts}
+        tags={this.props.tags}
+        itemRedirect='post/view'
+      />;
     }
 
     return (
       <div className="blog_section">
         <Header />
         <div className="section_content">
-          <PostsLatestSection
-            posts={this.state.posts}
-            tags={this.props.tags}
-            view={this.state.renderViewMode}
-            isLoading={!this.state.renderPosts}
-          />
+          <View />
         </div>
         <ButtonToRender />
       </div>
