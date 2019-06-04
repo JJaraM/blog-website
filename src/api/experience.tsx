@@ -13,7 +13,7 @@ export default {
         place: "GFT Group",
         title: "Senior Java Developer",
         description: "Outsourcing company specialist for the international financial industry.",
-        img: "https://media.licdn.com/dms/image/C4D0BAQH-n-8Yn1Exug/company-logo_400_400/0?e=1555545600&v=beta&t=k6rz5wFiFeO37cPAxBNylpa39oVKgtIE5s61OJy_C1Y",
+        img: "https://www.six-group.com/financial-information/dam/images/partner_logos/GFT_Logo.gif",
         link: "https://www.linkedin.com/company/gft-group/",
         tasks:[
           {
@@ -38,7 +38,7 @@ export default {
         place: "Snap Technology, SRL",
         title: "Mid Java Developer",
         description: "Digital finance company that provides merchandise financing to brick and mortar as well as e-commerce merchants.",
-        img: "https://media.licdn.com/dms/image/C4E0BAQFqz6qRJE1Sdg/company-logo_400_400/0?e=1555545600&v=beta&t=FVY__rp8mSy4nMRCoUrixHg30jVibvtsQEqr9-LhUNo",
+        img: "http://www.elempleo.com/costarica/Files/Companies/Logos/14758.gif",
         link: "https://www.linkedin.com/company/snap-technology-srl/",
         tasks: [
           {

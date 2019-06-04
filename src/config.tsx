@@ -34,7 +34,7 @@ export default {
       },
       {
         id: 'home_side_meme',
-        display: true,
+        display: false,
         order: 5
       }
     ],
