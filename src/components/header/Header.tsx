@@ -73,9 +73,14 @@ export class Header extends React.Component<any, any> {
   getSuggestions = value => {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
-    return inputLength === 0 ? [] : this.state.posts.filter(lang =>
-      lang.title.toLowerCase().includes(inputValue.toLowerCase())
-    );
+    if (this.state.posts !== undefined) {
+      return inputLength === 0 ? [] : this.state.posts.filter(lang =>
+        lang.title.toLowerCase().includes(inputValue.toLowerCase())
+      );
+    }
+
+    return [];
+
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.

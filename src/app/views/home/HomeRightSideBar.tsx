@@ -6,16 +6,18 @@ import * as React from 'react';
 
 import ExperienceSide from '../../../components/sideSection/ExperienceSide';
 import { PeopleAboutMe } from '../../../components/sideSection/PeopleAboutMe';
-import { Tags } from '../../../components/sideSection/Tags';
+import TagCloud from '../../components/TagCloud';
 import AboutMe from '../../../components/sideSection/AboutMe';
 import MemeSide from '../../../components/sideSection/MemeSide';
 import config from '../../../config';
+
+interface Props { tags: any }
 
 /*
 * Component used to render the index page
 * @since 1.0
 */
-export class HomeRightSideBar extends React.Component<any, any> {
+export class HomeRightSideBar extends React.Component<Props, any> {
 
   constructor(props:any) {
     super(props);
@@ -38,7 +40,7 @@ export class HomeRightSideBar extends React.Component<any, any> {
           break;
 
         case 'home_side_tags':
-          component = <Tags />;
+          component = <TagCloud tags={this.props.tags}/>;
           break;
 
         case 'home_side_meme':

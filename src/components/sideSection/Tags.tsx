@@ -56,13 +56,12 @@ export class Tags extends React.Component<any, State> {
                   <Link className="btn btn-white shadow" to={`category/${tag.id}`}>
                     {tag.name}
                   </Link>
-                
+
                 </li>
               )
             })
           }
           </ul>
-
         </div>
       </aside>
     );

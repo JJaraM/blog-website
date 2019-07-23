@@ -36,13 +36,13 @@ export class Home extends React.Component<any, State> {
 
     return (
       <>
-        
+
         <HomeSlinder>
           <Component />
         </HomeSlinder>
         <Wrapper>
           <HomeMain { ...this.state } />
-          <HomeRightSideBar />
+          <HomeRightSideBar  { ...this.state } />
         </Wrapper>
       </>
     );
