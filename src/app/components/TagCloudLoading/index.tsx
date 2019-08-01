@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './style.css';
 
-const TagCloudLoading: React.StatelessComponent = (props) => {
+const TagCloudLoading: React.StatelessComponent = () => {
 
   const Small = () => (
     <li className="tag-cloud-li">
@@ -26,8 +26,6 @@ const TagCloudLoading: React.StatelessComponent = (props) => {
       </a>
     </li>
   );
-
-
 
   return (
     <ul className="list-unstyled tag-list">

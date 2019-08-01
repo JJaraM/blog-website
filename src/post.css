@@ -1955,19 +1955,24 @@ section
 ::-webkit-scrollbar-thumb:hover {
   background: #ffffff;
 }
+
 ::-webkit-scrollbar-thumb:active {
-  background: #000000;
+  background: #FFF;
 }
 ::-webkit-scrollbar-track {
   background: #666666;
   border: 0px none #ffffff;
   border-radius: 50px;
 }
+
+/*When hover the scroll change the principal background color*/
 ::-webkit-scrollbar-track:hover {
   background: #666666;
 }
+
+/*When click the scroll change the principal background color*/
 ::-webkit-scrollbar-track:active {
-  background: #333333;
+  background: #666666;
 }
 ::-webkit-scrollbar-corner {
   background: transparent;

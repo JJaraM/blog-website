@@ -37,6 +37,7 @@ interface State {
   suggestions: any;
   postMount: boolean;
   tagMount: boolean;
+  savedId: number;
 }
 
 export class PostAddMain extends React.Component<any, State> {
@@ -51,7 +52,8 @@ export class PostAddMain extends React.Component<any, State> {
       tags: [],
       suggestions: [],
       postMount: false,
-      tagMount: false
+      tagMount: false,
+      savedId: 0
     }
   }
 
@@ -142,25 +144,46 @@ export class PostAddMain extends React.Component<any, State> {
   }
 
   httpPut = (message:string) => {
-    console.log(this.state.post);
-    fetch(api.put, {
-        method: 'POST',
-        body: JSON.stringify(this.state.post),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-      })
-      .then(response => {
-          if (response.status === 201) {
-            NotificationManager.success(message, 'Saved');
-          } else {
-            NotificationManager.error(message, "Error");
+    console.log(this.state.savedId);
+    if (this.state.savedId > 0) {
+      fetch(api.put  + this.state.savedId, {
+          method: 'PUT',
+          body: JSON.stringify(this.state.post),
+          headers: {
+              'Content-Type': 'application/json'
           }
-      })
-      .catch(error => {
-        NotificationManager.error(message, "Error");
-      })
-      .then(data => console.log(data));
+        })
+        .then(response => {
+            if (response.status === 200) {
+              NotificationManager.success(message, 'Saved');
+            } else {
+              NotificationManager.error(message, "Error");
+            }
+        })
+        .catch(error => {
+          NotificationManager.error(message, "Error");
+        })
+    } else {
+      fetch(api.put, {
+          method: 'POST',
+          body: JSON.stringify(this.state.post),
+          headers: {
+              'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+            if (response.status === 200) {
+              NotificationManager.success(message, 'Saved');
+            } else {
+              NotificationManager.error(message, "Error");
+            }
+            return response.json();
+        })
+        .catch(error => {
+          NotificationManager.error(message, "Error");
+        })
+        .then(data => this.setState({savedId: data.id}));
+      }
   }
 
   updateContent = (event) => {
