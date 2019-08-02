@@ -28,7 +28,7 @@ const renderSuggestion = suggestion => (
          <div className="side_post_content">
             <div className="side_post_title">{suggestion.title}</div>
             <small className="post_meta">
-            Here I need to insert a desc
+            {suggestion.description}
             </small>
             <div className="post_meta">
               Last Update: {new Date(suggestion.updateDate).toLocaleDateString()}

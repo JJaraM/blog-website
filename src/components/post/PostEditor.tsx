@@ -124,6 +124,7 @@ class PostEditor extends React.Component<any, State> {
       this.state.post.title = this.state.post.draftTitle;
       this.state.post.image = this.state.post.draftImage;
       this.state.post.content = this.state.post.draftContent;
+      this.state.post.description = this.state.post.draftDescription;
     }
     this.httpPut('Publish');
   }
@@ -177,6 +178,11 @@ class PostEditor extends React.Component<any, State> {
 
   updateContent = (event) => {
     this.state.post.draftContent = event.target.value;
+    this.setState(this.state);
+  }
+
+  updateDescription = (event) => {
+    this.state.post.draftDescription = event.target.value;
     this.setState(this.state);
   }
 
@@ -255,6 +261,17 @@ class PostEditor extends React.Component<any, State> {
                          handleDelete={this.handleDelete}
                          handleAddition={this.handleAddition} />
                       </div>
+                      <div className="row">
+
+                        <div className="col-lg-12">
+                          <div className="section_title preview-editor">Description</div>
+                        </div>
+
+                        <div className="col-lg-12">
+                          <textarea className="comment-area" value={this.state.post.draftDescription}
+                            onChange={this.updateDescription}></textarea>
+                          </div>
+                      </div>
                     <div className="row">
                       <div className="col-lg-6">
                         <div className="section_title preview-editor">Editor</div>
@@ -275,8 +292,6 @@ class PostEditor extends React.Component<any, State> {
                         </div>
                       </div>
                     </div>
-
-
                     </div>
                   </div>
                 </div>
