@@ -1,6 +1,8 @@
 import * as React from 'react';
 import ViewTags from '../ViewTags';
 import SelectorLink from '../SelectorLink';
+import ListViewLoading from '../ListViewLoading';
+
 import './style.css';
 
 class ListView extends React.Component<Props, State> {
@@ -29,6 +31,10 @@ class ListView extends React.Component<Props, State> {
   }
 
   render() {
+
+    if (this.props.repos.length === 0) {
+      return <ListViewLoading />;
+    }
     const itemToRender = this.props.repos.map(repo => (
       <div className="card big-card">
         <div className="row">
