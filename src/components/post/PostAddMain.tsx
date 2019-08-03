@@ -19,6 +19,7 @@ import apiTag from '../../api/tag';
 import Post from '../../dto/Post';
 import Tag from '../../dto/Tag';
 
+import application from '../../application';
 
 import '../../react-tags.css';
 import 'react-notifications/lib/notifications.css';
@@ -202,6 +203,8 @@ export class PostAddMain extends React.Component<any, State> {
   }
 
   render() {
+    const date = new Date();
+
     return (
       <div className="super_container">
       <div className="super_container">
@@ -226,10 +229,13 @@ export class PostAddMain extends React.Component<any, State> {
                     <div className="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
                       <div className="author_image">
                         <div>
-                          <img src="https://media.licdn.com/dms/image/C5603AQGg6FHWARek0w/profile-displayphoto-shrink_100_100/0?e=1544659200&v=beta&t=L9GH5HI2eDPaVHDmi1A-pJ_EBQVwUMRDayPCUEUaH9I" alt=""/>
+                          <img src={application.author_image} alt=""/>
                         </div>
                       </div>
-                      <div className="post_meta"><a href="#">Jonathan Jara</a><span>Sep 29, 2017 at 9:48 am</span></div>
+                      <div className="post_meta">
+                        <a href="#">{application.author_name}</a>
+                        <span> {date.toLocaleDateString()} </span>
+                      </div>
                       <div className="post_share ml-sm-auto">
                         <Link to={`/post/view/${this.state.post.id}`}>
                           <span>See Original</span>

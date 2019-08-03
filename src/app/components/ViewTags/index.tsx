@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
+import ViewTagsLoading from '../ViewTagsLoading';
 
 const ViewTags: React.StatelessComponent<Props> = (props) => {
+
+  if (props.tags.length === 0) {
+    return <ViewTagsLoading />;
+  }
+
   const tagAsMap = props.tags.reduce(function(map, tag) {
       map[tag.id] = tag;
       return map;

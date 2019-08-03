@@ -232,14 +232,20 @@ class PostEditor extends React.Component<any, State> {
               <div className="row ">
                 <div className="col-lg-12">
                   <div className="post_content">
+
+
+
+
+
+
                     <div className="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
                       <div className="author_image">
                         <div>
-                          <img src={application.author_image} alt=""/>
+                          <img src={application.author_image_v2} alt=""/>
                         </div>
                       </div>
                       <div className="post_meta">
-                        <a href="#">Jonathan Jara Morales</a>
+                        <a href="#">{application.author_name}</a>
                         <span> {date.toLocaleDateString()} </span>
                       </div>
                       <div className="post_share ml-sm-auto">
@@ -253,6 +259,11 @@ class PostEditor extends React.Component<any, State> {
                         </Link>
                       </div>
                     </div>
+
+
+
+
+
                     <div className="post_body">
                       <div className="row">
                         <ReactTags
