@@ -19,7 +19,7 @@ export default {
       },
       {
         id: 'home_side_people_about_me',
-        display: false,
+        display: true,
         order: 2
       },
       {
