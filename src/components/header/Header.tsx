@@ -150,6 +150,10 @@ export class Header extends React.Component<any, any> {
     const div = document.getElementById("sign-container");
     const title = document.getElementById("signIn");
     const commentContainer = document.getElementById("comment-container");
+    const superContainer = document.getElementById('super_container');
+    const mainContainer = document.getElementById('main-content-container');
+    const sideContainer = document.getElementById('side-container');
+    const header = document.getElementById('main-header');
 
     if (div !== null) {
       const currentClassName = div.classList[1];
@@ -178,8 +182,31 @@ export class Header extends React.Component<any, any> {
         const currentClassName = commentContainer.classList[1];
         if (currentClassName === null || currentClassName === undefined) {
           commentContainer.classList.add('auto_hide_comments_container_open');
+          if (superContainer !== null && mainContainer !== null && sideContainer !== null && header !== null) {
+            superContainer.classList.remove('super_container_big');
+            mainContainer.classList.remove('col-lg-9');
+            sideContainer.classList.remove('col-lg-3');
+            header.classList.remove('super_container_big');
+
+            superContainer.classList.add('super_container_small');
+            mainContainer.classList.add('col-lg-8');
+            sideContainer.classList.add('col-lg-4');
+            header.classList.add('super_container_small');
+          }
         } else {
           commentContainer.classList.remove('auto_hide_comments_container_open');
+          if (superContainer !== null && mainContainer !== null && sideContainer !== null && header !== null) {
+            superContainer.classList.remove('super_container_small');
+            mainContainer.classList.remove('col-lg-8');
+            sideContainer.classList.remove('col-lg-4');
+            header.classList.remove('super_container_small');
+
+            superContainer.classList.add('super_container_big');
+            mainContainer.classList.add('col-lg-9');
+            sideContainer.classList.add('col-lg-3');
+            header.classList.add('super_container_big');
+
+          }
         }
     }
   }

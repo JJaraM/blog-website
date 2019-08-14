@@ -53,7 +53,7 @@ export class HomeRightSideBar extends React.Component<Props, any> {
 
   render() {
     return (
-      <div className="col-lg-3">
+      <div className="col-lg-3" id="side-container">
 
           <div className="sidebar">
             <div className="sidebar_background"/>

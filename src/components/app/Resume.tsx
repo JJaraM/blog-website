@@ -124,7 +124,7 @@ export class Resume extends React.Component<any, any> {
         <div className="jjara_page_content">
           <div className="container">
             <div className="row">
-              <div className="col-lg-9">
+              <div className="col-lg-9" id="main-content-container">
                 <div className="main_content">
                 {/*
                   <div className="blog_section">
@@ -208,7 +208,7 @@ export class Resume extends React.Component<any, any> {
                 </div>
               </div>
 
-              <div className="col-lg-3">
+              <div className="col-lg-3" id="side-container">
                 <div className="sidebar">
                   <div className="sidebar_background"></div>
                   <div className="sidebar_section">

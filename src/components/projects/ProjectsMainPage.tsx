@@ -67,7 +67,7 @@ export class ProjectsMainPage extends React.Component<any, State> {
               <div className="col-9">
                 <ListView repos={this.state.repos} tags={this.state.tags} />
               </div>
-              <div className="col-lg-3">
+              <div className="col-lg-3" >
                 <div className="sidebar_background"></div>
               </div>
             </div>

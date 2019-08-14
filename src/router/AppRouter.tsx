@@ -24,7 +24,7 @@ import { PostRouter } from './PostRouter';
 export const AppRouter: React.StatelessComponent = () => {
 
   return (
-    <div className="super_container">
+    <div className="super_container" id="super_container">
       <Header/>
       <Menu/>
         <Switch>

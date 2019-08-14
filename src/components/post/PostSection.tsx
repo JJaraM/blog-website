@@ -473,7 +473,7 @@ class PostSection extends React.Component<Props, State> {
             <div className="row ">
 
 
-              <div className="col-lg-9">
+              <div className="col-lg-9" id="main-content-container">
                 <div className="post_content">
 
 
@@ -524,7 +524,7 @@ class PostSection extends React.Component<Props, State> {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-3">
+              <div className="col-lg-3" id="side-container">
                 <div className="sidebar">
                   <div className="sidebar_background"></div>
                   <div className="sidebar_section">

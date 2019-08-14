@@ -3074,3 +3074,57 @@ ol.children {
 .signIn-input > input {
 	width: 100%;
 }
+
+.super_container_small {
+	width: 64% !important;
+	animation: super_container_hide 1s linear;
+	animation-fill-mode: forwards;
+	transition:visibility 1s, opacity 1s;
+	visibility:visible;
+	opacity:1;
+}
+
+.super_container_big {
+	animation: super_container_show 1s linear;
+	animation-fill-mode: forwards;
+	transition:visibility 1s, opacity 1s;
+	visibility:visible;
+	opacity:1;
+	width: 100% !important;
+}
+
+@keyframes super_container_show {
+  0% {
+		width: 64%;
+  }
+	25% {
+		width: 74%;
+  }
+	50% {
+		width: 84%;
+  }
+  75% {
+		width: 94%;
+  }
+  100% {
+		width: 100%;
+  }
+}
+
+@keyframes super_container_hide {
+	0% {
+		width: 100%;
+  }
+	25% {
+		width: 94%;
+  }
+	50% {
+		width: 84%;
+  }
+  75% {
+		width: 74%;
+  }
+  100% {
+		width: 64%;
+  }
+}

@@ -27,7 +27,7 @@ export class HomeMain extends React.Component<Props, any> {
 
   render() {
     return (
-      <div className="col-lg-9">
+      <div className="col-lg-9" id="main-content-container">
         <div className="main_content">
           {
             config.home_main_content.sort((a, b) => a.order - b.order).map((section, i) => {

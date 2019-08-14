@@ -104,7 +104,7 @@ export class Category extends React.Component<any, State> {
           <div className="jjara_page_content">
             <div className="container">
               <div className="row ">
-                <div className="col-lg-9">
+                <div className="col-lg-9" id="main-content-container">
                   <div className="main_content">
                     <PostsLatestSection
                       posts={this.state.posts}
@@ -114,7 +114,7 @@ export class Category extends React.Component<any, State> {
                     <div className="blog_section"></div>
                   </div>
                 </div>
-                <div className="col-lg-3">
+                <div className="col-lg-3" id="side-container">
                   <div className="sidebar">
                     <div className="sidebar_background"/>
                   </div>
