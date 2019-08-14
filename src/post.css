@@ -42,14 +42,6 @@
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
-body
-{
-	font-family: 'Work Sans', sans-serif;
-	font-size: 14px;
-	font-weight: 400;
-	background: #f7f7f7;
-	color: #a5a5a5;
-}
 div
 {
 	display: block;
@@ -63,17 +55,7 @@ ul
 	list-style: none;
 	margin-bottom: 0px;
 }
-p
-{
-	font-family: 'Work Sans', sans-serif;
-	font-size: 14px;
-	line-height: 1.45;
-	font-weight: 500;
-	color: rgba(0,0,0,0.5);
-	-webkit-font-smoothing: antialiased;
-	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
-	text-shadow: rgba(0,0,0,.01) 0 0 1px;
-}
+
 p:last-of-type
 {
 	margin-bottom: 0;
@@ -129,7 +111,7 @@ h4{font-size: 18px;}
 h5{font-size: 14px;}
 h1, h2, h3, h4, h5, h6
 {
-	font-family: 'Open Sans', sans-serif;
+	font-family: Georgia;
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
@@ -874,7 +856,6 @@ section
 	background: #FFFFFF;
 	border-radius: 6px;
 	color: rgba(0,0,0,0.8);
-	font-size: 16px;
 	line-height: 1.875;
 }
 
@@ -883,7 +864,6 @@ section
 	/*padding: 0px 0px 0px 3em;*/
 	color: rgba(0,0,0,0.8);
 	text-align: justify;
-	font-family: Helvetica,Arial,sans-serif;
 	font-size: 14px;
 	/*margin: 0 0 15px;*/
 }
@@ -897,8 +877,6 @@ section
 	color: rgba(0,0,0,0.8);
 	text-align: justify;
 	margin-bottom: 1.25rem;
-	font-family: Helvetica,Arial,sans-serif;
-	font-size: 14px;
 }
 
 .post_body ol {
@@ -1346,6 +1324,13 @@ section
 {
 	margin-top: -1px;
 	text-align: justify;
+	font-family: 'Work Sans', sans-serif;
+	line-height: 1.45;
+	font-weight: 500;
+	color: rgba(0,0,0,0.5);
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
+	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
 .post_meta
 {
@@ -2166,8 +2151,8 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 
-.post_body > ul li {
-	padding-left: 4rem;
+.post_body > ul li > ul li {
+	padding-left: 1rem;
 }
 
 .post_body > ul li::before {
@@ -2307,6 +2292,10 @@ box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
     border-radius: 100%;
 }
 
+img {
+	max-width: 100%;
+}
+
 img.avatar {
     border-radius: 100%;
 }
@@ -2390,7 +2379,16 @@ img.avatar {
 }
 
 body {
-  font-family: Helvetica, sans-serif;
+  font-family: Georgia, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	background: #f7f7f7;
+	color: #a5a5a5;
+}
+
+p {
+	font-family: inherit;
+	font-size: 14px;
 }
 
 .react-autosuggest__container {
@@ -2710,9 +2708,6 @@ ol.children {
 	opacity:0;
 }
 
-.auto_hide_comments_container {
-
-}
 
 .comments_show {
 	animation: show 1s linear;
@@ -2959,4 +2954,123 @@ ol.children {
 }
 .affix {
   position: fixed;
+}
+
+.signIn {
+	margin-left: 46px;
+	display: block;
+	cursor: pointer;
+}
+
+@media only screen and (max-height: 900px) {
+	.signIn .comments {
+		/*height: 26% !important;*/
+	}
+}
+
+.signIn .comments {
+	overflow: auto;
+  overflow-y: overlay;
+  height: 80%;
+
+}
+
+.signIn {
+	position: fixed;
+	right: 0px;
+	z-index: 11;
+	cursor: pointer;
+}
+
+.signIn > .content {
+	padding-left: 15px;
+	background: #F7F7F7;
+	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.signIn_open {
+	top: 0px;
+	z-index: 9999;
+}
+
+.signIn_comments {
+	padding: 10px 20px 10px 10px;
+	color: #FFF;
+}
+
+.signIn_comments_close {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+
+.signIn_comments_open {
+	background: #F7F7F7;
+	color: #000;
+	z-index: 999;
+}
+
+.signIn_comments_open > i {
+	color: #000;
+}
+
+.signIn_absolute {
+	display: none;
+}
+
+.form-content {
+  position: relative;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+}
+
+.form-content .form-items {
+  max-width: 340px;
+  text-align: left;
+}
+
+.form-content .form-items {
+  display: inline-block;
+  width: 100%;
+  max-width: 340px;
+  text-align: left;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.form-content h3 {
+  color: #fff;
+  text-align: left;
+}
+
+.form-content h3 {
+  color: #000;
+  text-align: left;
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.form-content p {
+  color: #000;
+  text-align: left;
+}
+
+.form-content p {
+  color: #000;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 20px;
+  margin-bottom: 30px;
+}
+
+.form-content form {
+    margin-bottom: 58px;
+}
+
+.signIn-input > input {
+	width: 100%;
 }

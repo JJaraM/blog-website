@@ -53,6 +53,7 @@ export class Header extends React.Component<any, any> {
       posts: [],
       isLoading: false
     };
+    this.openComments = this.openComments.bind(this);
   }
 
   onChange = (event, { newValue }) => {
@@ -145,6 +146,44 @@ export class Header extends React.Component<any, any> {
     }
   }
 
+  openComments(event: any) : void {
+    const div = document.getElementById("sign-container");
+    const title = document.getElementById("signIn");
+    const commentContainer = document.getElementById("comment-container");
+
+    if (div !== null) {
+      const currentClassName = div.classList[1];
+      if (currentClassName === 'comments_hide' || currentClassName === 'signIn_absolute') {
+        div.classList.remove('comments_hide');
+        div.classList.remove('signIn_absolute');
+        div.classList.add('comments_show');
+      } else {
+        div.classList.remove('comments_show');
+        div.classList.add('comments_hide');
+      }
+    }
+
+    if (title !== null) {
+      const currentClassName = title.classList[1];
+      if (currentClassName === 'signIn_comments_close') {
+        title.classList.remove('signIn_comments_close');
+        title.classList.add('signIn_comments_open');
+      } else {
+        title.classList.remove('signIn_comments_open');
+        title.classList.add('signIn_comments_close');
+      }
+    }
+
+    if (commentContainer !== null) {
+        const currentClassName = commentContainer.classList[1];
+        if (currentClassName === null || currentClassName === undefined) {
+          commentContainer.classList.add('auto_hide_comments_container_open');
+        } else {
+          commentContainer.classList.remove('auto_hide_comments_container_open');
+        }
+    }
+  }
+
   render() {
 
     const { value, suggestions } = this.state;
@@ -189,8 +228,32 @@ export class Header extends React.Component<any, any> {
     								<img className="header_search_icon" src="/images/search.png" alt=""/>
 
     						</div>
-                <div className="hamburger ml-auto menu_mm">
-                  <i className="fa fa-bars trans_200 menu_mm" aria-hidden="true"/>
+
+                <div className="signIn" id="comment-container">
+                  <div className="signIn_comments signIn_comments_close" id="signIn" onClick={this.openComments}>
+                    <i className="fa fa-bars trans_200 menu_mm" aria-hidden="true"/>
+                  </div>
+                  <div className="content signIn_absolute" id="sign-container">
+                    <div className="form-content">
+
+                      <div className="form-items">
+                        <h3>Sign In</h3 >
+                        <p>Welcome to my blog site, if you want to contribute adding comments, please login</p>
+                      </div>
+
+                      <div className="signIn-input">
+                        <input className="comment_input comment_input_name" type="text" name="username" placeholder="E-mail Address"/>
+                      </div>
+
+                      <div className="signIn-input">
+                        <input className="comment_input comment_input_name" type="password" name="password" placeholder="Password" />
+                      </div>
+
+                      <div className="form-button">
+                          <button id="submit" type="submit" className="comment_button">Login</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
     					</div>
     				</div>

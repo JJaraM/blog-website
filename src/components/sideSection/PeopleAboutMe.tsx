@@ -17,7 +17,13 @@ export class PeopleAboutMe extends React.Component<any, any> {
 
   constructor(props:any) {
     super(props);
+    this.onError = this.onError.bind(this);
   }
+
+  onError(e: any) : void {
+    (e.target as HTMLInputElement).src = '/images/avatar.jpg';
+  }
+
 
   render() {
     return (
@@ -31,7 +37,8 @@ export class PeopleAboutMe extends React.Component<any, any> {
             api.data.map((person, i) => {
               return (
                 <span className="tooltip jjara_story_circle" key={i}>
-                  <img width="415" height="415" src={person.photo}/>
+                  <img width="415" height="415" src={person.photo} onError={this.onError}
+                    />
                   <span>
                     <div className="tooltip-desc">
                       <strong>{person.name}</strong>
