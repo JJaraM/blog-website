@@ -1,0 +1,21 @@
+.post_body > h1 + ul {
+	background: #F5F5F5;
+  border: 1px solid #EEEEEE;
+	list-style: none;
+	counter-reset: section;
+  list-style-type: none;
+  text-decoration: none;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	min-width: 50%;
+  display: inline-block;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	margin-left: 0rem;
+}
+
+.post_body > h1 + ul li {
+	padding-left: 0;
+	padding-right: 0;
+
+}

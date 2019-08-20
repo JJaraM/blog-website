@@ -990,6 +990,7 @@ section
 .section_tags ul li:not(:last-child)
 {
 	margin-right: 4px;
+	margin-bottom: 4px;
 }
 .tag-button
 {

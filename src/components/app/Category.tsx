@@ -115,7 +115,7 @@ export class Category extends React.Component<any, State> {
                   </div>
                 </div>
                 <div className="col-lg-3" id="side-container">
-                  <div className="sidebar">
+                  <div className="sidebar" id="sidebar-container">
                     <div className="sidebar_background"/>
                   </div>
                 </div>

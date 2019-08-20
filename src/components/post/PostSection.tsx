@@ -8,8 +8,6 @@ import * as Markdown from 'react-markdown';
 import { Redirect } from 'react-router'
 import { Link } from "react-router-dom";
 
-// import OwlCarousel from 'react-owl-carousel2';
-
 // Application Configurations
 import apiPost from '../../api/post';
 import apiTag from '../../api/tag';
@@ -31,6 +29,7 @@ import 'prismjs/components/prism-bash';
 
 import '../../customPrism.js';
 import '../../customPrism.css';
+import '../../tableOfContent.css';
 import '../prismjs/prism-comment.js';
 import $ from 'jquery';
 
@@ -525,7 +524,7 @@ class PostSection extends React.Component<Props, State> {
                 </div>
               </div>
               <div className="col-lg-3" id="side-container">
-                <div className="sidebar">
+                <div className="sidebar" id="sidebar-container">
                   <div className="sidebar_background"></div>
                   <div className="sidebar_section">
                     <div className="sidebar_title_container">

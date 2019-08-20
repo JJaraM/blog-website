@@ -209,7 +209,7 @@ export class Resume extends React.Component<any, any> {
               </div>
 
               <div className="col-lg-3" id="side-container">
-                <div className="sidebar">
+                <div className="sidebar" id="sidebar-container">
                   <div className="sidebar_background"></div>
                   <div className="sidebar_section">
                     <div className="sidebar_title_container">

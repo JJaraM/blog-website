@@ -55,7 +55,7 @@ export class HomeRightSideBar extends React.Component<Props, any> {
     return (
       <div className="col-lg-3" id="side-container">
 
-          <div className="sidebar">
+          <div className="sidebar" id="sidebar-container">
             <div className="sidebar_background"/>
             <div className="sidebar_section">
               {

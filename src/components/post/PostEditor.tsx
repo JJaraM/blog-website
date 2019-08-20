@@ -241,7 +241,7 @@ class PostEditor extends React.Component<any, State> {
                     <div className="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
                       <div className="author_image">
                         <div>
-                          <img src={application.author_image_v2} alt=""/>
+                          <img src={application.author_image} alt=""/>
                         </div>
                       </div>
                       <div className="post_meta">

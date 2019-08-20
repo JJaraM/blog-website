@@ -214,10 +214,10 @@ export class PostAddMain extends React.Component<any, State> {
             <div className="home_background home_background_mask parallax-window" data-parallax="scroll" style={{backgroundImage: `url(${this.state.post.draftImage})`}} data-speed="0.8"/>
             <div className="home_content">
               <div className="post_title">
-                <input className="title-draft" value={this.state.post.draftImage} onChange={this.updateImage} />
+                <input className="title-draft" placeholder="Image" value={this.state.post.draftImage} onChange={this.updateImage} />
               </div>
               <div className="post_title">
-                <input className="title-draft" value={this.state.post.draftTitle} onChange={this.updateTitle} />
+                <input className="title-draft" placeholder="Title" value={this.state.post.draftTitle} onChange={this.updateTitle} />
               </div>
             </div>
           </div>
