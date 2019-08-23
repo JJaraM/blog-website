@@ -19,11 +19,11 @@ import apiTag from '../../api/tag';
 import Post from '../../dto/Post';
 import Tag from '../../dto/Tag';
 
-import application from '../../application';
-
 import '../../react-tags.css';
 import 'react-notifications/lib/notifications.css';
 import '../common/custom-notifications.css';
+
+import PostMetadata from '../../app/components/PostMetadata';
 
 interface Props {
   id: string;
@@ -203,13 +203,15 @@ export class PostAddMain extends React.Component<any, State> {
   }
 
   render() {
-    const date = new Date();
+    console.log(this.state.post);
 
     return (
       <div className="super_container">
       <div className="super_container">
 
         <div>
+
+
           <div className="home">
             <div className="home_background home_background_mask parallax-window" data-parallax="scroll" style={{backgroundImage: `url(${this.state.post.draftImage})`}} data-speed="0.8"/>
             <div className="home_content">
@@ -221,21 +223,17 @@ export class PostAddMain extends React.Component<any, State> {
               </div>
             </div>
           </div>
+
+
           <div className="jjara_page_content">
             <div className="container">
               <div className="row ">
                 <div className="col-lg-12">
                   <div className="post_content">
                     <div className="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
-                      <div className="author_image">
-                        <div>
-                          <img src={application.author_image} alt=""/>
-                        </div>
-                      </div>
-                      <div className="post_meta">
-                        <a href="#">{application.author_name}</a>
-                        <span> {date.toLocaleDateString()} </span>
-                      </div>
+
+                      <PostMetadata post={this.state.post} />
+
                       <div className="post_share ml-sm-auto">
                         <Link to={`/post/view/${this.state.post.id}`}>
                           <span>See Original</span>

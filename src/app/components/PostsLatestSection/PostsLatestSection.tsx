@@ -162,9 +162,9 @@ class PostsLatestSection extends React.Component<Props, State> {
         <pre>
           <code className='language-html'>
             {
-            `<NoData>
-              !Someone Stole the information
-            </NoData>`
+`<NoData>
+  !Someone Stole the information
+</NoData>`
             }
           </code>
         </pre>

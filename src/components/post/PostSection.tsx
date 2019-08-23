@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 // Application Configurations
 import apiPost from '../../api/post';
 import apiTag from '../../api/tag';
-import application from '../../application';
 
 // Application DTO Objects
 import Post from '../../dto/Post';
@@ -32,6 +31,8 @@ import '../../customPrism.css';
 import '../../tableOfContent.css';
 import '../prismjs/prism-comment.js';
 import $ from 'jquery';
+
+import PostMetadata from '../../app/components/PostMetadata';
 
 /*
  * Props interface, which consists of:
@@ -396,8 +397,6 @@ class PostSection extends React.Component<Props, State> {
     }
 
 
-    const date = new Date(this.state.post.createDate);
-
     /*const options = {
         items: 4,
         nav: false,
@@ -477,15 +476,11 @@ class PostSection extends React.Component<Props, State> {
 
 
                   <div className="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
-                    <div className="author_image">
-                      <div>
-                        <img src={application.author_image} alt=""/>
-                      </div>
-                    </div>
-                    <div className="post_meta">
-                      <a href="#">Jonathan Jara Morales</a>
-                      <span> {date.toLocaleDateString()} </span>
-                    </div>
+
+
+                    <PostMetadata post={this.state.post} />
+
+
                     <div className="post_share ml-sm-auto">
                       { this.renderEditableLink(this.state.post) }
                       <span>share</span>

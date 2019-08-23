@@ -18,12 +18,13 @@ import Post from '../../dto/Post';
 import Tag from '../../dto/Tag';
 
 import { Loading } from '../common/Loading';
-import application from '../../application';
 
 import '../../react-tags.css';
 import 'react-notifications/lib/notifications.css';
 import '../common/custom-notifications.css';
 import './postEdit.css';
+
+import PostMetadata from '../../app/components/PostMetadata';
 
 interface State {
   id: string;
@@ -209,7 +210,7 @@ class PostEditor extends React.Component<any, State> {
         </div>
       );
     }
-    const date = new Date(this.state.post.createDate);
+  
     this.loadCurrentTags();
 
     return (
@@ -239,15 +240,10 @@ class PostEditor extends React.Component<any, State> {
 
 
                     <div className="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
-                      <div className="author_image">
-                        <div>
-                          <img src={application.author_image} alt=""/>
-                        </div>
-                      </div>
-                      <div className="post_meta">
-                        <a href="#">{application.author_name}</a>
-                        <span> {date.toLocaleDateString()} </span>
-                      </div>
+
+                      <PostMetadata post={this.state.post} />
+
+
                       <div className="post_share ml-sm-auto">
                         <Link to={`/post/view/${this.state.post.id}`}>
                           <span>See Original</span>

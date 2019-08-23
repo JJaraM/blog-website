@@ -369,16 +369,7 @@
 	{
 		font-size: 20px;
 	}
-	.post_panel .post_meta
-	{
-		font-size: 12px;
-		margin-left: 10px;
-	}
-	.post_panel .post_meta a,
-	.post_panel .post_meta span
-	{
-		font-size: 12px;
-	}
+	
 	.post_panel_top .post_share
 	{
 		display: none;
