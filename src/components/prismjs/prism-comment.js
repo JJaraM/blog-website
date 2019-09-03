@@ -77,3 +77,20 @@ Prism.languages.insertBefore('gitclone', 'operator', {
     greedy: true
   }
 });
+
+/****************************************/
+Prism.languages.cisco = {
+  'keyword': null,
+  'strong': /([\*]{2}(.*?)[\*]{2})/,
+  'prism-btn': /([<]{2}(.*?)[\>]{2})/,
+  'sup': /(['^']{2}(.*?)['^']{2})/,
+  'cmd': /(.*?)#|((.*?))>/
+};
+
+Prism.languages.insertBefore('cisco', 'operator', {
+  'cmd': {
+    pattern: /(.*?)#|((.*?))>/,
+    lookbehind: true,
+    inside: Prism.languages.cisco,
+  }
+});

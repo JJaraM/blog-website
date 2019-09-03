@@ -1,0 +1,80 @@
+.timeline-item .side_post_image div {
+  border-radius: 0px;
+}
+
+.timeline-item li {
+  list-style: list;
+  list-style: inside;
+  padding-left: 25px;
+}
+
+.timeline-item ul {
+  margin-top: 20px;
+}
+
+.right-part p {
+  margin-top: 10px;
+}
+
+.item-title {
+  margin-top: 0;
+}
+
+.side_post_image div {
+  width: 100px;
+  height: 100px;
+}
+
+.right-part-content {
+  width: 90%;
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 10px;
+}
+
+.right-part {
+  background: #FFF;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  font-size: 12px;
+}
+
+.right-part p {
+  font-size: .92em;
+	color: #000;
+	text-align: justify;
+}
+
+
+.divider {
+  background-color: #000;
+	position: absolute;
+	top: 0;
+	left: 17%;
+	bottom: 0;
+	width: 1px;
+}
+
+.divider::after {
+	content: '';
+  display: block;
+  margin-top: 7px;
+  width: 18px;
+  height: 18px;
+  margin-left: -9px;
+  border-radius: 5px;
+  background: none repeat scroll 0 0 #e1e1e1;
+  border: 2px solid #D6D6D6;
+}
+
+.left-part {
+  width: 20%;
+  display: table-cell;
+  padding-right: 28px;
+  min-height: 100%;
+  text-align: right;
+  vertical-align: top;
+}

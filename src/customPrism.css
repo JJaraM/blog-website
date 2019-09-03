@@ -12,6 +12,10 @@
   font-style: normal;
 }
 
+.token.cmd {
+  color: #9CDCDA;
+}
+
 .token.sup {
   vertical-align: super;
   font-size: .83em;
@@ -55,12 +59,22 @@ code[class*="language-comment"], pre[class*="language-comment"] {
   font-weight: bolder;
 }
 
+/***********************************/
+
+:not(pre) > code[class*="language-cisco"], pre[class*="language-cisco"] {
+  background: #1E1E1E;
+  border: 1px solid #1E1E1E;
+}
+
 /*******************************************************************/
 
 :not(pre) > code[class*="language-gitclone"], pre[class*="language-gitclone"] {
   background: #282a36;
   border: 1px solid #282a36;
 }
+
+
+
 
 code[class*="language-gitclone"], pre[class*="language-gitclone"] {
   color: #343233;

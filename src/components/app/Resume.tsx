@@ -5,7 +5,7 @@
 import * as React from 'react';
 
 import experience from '../../api/experience';
-
+import './style.css';
 /*
 * Component used to render the index page
 * @since 1.0
@@ -179,20 +179,22 @@ export class Resume extends React.Component<any, any> {
                                 </div>
                               </div>
                               <div className="divider"></div>
-                              <div className="right-part">
-                                <h4 className="item-title">{item.title}</h4>
-                                <p>{item.description}</p>
-                                <ul>
-                                  {
-                                    item.tasks.map((task, taskIdx) => {
-                                      return (
-                                        <li key={taskIdx}>
-                                          {task.description}
-                                        </li>
-                                      );
-                                    })
-                                  }
-                                </ul>
+                              <div className="right-part-content">
+                                <div className="right-part">
+                                  <h4 className="item-title">{item.title}</h4>
+                                  <p>{item.description}</p>
+                                  <ul>
+                                    {
+                                      item.tasks.map((task, taskIdx) => {
+                                        return (
+                                          <li key={taskIdx}>
+                                            {task.description}
+                                          </li>
+                                        );
+                                      })
+                                    }
+                                  </ul>
+                                </div>
                               </div>
                             </div>
                           );

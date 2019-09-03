@@ -2358,13 +2358,6 @@ padding-left: 25px;
   border: 2px solid #6dc6b9;
 }
 
-.right-part {
-  width: 70%;
-  display: table-cell;
-  padding-left: 25px;
-  padding-right: 15px;
-  vertical-align: top;
-}
 
 .item-title {
   font-size: 16px;
@@ -2372,11 +2365,7 @@ padding-left: 25px;
 	color: #000;
 }
 
-.right-part p {
-  font-size: .92em;
-	color: #000;
-	text-align: justify;
-}
+
 
 .skill-unit {
     padding-bottom: 2em;

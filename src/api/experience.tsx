@@ -9,9 +9,25 @@
 export default {
     data: [
       {
-        period: "May 2016 - Current",
+        period: "April 2018 - Current",
         place: "GFT Group",
         title: "Senior Java Developer",
+        description: "Outsourcing company specialist for the international financial industry.",
+        img: "https://www.six-group.com/financial-information/dam/images/partner_logos/GFT_Logo.gif",
+        link: "https://www.linkedin.com/company/gft-group/",
+        tasks:[
+          {
+            description: "Creating an Architecture based on different layers, and following reactive patter to minimize the accopling of the software."
+          },
+          {
+            description: "Creating a framework used to handle the transction between different data providers, to help handle all resources as a single request and makes the corresponding rollback if there is an error."
+          }
+        ]
+      },
+      {
+        period: "May 2016 - April 2018",
+        place: "GFT Group",
+        title: "Mid Java Developer",
         description: "Outsourcing company specialist for the international financial industry.",
         img: "https://www.six-group.com/financial-information/dam/images/partner_logos/GFT_Logo.gif",
         link: "https://www.linkedin.com/company/gft-group/",
@@ -20,16 +36,10 @@ export default {
             description: "Creating a Web Service framework, used to handle the differents request that received the application, based on annotations and reactive pattern."
           },
           {
-            description: "Creating an Architecture based on different layers, and following reactive patter to minimize the accopling of the software."
-          },
-          {
             description: "Creating a Web Framework used to handle the java application end ponints in a UI component, to have all end points in a single place."
           },
           {
             description: "Creating a mock framework to support company's propertary framework."
-          },
-          {
-            description: "Creating a framework used to handle the transction between different data providers, to help handle all resources as a single request and makes the corresponding rollback if there is an error."
           }
         ]
       },
@@ -57,7 +67,7 @@ export default {
         place: "ExcelSoftSources",
         title: "Mid Java Developer",
         description: "Outsourcing company that provides service to third. Gives support to StrataHealth Solutions",
-        img: "https://media.licdn.com/dms/image/C4D0BAQHQqqY4fs-Z-w/company-logo_400_400/0?e=1555545600&v=beta&t=nphEXPPQwdMpyDHTNpCBfefW9i9OIAqswEvQVeq8QRQ",
+        img: "http://www.crepromo.com/pmail/_newsletter/08-15-2018/_links/excelsoftsources.jpg",
         link: "https://www.linkedin.com/company/excelsoftsources/",
         tasks: [
           {
@@ -82,7 +92,7 @@ export default {
         place: "RLM Apparel Systems",
         title: "Junior Java Developer",
         description: "Digital Company that provides solutions specifically designed to address the needs of global fashion retailers, brands and manufacturers.",
-        img: "https://media.licdn.com/dms/image/C4D0BAQHUefuYt8j0gA/company-logo_400_400/0?e=1555545600&v=beta&t=duHq7HyE9asm1y72xaGqW2JNFriYH0DIyFT1BV3TruY",
+        img: "https://img.pr.com/release-file/1303/482051/RLMLogo.jpg",
         link: "https://www.linkedin.com/company/rlm-apparel-software-systems/",
         tasks: [
           {
