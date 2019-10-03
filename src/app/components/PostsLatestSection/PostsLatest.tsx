@@ -33,7 +33,7 @@ export default class PostsLatest extends React.Component<Props, State> {
       renderViewMode: this.getView(),
     };
     array = [];
-    console.log('reload');
+    pageNumber = 0;
   }
 
   getView() {
@@ -79,6 +79,7 @@ export default class PostsLatest extends React.Component<Props, State> {
   }
 
   fetchPost = (tagId:number) => {
+
     const endPoint = api.find + pageNumber + items + "/" + tagId;
     fetch(endPoint)
       .then(response => response.json())
