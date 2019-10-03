@@ -5,7 +5,17 @@ import './style.css';
 const PostLatestHeader: React.StatelessComponent<Props> = (props) => {
   const gridDisable = props.renderViewMode === 'grid' ? '' : 'disable';
   const listDisable = props.renderViewMode === 'list' ? '' : 'disable';
-
+  let SelectionTags = () => (
+    <></>
+  )
+  if (props.tagsSelection) {
+    SelectionTags = () => (
+      <PostLatestSectionTagItems
+      tags={props.tags}
+      onClick={props.changeTag}
+      selectedTag={props.selectedTag}/>
+    )
+  }
   return (
     <div className="section_panel d-flex flex-row align-items-center justify-content-start">
       <div className="section_title_home">Latest Articles</div>
@@ -13,11 +23,7 @@ const PostLatestHeader: React.StatelessComponent<Props> = (props) => {
         <i id='grid-view' className={`fa fa-th ${gridDisable}`} aria-hidden="true" onClick={props.changeView('grid')} />
         <i id='list-view' className={`fa fa-th-list ${listDisable}`} aria-hidden="true" onClick={props.changeView('list')}/>
       </div>
-      <PostLatestSectionTagItems
-        tags={props.tags}
-        onClick={props.changeTag}
-        selectedTag={props.selectedTag}
-      />
+      <SelectionTags />
     </div>
   );
 }
@@ -28,6 +34,7 @@ interface Props {
   changeView: (type: string) => any,
   selectedTag: number;
   renderViewMode: string;
+  tagsSelection: boolean;
 }
 
 export default PostLatestHeader;

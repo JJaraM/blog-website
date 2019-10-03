@@ -15,7 +15,7 @@ export class HomeMain extends React.Component<Props, any> {
     if (section.display) {
       switch(section.id) {
         case 'show_home_post_last':
-          component = <PostsLatest tags={this.props.tags} header={true} />;
+          component = <PostsLatest tags={this.props.tags} header={true}  tag={0} tagsSelection={true}/>;
           break;
         case 'show_home_post_video':
           component = <PostVideo/>;

@@ -29,9 +29,11 @@ export default class PostsLatest extends React.Component<Props, State> {
       posts: [],
       isLoadingPage: false,
       renderPosts: false,
-      tag: 0,
+      tag: props.tag,
       renderViewMode: this.getView(),
     };
+    array = [];
+    console.log('reload');
   }
 
   getView() {
@@ -53,6 +55,7 @@ export default class PostsLatest extends React.Component<Props, State> {
   }
 
   populate = (data) => {
+
     if (data) {
       data.forEach((item) => array.push(item));
     }
@@ -115,6 +118,7 @@ export default class PostsLatest extends React.Component<Props, State> {
           changeTag={this.changeTag}
           selectedTag={this.state.tag}
           renderViewMode={this.state.renderViewMode}
+          tagsSelection={this.props.tagsSelection}
         />
       )
     }
@@ -157,4 +161,6 @@ interface State {
 interface Props {
   tags: any;
   header?: any;
+  tagsSelection?: any;
+  tag: number;
 }

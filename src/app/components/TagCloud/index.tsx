@@ -29,7 +29,7 @@ const TagCloud: React.StatelessComponent<Props> = (props) => {
 
   const tags = props.tags.map((tag, i)  => (
       <li key={i}>
-        <Link className="btn btn-white shadow" to={`category/${tag.id}`}>
+        <Link className="btn btn-white shadow" to={`/category/${tag.id}`}>
           {tag.name}
         </Link>
       </li>

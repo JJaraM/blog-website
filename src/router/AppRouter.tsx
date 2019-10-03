@@ -9,7 +9,7 @@ import { Profile } from '../components/about/Profile';
 import { Home } from '../app/views/home/Home';
 import { Resume } from '../components/app/Resume';
 
-import { Category } from '../components/app/Category';
+import { Category } from '../app/views/Category';
 import { ProjectsMainPage } from '../components/projects/ProjectsMainPage';
 import NotFound from '../components/common/NotFound';
 import Footer from '../components/common/Footer';

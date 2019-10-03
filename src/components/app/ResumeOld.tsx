@@ -6,7 +6,6 @@ import * as React from 'react';
 
 import experience from '../../api/experience';
 import './style.css';
-import './skill.css';
 /*
 * Component used to render the index page
 * @since 1.0
@@ -48,7 +47,7 @@ const skills = [
   },
   {
     id: "AOP",
-    percentage: 80
+    percentage: 70
   },
   {
     id: "JUnit",
@@ -106,7 +105,7 @@ const skills = [
 
 const backgroundImage = "http://thesweetsetup.com/wp-content/uploads/2015/06/Ulysses-Pro-Writing-Hero-4.jpg";
 
-export class Resume extends React.Component<any, any> {
+export class ResumeOld extends React.Component<any, any> {
 
   constructor(props:any) {
     super(props);
@@ -216,43 +215,37 @@ export class Resume extends React.Component<any, any> {
                   <div className="sidebar_background"></div>
                   <div className="sidebar_section">
                     <div className="sidebar_title_container">
-
-
-                      <div className="mkdf-widget-title-holder">
-                        <span className="mkdf-widget-title-before"/>
-                        <h6 className="mkdf-widget-title">Languages</h6>
-                      </div>
-
+                      <h4 className="jjara_sidebar_title">
+                        <span>Languages</span>
+                      </h4>
                     </div>
 
-
-
-                    <div  className="skillbar clearfix">
-                      <div className="skillbar-title" style={{width: `100%`}}>
-                        <span>Spanish</span>
+                    <div className="sidebar_section_content">
+                      <div className="skill-unit">
+                         <h4>English</h4>
+                         <div className="bar">
+                            <div className="progress-skill" style={{width: `80%`}}><span>80</span></div>
+                         </div>
                       </div>
-                      <div className="skillbar-bar"></div>
-                      <div className="skill-bar-percent">100%</div>
-                    </div>
 
-                    <div  className="skillbar clearfix">
-                      <div className="skillbar-title" style={{width: `70%`}}>
-                        <span>English</span>
+                      <div className="skill-unit">
+                         <h4>Spanish (Native)</h4>
+                         <div className="bar">
+                            <div className="progress-skill" style={{width: `100%`}}><span>100</span></div>
+                         </div>
                       </div>
-                      <div className="skillbar-bar"></div>
-                      <div className="skill-bar-percent">70%</div>
                     </div>
-
                   </div>
 
                   <div className="sidebar_section">
-                    <div className="mkdf-widget-title-holder">
-                      <span className="mkdf-widget-title-before"/>
-                      <h6 className="mkdf-widget-title">Skills</h6>
+                    <div className="sidebar_title_container">
+                      <h4 className="jjara_sidebar_title">
+                        <span>Skills</span>
+                      </h4>
                     </div>
 
-                      {/*<div className="sidebar_section_content">
-
+                    <div className="sidebar_section_content">
+                      {
                         skills.sort((a, b) => b.percentage - a.percentage).map((skill, skillIdx) => {
                           return (
                             <div className="skill-unit" key={skillIdx}>
@@ -263,22 +256,8 @@ export class Resume extends React.Component<any, any> {
                             </div>
                           );
                         })
-                      */}
-
-                      {
-                        skills.sort((a, b) => b.percentage - a.percentage).map((skill, skillIdx) => {
-                          return (
-                            <div  key={skillIdx} className="skillbar clearfix " data-percent="65%">
-                              <div className="skillbar-title" style={{width: `${skill.percentage}%`}}>
-                                <span>{skill.id}</span>
-                              </div>
-                              <div className="skillbar-bar"></div>
-                              <div className="skill-bar-percent">{skill.percentage}%</div>
-                            </div>
-                          );
-                        })
                       }
-
+                    </div>
                   </div>
                 </div>
               </div>

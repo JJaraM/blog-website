@@ -2103,6 +2103,10 @@ padding-left: 25px;
 	margin-right: 5px;
 }
 
+.jjara-post-slinder-tags .tag:hover {
+	background: #62b2a6;
+}
+
 .jjara-post-slinder-tags {
 	margin-right: 5px;
 }
@@ -2315,14 +2319,7 @@ padding-left: 25px;
 	text-align: justify;
 }
 
-.left-part {
-  width: 30%;
-  display: table-cell;
-  padding-right: 25px;
-  min-height: 100%;
-  text-align: right;
-  vertical-align: top;
-}
+
 
 .item-period {
   margin: 3px 0;
@@ -2335,27 +2332,6 @@ padding-left: 25px;
   margin: 0 0 4px;
   font-size: 12px;
   line-height: 1.45em;
-}
-
-.divider {
-  background-color: #000;
-	position: absolute;
-	top: 0;
-	left: 30%;
-	bottom: 0;
-	width: 1px;
-}
-
-.divider::after {
-	background-color: rgba(34, 34, 34, 1);
-	content: '';
-  display: block;
-  margin-top: 7px;
-  width: 11px;
-  height: 11px;
-  margin-left: -5px;
-  border-radius: 5px;
-  border: 2px solid #6dc6b9;
 }
 
 
