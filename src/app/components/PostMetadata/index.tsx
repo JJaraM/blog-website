@@ -12,6 +12,15 @@ const PostMetadata: React.StatelessComponent<Props> = (props) => {
     date = new Date(props.post.updateDate);
   }
 
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  const ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? 0 + minutes : minutes;
+  const strTime = hours + ':' + minutes + ' ' + ampm;
+
+
   return (
     <>
       <div className="author_image">
@@ -20,8 +29,17 @@ const PostMetadata: React.StatelessComponent<Props> = (props) => {
         </div>
       </div>
       <div className="post_meta">
-        <span className="author_name">{ application.author_name }</span>
-        <span>{ date.toLocaleDateString() }</span>
+        <div className="row">
+          <span className="author_name"><strong>By: </strong>{ application.author_name }</span>
+        </div>
+        <div className="row">
+          <span><strong>When: </strong>
+            { date.toLocaleDateString() } at { strTime }
+          </span>
+        </div>
+        <div className="row">
+          <span><strong>Views: </strong> { props.post.views }</span>
+        </div>
       </div>
     </>
   );

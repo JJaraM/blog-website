@@ -14,12 +14,17 @@ class PostsLatestSection extends React.Component<Props, State> {
     this.state = {
       page: 0
     };
+    this.onError = this.onError.bind(this);
   }
 
   getDefaultProps() {
    return {
      view: "grid"
    };
+  }
+
+  onError(e: any) : void {
+    (e.target as HTMLInputElement).src = '/images/PostImageNotFound.png';
   }
 
   load = () => {
@@ -89,7 +94,7 @@ class PostsLatestSection extends React.Component<Props, State> {
 
     return (
       <div className="card card_small_with_image grid-item" key={key}>
-        <img className="card-img-top" src={post.image} alt=""/>
+        <img className="card-img-top" src={post.image} alt="" onError={this.onError} />
         <div className="card-body">
           <div className="card-title card-title-small">
             <Link to={`/post/view/${post.id}`}>
@@ -124,7 +129,7 @@ class PostsLatestSection extends React.Component<Props, State> {
     return (
       <div className="card card_largest_with_image grid-item" key={key}>
         <Link to={`/post/view/${post.id}`}>
-          <img className="card-img-top" src={post.image} alt=""/>
+          <img className="card-img-top" src={post.image} alt="" onError={this.onError} />
         </Link>
         <div className="card-body">
           <div className="card-title ">

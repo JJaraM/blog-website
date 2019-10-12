@@ -15,7 +15,7 @@ const PostLatestSectionLoading: React.StatelessComponent = () => {
       <div className="line" />
     </div>
   );
-  
+
   return (
     <div className="row">
       <div className="col-4">

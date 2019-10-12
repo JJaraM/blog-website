@@ -188,6 +188,7 @@ class PostSection extends React.Component<Props, State> {
       .then(response => response.json())
       .catch(error => this.setState({redirect: true}))
       .then(data => {
+        console.log(data);
         this.setState({post: data, isLoading: false});
         Prism.highlightAll();
         this.cleanBullets();

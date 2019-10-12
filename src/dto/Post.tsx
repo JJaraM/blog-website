@@ -11,6 +11,7 @@ interface Post {
   tags: Array<number>;
   description: string;
   draftDescription: string;
+  views: number;
 }
 
 export default Post;
