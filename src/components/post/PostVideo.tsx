@@ -4,7 +4,7 @@
 */
 import * as React from 'react';
 
-import YouTube from 'react-youtube';
+// import YouTube from 'react-youtube';
 import data from '../../api/postVideo';
 import OwlCarousel from 'react-owl-carousel2';
 
@@ -99,7 +99,7 @@ export default class PostVideo extends React.Component<any, State> {
 
   render() {
 
-    const opts = {
+    /* const opts = {
           height: '300', // 390
           width: '847',// 575
           playerVars: {
@@ -114,7 +114,7 @@ export default class PostVideo extends React.Component<any, State> {
             showInfo: 0
           }
         };
-
+        */
 
     const options = {
         items: 3,
@@ -135,8 +135,9 @@ export default class PostVideo extends React.Component<any, State> {
            <div className="row">
              <div className="col">
 
+      {/*
                <YouTube className="jjara-video" videoId={ this.state.id } opts={opts} onReady={this._onReady} />
-
+*/}
               <div className="video_section">
                 <OwlCarousel options={options}>
                 {

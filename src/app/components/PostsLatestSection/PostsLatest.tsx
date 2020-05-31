@@ -57,6 +57,7 @@ export default class PostsLatest extends React.Component<Props, State> {
   populate = (data) => {
 
     if (data) {
+
       data.forEach((item) => array.push(item));
     }
 
@@ -80,7 +81,8 @@ export default class PostsLatest extends React.Component<Props, State> {
 
   fetchPost = (tagId:number) => {
 
-    const endPoint = api.find + pageNumber + items + "/" + tagId;
+    const endPoint = api.find + pageNumber + items + "/" + tagId + "/0";
+
     fetch(endPoint)
       .then(response => response.json())
       .catch(error => console.log(error))

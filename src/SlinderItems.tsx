@@ -119,7 +119,12 @@ class SlinderItems extends React.Component<Props, State> {
     const maxLetters = 20;
     let lettersToBreakLine = 0;
 
-    const title = this.props.posts[this.state.selection].title;
+    const post = this.props.posts[this.state.selection];
+    if (post === undefined) {
+      return (<></>);
+    }
+
+    const title = post.title;
     if (title !== undefined && title !== null) {
       words = title.split(' ');
     }
@@ -130,7 +135,7 @@ class SlinderItems extends React.Component<Props, State> {
         { this.renderTags() }
         </div>
         <div className="home_slider_item_title">
-          <Link to={`post/view/${this.props.posts[this.state.selection].id}`}>
+          <Link to={`post/view/${post.id}`}>
             {
               words.map((word, index) => {
 
@@ -183,7 +188,7 @@ class SlinderItems extends React.Component<Props, State> {
       logoHeight = 86;
     }
 
-    if (post.image === null || post.image === '') {
+    if (post === undefined || post.image === null || post.image === undefined || post.image === '') {
       return (
         <CircleAnimation width={width} height={height} logoHeight={logoHeight}/>
       )
@@ -236,6 +241,11 @@ class SlinderItems extends React.Component<Props, State> {
   }
 
   renderNextPosts = () => {
+    console.log(this.props.posts);
+    if (this.props.posts === undefined) {
+      return (<></>);
+    }
+
     return (
       <div className="d-flex flex-row align-items-end preview-items responsive-container">
         {

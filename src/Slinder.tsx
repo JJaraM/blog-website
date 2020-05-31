@@ -26,7 +26,7 @@ class Slinder extends React.Component<ProfileListProps, ProfileListState> {
 
   async componentDidMount() {
     this.setState({isLoading: true});
-    const response = await fetch(api.find + '0' + '/3' + "/0");
+    const response = await fetch(api.find + '0' + '/3' + "/0" + "/0");
     const data = await response.json();
     this.setState({posts: data, isLoading: false});
   }

@@ -17,7 +17,7 @@ export default {
     /*
      * Find the last posts
      */
-    findLast: host + '/post/',
+    findLast: host + '/post/find/all/',
 
     /*
      * Find a post by id
@@ -32,5 +32,5 @@ export default {
     /*
      * Find a post
      */
-    find: host + '/post/'
+    find: host + '/post/find/all/'
 }
