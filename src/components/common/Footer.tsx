@@ -28,7 +28,9 @@ class Footer extends React.Component<any, State> {
 
   async componentDidMount() {
     this.setState({isLoading: true});
-    const response = await fetch(api.find + '0' + '/3' + "/0");
+    console.log(api.find + '0' + '/3' + "/0" + "/0");
+
+    const response = await fetch(api.find + '0' + '/3' + "/0" + "/0");
     const data = await response.json();
     this.setState({posts: data, isLoading: false});
   }
