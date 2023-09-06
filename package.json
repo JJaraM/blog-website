@@ -10,7 +10,7 @@
     "coffee-script": "1.12.7",
     "cors": "^2.8.4",
     "install": "0.12.1",
-    "jquery": "3.3.1",
+    "jquery": "3.5.0",
     "marksy": "6.1.0",
     "node-gyp": "5.1.1",
     "node-sass": "4.11.0",
